@@ -1,0 +1,4 @@
+sudo npm i react-material-ui
+ sudo npm install @material-ui/core
+ sudo npm i contentful
+ npm install --save @material-ui/icons

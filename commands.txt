@@ -1,0 +1,4 @@
+npm install <package-name> --save-dev
+You can call store.dispatch(action) from anywhere in your app
+
+PropTypes-part of react.whenever you have component properties you have to put inside proptypes
