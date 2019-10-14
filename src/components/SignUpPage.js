@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
-import SignUpFormUser from './SignUpFormUser';
-import { Grid } from '@material-ui/core'
 import { connect } from 'react-redux';
+
+import { Grid } from '@material-ui/core'
+import Typography from '@material-ui/core/Typography';
+
 import {userSignUpRequest} from '../actions/signUpActions';
+
 import PropTypes from 'prop-types';
+
+import SignUpFormUser from './SignUpFormUser';
+import NavBarLandingPage from './NavBarLandingPage';
 
 class SignUpPage extends Component {
     render() {
@@ -12,20 +18,34 @@ class SignUpPage extends Component {
             <Grid
                 container
                 spacing={3}
-                direction="column"
-                alignItems="center"
-                justify="center"
-                style={{ minHeight: '70vh' }}
-                >
+            >
+                <Grid item xs={12}>
+                    <NavBarLandingPage></NavBarLandingPage>
+                </Grid>
+                <Grid item xs={12}>
+                        <Grid
+                        container
+                        spacing={3}
+                        direction="column"
+                        alignItems="center"
+                        justify="center"
+                        style={{ minHeight: '70vh' }}
+                        >
 
-                <Grid item xs={3} >
-                    <h1>Welcome</h1>
-                </Grid>   
-                <Grid item xs={3} style={{ minWidth: '50vh' }}>
-                    <SignUpFormUser userSignUpRequest={userSignUpRequest} />
-                </Grid>   
+                            <Grid item xs={12} >
+                                <Typography variant="h4" gutterBottom>
+                                   Create your private account
+                                </Typography>
+                            </Grid>   
+                            <Grid item xs={3} style={{ minWidth: '50vh' }}>
+                                <SignUpFormUser userSignUpRequest={userSignUpRequest} />
+                            </Grid>   
 
-            </Grid> 
+                        </Grid> 
+                </Grid>
+            
+            </Grid>
+            
             
         )
     }
