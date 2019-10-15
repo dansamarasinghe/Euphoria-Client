@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 
 import SignUpFormUser from './SignUpFormUser';
 import NavBarLandingPage from './NavBarLandingPage';
+import {Helmet} from 'react-helmet';
 
 class SignUpPage extends Component {
     render() {
@@ -19,7 +20,7 @@ class SignUpPage extends Component {
                 container
                 spacing={3}
             >
-                <Grid item xs={12}>
+                <Grid item xs={12} style={{ marginBottom:'0' }}>
                     <NavBarLandingPage></NavBarLandingPage>
                 </Grid>
                 <Grid item xs={12}>
@@ -29,23 +30,27 @@ class SignUpPage extends Component {
                         direction="column"
                         alignItems="center"
                         justify="center"
-                        style={{ minHeight: '70vh' }}
+                        style={{ minHeight: '70vh',marginTop:'0' }}
                         >
-
+            <div style={{backgroundColor:'white',padding:'100px',marginTop:'0'}}>
                             <Grid item xs={12} >
                                 <Typography variant="h4" gutterBottom>
                                    Create your private account
                                 </Typography>
                             </Grid>   
                             <Grid item xs={3} style={{ minWidth: '50vh' }}>
+                                <Helmet>
+                                    <style>{'body { background-color: white; }'}</style>
+                                </Helmet>
+                                
                                 <SignUpFormUser userSignUpRequest={userSignUpRequest} />
                             </Grid>   
 
+            </div>
                         </Grid> 
                 </Grid>
             
             </Grid>
-            
             
         )
     }
