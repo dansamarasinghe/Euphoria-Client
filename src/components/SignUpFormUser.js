@@ -12,28 +12,13 @@ import MaterialUIForm from 'react-material-ui-form';
 
 import JssProvider from 'react-jss/lib/JssProvider';
 import {Form} from 'react-bootstrap';
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';//for default exports
 import validateInput from '../validate/PatientSignUp';
 import { Redirect } from 'react-router-dom';
+import {useStyles} from './Styles';
 
 import axios from 'axios';
-const useStyles = makeStyles(theme => ({
-    container: {
-      display: 'flex',
-      flexWrap: 'wrap',
-    },
-    textField: {
-      marginLeft: theme.spacing(1),
-      marginRight: theme.spacing(1),
-    },
-    dense: {
-      marginTop: theme.spacing(2),
-    },
-    menu: {
-      width: 200,
-    },
-  }));
-// const classes=useStyles();
+
 class SignUpFormUser extends Component {
     constructor(props){
         super(props);
@@ -78,54 +63,58 @@ class SignUpFormUser extends Component {
         
         const {errors} =this.state;
         return (
-                <Form onSubmit={this.onSubmit}>
+            <Form onSubmit={this.onSubmit}>
+                    {errors.username && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
                     <Form.Group controlId="formusername">
                         <TextField
                                 id="name"
-                                name="username"
                                 label="User Name"
-                                margin="normal"
+                                className={useStyles.textField}
+                                type="email"
+                                name="username"
+                                autoComplete="email"
+                                margin="none"
+                                variant="outlined"
                                 style={{ width: '50vh' }}
                                 onChange={this.onChange}
                                 value={this.state.name}
                             />
-                            {errors.username && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
                     </Form.Group>
-                    {/* <Form.Group controlId="formusername">
-                            <TextField
-                                id="outlined-uncontrolled"
-                                label="Uncontrolled"
-                                defaultValue="foo"
-                                className={classes.textField}
-                                margin="normal"
-                                variant="outlined"
-                            />
-                            {errors.username && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
-                    </Form.Group> */}
+                    
+                    {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
                     <Form.Group controlId="formemail">
-                    </Form.Group>
                         <TextField
                             id="email"
-                            name="email"
                             label="Email"
-                            margin="normal"
+                            className={useStyles.textField}
+                            type="email"
+                            name="email"
+                            autoComplete="email"
+                            margin="none"
+                            variant="outlined"
                             style={{ width: '50vh' }}
                             onChange={this.onChange}
-                            value={this.state.email}
+                            value={this.state.name}
 
                         />
-                        {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
+                    </Form.Group>
+                   
+                    {errors.password && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
                     <Form.Group controlId="formpassword">
                         <TextField
+
                             id="password"
-                            name="password"
                             label="Password"
-                            margin="normal"
+                            className={useStyles.textField}
+                            type="email"
+                            name="password"
+                            autoComplete="email"
+                            margin="none"
+                            variant="outlined"
                             style={{ width: '50vh' }}
                             onChange={this.onChange}
-                            value={this.state.password}
+                            value={this.state.name}
                         />
-                        {errors.password && <span style={{color:'red'}} className="help-block">{errors.password}</span>}
                     </Form.Group>
                     <Form.Group controlId="formbutton">
                         <Button
