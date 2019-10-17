@@ -1,0 +1,23 @@
+CORS issue==
+I also had this issue, but allow me to give a straight forward answer in a simpler communication manner.
+
+First and foremost, you have to tell your server (Spring boot java), about the client (Reactjs ) URL.
+
+For example, most of the times spring boot uses http://localhost:8080 and Reactjs uses http://localhost:3000.
+
+So you have to navigate to the controller in Spring boot java and allow the URL of Reactjs to be given the permission for accessibility in the server (Spring boot). This will help you get rid of the CORS issue.
+
+How do we do this in Spring boot? simply we add the @CrossOrigin annotation specifying the Reactjs URL link as below:
+
+For example :
+
+ @GetMapping("/orphans")
+    @CrossOrigin(origins = "http://localhost:3000")
+    Iterable<Student> read() {
+        return studentService.findAll();
+    }
+The method above is to list all the orphans, so I gave Reactjs URL link permission then I got rid of the CORS issue.
+
+Happy coding.
+
+==========================================================================================================

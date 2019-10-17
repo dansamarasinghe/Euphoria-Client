@@ -1,21 +1,28 @@
+            <Grid
+                container
+            >
+                <Grid item>
+                            
+                </Grid>
+                <Grid item>
 
-            <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formUserName">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control type="text" 
-                    placeholder="Enter User Name" 
-                    name="username"
-                    value={this.state.username} 
-                    onChange={this.onChange}
-                    />
-                    <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                    </Form.Text>
-                </Form.Group>
+                </Grid>
+            
+            </Grid>
 
-                
-        
-                <Button variant="primary" type="submit">
-                    Submit
-                </Button>
-            </Form> 
+
+import React from 'react';
+
+function App() {
+  const isBackgroundRed = true;
+
+  return (
+    <div
+      style={{
+        backgroundColor: isBackgroundRed ? 'red' : 'blue',
+      }}
+    />
+  );
+}
+
+export default App;
