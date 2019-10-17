@@ -15,7 +15,7 @@ import {Form} from 'react-bootstrap';
 import PropTypes from 'prop-types';//for default exports
 import validateInput from '../validate/PatientSignUp';
 import { Redirect } from 'react-router-dom';
-import {useStyles} from './Styles';
+import {useStyles} from '../assets/Styles';
 
 import axios from 'axios';
 

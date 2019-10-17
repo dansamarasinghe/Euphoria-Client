@@ -99,18 +99,6 @@ export default function SignIn() {
             onChange={handleEmail}
 
           />
-          {/* <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="email2"
-            label="Email Address"
-            name="email2"
-            autoComplete="email2"
-            autoFocus
-            {/* value={txt} */}
-          /> */}
           <TextField
             variant="outlined"
             margin="normal"

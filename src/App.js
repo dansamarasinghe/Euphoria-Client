@@ -3,13 +3,15 @@ import './App.css';
 import SignIn from './components/SignIn'
 import {Provider} from 'react-redux';
 import store from './store';
-import SignUpPage from './components/SignUpPage';
+// import SignUpPage from './components/SignUpPage';
+import HomePageUser from './views/user/HomePageUser';
 function App() {
   return (
     <Provider store={store}>
       <div>
         {/* <SignIn></SignIn> */}
-        <SignUpPage></SignUpPage>
+        {/* <SignUpPage></SignUpPage> */}
+        <HomePageUser></HomePageUser>
       </div>
     </Provider>
   );

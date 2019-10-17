@@ -1,7 +1,7 @@
 import { container, title } from "assets/jss/material-kit-react.js";
 import headerLinksStyle from "assets/jss/material-kit-react/components/headerLinksStyle.js";
 
-const navbarsStyle = theme => ({
+export const navbarsStyle = theme => ({
   section: {
     padding: "70px 0",
     paddingTop: "0"
@@ -54,4 +54,4 @@ const navbarsStyle = theme => ({
   }
 });
 
-export default navbarsStyle;
+

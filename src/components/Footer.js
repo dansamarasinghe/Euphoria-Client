@@ -11,11 +11,11 @@ import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
 import Favorite from "@material-ui/icons/Favorite";
 
-import {useStyles} from "../assets/jss/material-kit-react/components/footerStyle.js";
+import {footerStyle} from '../assets/Styles';
 
 
 export default function Footer(props) {
-  const classes = useStyles();
+  const classes = footerStyle();
   const { whiteFont } = props;
   const footerClasses = classNames({
     [classes.footer]: true,
