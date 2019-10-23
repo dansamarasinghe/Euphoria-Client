@@ -8,7 +8,7 @@ import {userSignUpRequest} from '../../actions/signUpActions';
 
 import PropTypes from 'prop-types';
 
-import SignUpFormUser from '../SignUpFormUser';
+import SignUpFormUser from '../../components/user/SignUpFormUser';
 import NavBarLandingPage from '../../components/NavBarLandingPage';
 // import FooterLandingPage from './FooterLandingPage';
 import Footer from '../../components/Footer';

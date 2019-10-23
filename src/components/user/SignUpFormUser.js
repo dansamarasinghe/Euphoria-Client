@@ -13,9 +13,9 @@ import MaterialUIForm from 'react-material-ui-form';
 import JssProvider from 'react-jss/lib/JssProvider';
 import {Form} from 'react-bootstrap';
 import PropTypes from 'prop-types';//for default exports
-import validateInput from '../validate/PatientSignUp';
+import validateInput from '../../validate/PatientSignUp';
 import { Redirect } from 'react-router-dom';
-import {useStyles} from '../assets/Styles';
+import {useStyles} from '../../assets/Styles';
 
 import axios from 'axios';
 
