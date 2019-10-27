@@ -4,7 +4,7 @@ import logo from '../assets/eu-logo.png';
 export default class NavBarLandingPage extends Component {
     render() {
         return (
-            <Navbar bg="light" variant="light">
+            <Navbar bg="dark" variant="dark">
                 <img
                     src={logo}
                     width="80"

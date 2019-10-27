@@ -109,7 +109,7 @@ export default function RecipeReviewCard() {
           
         </CardContent>
       </Collapse>
-5
+
 
     </Card>
   );

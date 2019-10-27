@@ -5,47 +5,28 @@ import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {Helmet} from 'react-helmet';
 
-
+import {UserLayout} from '../../components/user/UserLayout';
+import Feed from './Feed'
+import NoMatch from './NoMatch'
+import NavbarUser from '../../components/user/NavbarUser';
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import { Jumbotron } from '../../components/user/Jumbotron';
 
 export default class HomePageUser extends Component {
   render() {
     return (
-       <Grid container spacing={3}>
-                <Grid container xs={12} >
-                  //Navbar
-                </Grid>
-
-                <Grid container xs={12}>
-                        <Grid
-                            container
-                            spacing={3}
-                            direction="column"
-                            alignItems="center"
-                            justify="center"
-                            style={{ minHeight: '70vh',marginTop:'0' }}
-                        >
-                            <div style={{backgroundColor:'white',padding:'100px',marginTop:'0'}}>
-                                <Grid container xs={12} direction="column" justify="center" alignItems="center" >
-                                    <Typography  variant="h4" gutterBottom>
-                                    </Typography>
-                                </Grid>   
-                                <Grid item xs={12} style={{ minWidth: '50vh' }}>
-                                    <Helmet>
-                                        <style>{'body { background-color: white; }'}</style>
-                                    </Helmet>
-                                    <PostBodyUser></PostBodyUser>
-                                </Grid>   
-                            </div>
-                        </Grid> 
-                </Grid>
-                <Grid item xs={12} style={{ marginBottom:'0' }}
-                            alignItems="center"
-                            justify="center"
-                >
-                    //Footer
-                </Grid>
-            
-            </Grid>
+       <React.Fragment>
+        <NavbarUser></NavbarUser>
+        <Jumbotron></Jumbotron>
+        <UserLayout>
+          <Router>
+            <Switch>
+              <Route exact path="/" component={Feed}/>
+              <Route component={NoMatch}/>
+            </Switch>
+          </Router>
+        </UserLayout>
+      </React.Fragment>
     )
   }
 }
