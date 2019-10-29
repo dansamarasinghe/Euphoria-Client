@@ -21,7 +21,8 @@ export default class HomePageUser extends Component {
         <UserLayout>
           <Router>
             <Switch>
-              <Route exact path="/" component={Feed}/>
+              <Route exact path="/user/feed" component={Feed}/>
+              <Route exact path="/user/counselors" component={Feed}/>
               <Route component={NoMatch}/>
             </Switch>
           </Router>
