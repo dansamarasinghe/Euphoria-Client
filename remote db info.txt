@@ -1,0 +1,9 @@
+Username: rAVsWY8gpo
+
+Database name: rAVsWY8gpo
+
+Password: eVCYKGJwSU
+
+Server: remotemysql.com
+
+Port: 3306

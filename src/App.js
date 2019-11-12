@@ -3,7 +3,7 @@ import './App.css';
 import SignIn from './components/SignIn'
 import {Provider} from 'react-redux';
 import store from './store';
-// import SignUpPage from './views/user/SignUpPage';
+import SignUpPage from './views/user/SignUpPage';
 import HomePageUser from './views/user/HomePageUser';
 function App() {
   return (
@@ -18,3 +18,4 @@ function App() {
 }
 
 export default App;
+
