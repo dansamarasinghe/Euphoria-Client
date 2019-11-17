@@ -23,6 +23,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {userNewPost} from '../../actions/UserActions';
 
+import Checkbox from '../../components/user/Checkbox'
 
 const useStyles = makeStyles(theme => ({
   card: {
@@ -137,25 +138,29 @@ function CustomToggle({ children, eventKey }) {
 //     </Fragment>
 //   );
 // }
+const OPTIONS = ["Depressed", "Anxious", "Suicidal"];
 class PostComponentUser extends Component{
   constructor(props){
     super(props);
     this.state={
-       'postBody':'',
-       'checkbox':[]
+
+      'postTitle':'',
+      'postBody':'',
+       checkboxes: OPTIONS.reduce(
+          (options, option) => ({
+            ...options,
+            [option]: false
+          }),
+          {}
+        )
     }
   }
   onChange=(e)=>{
     this.setState({[e.target.name]:e.target.value})
   }
   toggleCheckBox=(e)=>{
-    console.log(e.target.name.type)
-    // if(this.state.checkbox.includes(e.target.name)){
-    //   console.log("have");
-    // }else{
-    //   console.log("do not have");
-      
-    // }
+    const {check}=e.target.name;
+    console.log(check)
     
   }
   onSubmit=(e)=>{
@@ -163,6 +168,46 @@ class PostComponentUser extends Component{
     console.log(this.state.postBody);
     this.props.userNewPost(this.state);
   }
+  selectAllCheckboxes = isSelected => {
+    Object.keys(this.state.checkboxes).forEach(checkbox => {
+      // BONUS: Can you explain why we pass updater function to setState instead of an object?
+      this.setState(prevState => ({
+        checkboxes: {
+          ...prevState.checkboxes,
+          [checkbox]: isSelected
+        }
+      }));
+    });
+  };
+
+  selectAll = () => this.selectAllCheckboxes(true);
+
+  deselectAll = () => this.selectAllCheckboxes(false);
+
+  handleCheckboxChange = changeEvent => {
+    const { name } = changeEvent.target;
+
+    this.setState(prevState => ({
+      checkboxes: {
+        ...prevState.checkboxes,
+        [name]: !prevState.checkboxes[name]
+      }
+    }));
+    console.log(this.state.checkboxes)
+  };
+
+  createCheckbox = option => (
+    <Checkbox
+      label={option}
+      isSelected={this.state.checkboxes[option]}
+      onCheckboxChange={this.handleCheckboxChange}
+      key={option}
+    />
+  );
+
+  createCheckboxes = () => OPTIONS.map(this.createCheckbox);
+
+
   render(){
     return(
       <Fragment>
@@ -183,11 +228,7 @@ class PostComponentUser extends Component{
                     </Form.Group>
                     <Form.Group controlId="exampleForm.ControlTextarea1">
                       <Form.Label><h4>How do you feel</h4></Form.Label>
-                        {['Depressed', 'Anxious','Suicidal',"I don't know"].map(emotion => (
-                          <div key={`inline-${emotion}`} className="mb-3">
-                            <Form.Check inline name={emotion} onChange={this.toggleCheckBox} label={emotion} type="checkbox" id={`inline-${emotion}-1`} />
-                          </div>
-                        ))}
+                        {this.createCheckboxes()}
                     </Form.Group>
                     <Form.Group>
                       <Button variant="primary" type="submit">

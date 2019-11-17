@@ -1,8 +1,10 @@
-Username: rAVsWY8gpo
+You have successfully created a new database. The details are below.
 
-Database name: rAVsWY8gpo
+Username: IDaDa8d6it
 
-Password: eVCYKGJwSU
+Database name: IDaDa8d6it
+
+Password: dRKqTT0Cfo
 
 Server: remotemysql.com
 
