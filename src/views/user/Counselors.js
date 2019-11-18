@@ -1,48 +1,61 @@
 import React, { Component } from 'react'
-import {Row,Col,Card,Button} from 'react-bootstrap';
+import {Row,Col,Card,Button,ListGroupItem} from 'react-bootstrap';
+
+import house from '../../assets/img/doctor/house.jpg';
+import CounselorBody from '../../components/user/CounselorBody'
+
+import {UserLayout} from '../../components/user/UserLayout';
+import NavbarUser from '../../components/user/NavbarUser';
+import { Jumbotron } from '../../components/user/Jumbotron';
 export default class Counselors extends Component {
     elements = [
         {
+        "id":1,
         "name":"Dr.Gregory House",
-        "specialty":"diagnostician"
+        "specialty":"diagnostician",
+        "picName":"house"
         },
         {
+        "id":2,
         "name":"Dr.William Chase",
-        "specialty":"Neurologist"
+        "specialty":"Neurologist",
+        "picName":"chase"
         },
         {
+        "id":3,
         "name":"Dr.Cameron Chase",
-        "specialty":"ER"
+        "specialty":"ER",
+        "picName":"cameron"
         },
     ];
     counselors=[];
 
 
     items = this.elements.map((doc)=>
-        <Col xs={4} >
-                <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
-                    <Card.Body>
-                        <Card.Title>{doc.name}</Card.Title>
-                        <Card.Subtitle>{doc.specialty}</Card.Subtitle>
-                        <Card.Text>
-                        </Card.Text>
-                        <Button variant="primary">Request</Button>
-                    </Card.Body>
-                </Card>
-        </Col>
+            <div key={doc.id}>
+                 <CounselorBody doc={doc}></CounselorBody>
+            </div>
     );
     
+    handleClick=(e)=>{
+        e.preventDefault();
+        
+        
+    }
     
 
     render() {
         
         return (
-            <div>
-                <Row>
-                    {this.items}
-                </Row>
-            </div>
+             <React.Fragment>
+                <NavbarUser></NavbarUser>
+                <Jumbotron></Jumbotron>
+                <UserLayout>
+                        <Row>
+                            {this.items}
+                        </Row>
+                </UserLayout>
+             </React.Fragment>
         )
     }
 }

@@ -5,17 +5,17 @@ import { Grid } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import {Helmet} from 'react-helmet';
 
-import {UserLayout} from '../../components/user/UserLayout';
 
 import Feed from './Feed';
-import NoMatch from './NoMatch';
 import Counselors from './Counselors';
+import NoMatch from './NoMatch';
 
 
+import {UserLayout} from '../../components/user/UserLayout';
 import NavbarUser from '../../components/user/NavbarUser';
-import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import { Jumbotron } from '../../components/user/Jumbotron';
-
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
+import Routes from '../../Routes';
 export default class HomePageUser extends Component {
   render() {
     return (
@@ -23,13 +23,7 @@ export default class HomePageUser extends Component {
         <NavbarUser></NavbarUser>
         <Jumbotron></Jumbotron>
         <UserLayout>
-          <Router>
-            <Switch>
-              <Route exact path="/user/feed" component={Feed}/>
-              <Route exact path="/user/counselors" component={Counselors}/>
-              <Route component={NoMatch}/>
-            </Switch>
-          </Router>
+            <Feed></Feed>
         </UserLayout>
       </React.Fragment>
     )

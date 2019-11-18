@@ -165,7 +165,7 @@ class PostComponentUser extends Component{
   }
   onSubmit=(e)=>{
     e.preventDefault();
-    console.log(this.state.postBody);
+    console.log(this.state.check);
     this.props.userNewPost(this.state);
   }
   selectAllCheckboxes = isSelected => {

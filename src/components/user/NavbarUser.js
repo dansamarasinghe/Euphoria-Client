@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import Avatar from '@material-ui/core/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
+import {url} from '../../assets/URL';
 
 const Styles=styled.div`
     .bg-custom-1 {
@@ -63,8 +64,8 @@ export default class NavbarUser extends Component {
                 />
                 <Navbar.Brand href="#home">Euphoria</Navbar.Brand>
                 <Nav className="mr-auto">
-                    <Nav.Link href="/user/feed">Feed</Nav.Link>
-                    <Nav.Link href="/user/counselors">Counselors</Nav.Link>
+                    <Nav.Link href={url.concat("/user/feed")}>Feed</Nav.Link>
+                    <Nav.Link href={url.concat("/user/counselors")}>Counselors</Nav.Link>
                 </Nav>
                 
                 <Nav className="justify-content-end">
