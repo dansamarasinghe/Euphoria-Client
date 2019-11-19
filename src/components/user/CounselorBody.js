@@ -3,14 +3,25 @@ import {Row,Col,Card,Button,ListGroupItem} from 'react-bootstrap';
 import axios from 'axios';
 
 export default class CounselorBody extends Component {
+
     handleClick=(e)=>{
         e.preventDefault();
         const doctor=this.props.doc;
-        console.log(doctor)
-        axios.post('http://localhost:8080/api/user/counselorrequest',JSON.stringify(doctor),{headers: {
+        const patient={
+            "user_id":1,
+            "user_name":"danny"
+        }
+        const details={...doctor,...patient};
+        console.log(details)
+        axios.post('http://localhost:8080/api/user/counselorrequest',JSON.stringify(details),{headers: {
             'Content-Type': 'application/json',
         }})
-        .then((response)=>console.log(response))
+        .then((response)=>{
+            console.log(response);
+            alert("Request Successful");
+            
+        
+        })
 
     }
     render() {
@@ -18,9 +29,15 @@ export default class CounselorBody extends Component {
 
                 <Col xs={4} >
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={require('../../assets/img/doctor/'+this.props.doc.picName+'.jpg')} />
+                        <Card.Img variant="top" src={require('../../assets/img/doctor/'+this.props.doc.picName+'.jpg')} 
+                        style={{
+                            width: '100%',
+                            height: '20vw',
+                            objectFit:'cover'
+                       
+                        }} />
                         <Card.Body>
-                            <Card.Title>{this.props.doc.name}</Card.Title>
+                            <Card.Title>{this.props.doc.doctor_name}</Card.Title>
                             <Card.Subtitle>{this.props.doc.specialty}</Card.Subtitle>
                             <Card.Text>
                             </Card.Text>

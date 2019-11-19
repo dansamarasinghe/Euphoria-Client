@@ -11,7 +11,7 @@ export default class Routes extends Component {
     render() {
         return (
             <Switch>
-              <Route exact path="/user/signin" component={SignIn}/>
+              <Route exact path="/user/login" component={SignIn}/>
               <Route exact path="/user/signup" component={SignUpPage}/>
               <Route exact path="/user/homepage" component={HomePageUser}/>
               <Route exact path="/user/feed" component={HomePageUser}/>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {Navbar,Form,FormControl,Nav,Button,DropdownButton,Dropdown,Image} from 'react-bootstrap';
 import logo from '../../assets/eu-logo.png';
-import profilePic from '../../assets/profile/me.jpg';
+import profilePic from '../../assets/profile/me.jpeg';
 import styled from 'styled-components';
 
 import IconButton from '@material-ui/core/IconButton';

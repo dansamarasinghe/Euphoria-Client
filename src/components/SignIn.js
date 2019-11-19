@@ -19,8 +19,14 @@ import {signIn} from '../actions/signInActions';
 import {signInStyles} from '../assets/Styles';
 
 import { Redirect } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 
+import logo from '../assets/eu-logo.png';
 import axios from 'axios';
+
+import UserProfile from '../assets/UserProfile';
 
 function Copyright() {
   return (
@@ -34,7 +40,35 @@ function Copyright() {
     </Typography>
   );
 }
-
+const styles=theme=>({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  bigAvatar: {
+    margin: 10,
+    width: 60,
+    height: 60,
+  },
+});
 
 
 
@@ -46,7 +80,6 @@ class SignIn extends Component{
       'password':''
     }
   }
-
    
   handleChange=(e)=>{
     this.setState({[e.target.name]:e.target.value});
@@ -60,28 +93,29 @@ class SignIn extends Component{
     }})
     .then((response)=>{
       if(response.data){
-        
-        this.props.history.push('/user/homepage');
+        UserProfile.setEmail(this.state.email);
+        UserProfile.setName(this.state.name);
+        this.props.history.push('/user/counselors');
       }else{
         alert("Invalid combination of username and password");
-        
+        this.setState({"email":'',"password":''});
       }
     }) 
     
 
   }
   render(){
+      const {classes}=this.props;
       return(
         <Container component="main" maxWidth="xs">
               <CssBaseline />
-              <div className={signInStyles.paper}>
-                <Avatar className={signInStyles.avatar}>
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                  Sign in
-                </Typography>
-                <form className={signInStyles.form} noValidate onSubmit={this.handleClick} >
+              <div className={classes.paper}>
+                
+                <Avatar alt="Remy Sharp" src={logo} className={classes.bigAvatar} /> <h2>Euphoria</h2>
+                {/* <Typography component="h1" variant="h5">
+                  Euphoria
+                </Typography> */}
+                <form className={classes.form} noValidate onSubmit={this.handleClick} >
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -117,7 +151,7 @@ class SignIn extends Component{
                     fullWidth
                     variant="contained"
                     color="primary"
-                    className={signInStyles.submit}
+                    className={classes.submit}
                     
                   >
                     Sign In
@@ -146,7 +180,10 @@ class SignIn extends Component{
   }
 
 }
-export default SignIn;
+SignIn.propTypes={
+  classes:PropTypes.object.isRequired,
+};
+export default withStyles(styles)(SignIn);
 // SignIn.propTypes = {
 //   signIn : PropTypes.func.isRequired
 // }
