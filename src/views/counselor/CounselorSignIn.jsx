@@ -13,7 +13,7 @@ class CounselorSignIn extends Component {
             <>
 
                 {/*Navbar-Start*/}
-                <Navbar expand={'md'} sticky={'top'} variant={"dark"} bg={"primary"} collapseOnSelect>
+                <Navbar expand={'md'} sticky={'top'} variant={"dark"} bg={"primary"} style={{marginBottom:"10px"}} collapseOnSelect>
                     {/*<Container>*/}
 
                         <Image src={Logo}
