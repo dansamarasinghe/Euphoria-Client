@@ -122,6 +122,7 @@ class SignUpFormUser extends Component {
                             label="Email"
                             className={useStyles.textField}
                             type="email"
+                            
                             name="email"
                             autoComplete="email"
                             margin="none"
