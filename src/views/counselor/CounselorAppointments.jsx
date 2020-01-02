@@ -3,6 +3,7 @@ import CounselorNavBar from "../../components/counselor/CounselorNavBar";
 import {Container, Grid} from "@material-ui/core";
 import ForumQuestionCard from "../../components/forum/QuestionCard";
 import AppoinmentCard from "../../components/forum/AppoinmentCard";
+<<<<<<< HEAD
 import axios from 'axios';
 
 class CounselorAppointments extends Component {
@@ -40,6 +41,10 @@ class CounselorAppointments extends Component {
         }
     }
 
+=======
+
+class CounselorAppointments extends Component {
+>>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
     render() {
         return (
             <>
@@ -49,11 +54,19 @@ class CounselorAppointments extends Component {
                 <Container>
                     <Grid container>
                         <AppoinmentCard
+<<<<<<< HEAD
                             customer={this.state.name}
                             username={this.state.username}
                             time={"8:00 AM"}
                             date={"2019-11-20"}
                             status={this.state.status}
+=======
+                            customer={"Missaka Iddamalgoda"}
+                            username={"@Misidda"}
+                            time={"8:00 AM"}
+                            date={"2019-11-20"}
+                            status={"Pending"}
+>>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
                         >
                         </AppoinmentCard>
                     </Grid>
