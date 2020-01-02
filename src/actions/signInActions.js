@@ -2,8 +2,11 @@ import {SIGN_IN} from './types';
 
 const axios = require('axios');
 
-export const signIn = (v) =>dispatch=>{
-    console.log(v);
-    axios.get('/login?loginname=dan&password=joy')
+export const signIn = (state) =>dispatch=>{
+    console.log(state);
     
+    return axios.post('http://localhost:8080/api/user/signin',JSON.stringify(state),{headers: {
+        'Content-Type': 'application/json',
+    }})
+    .then((response)=>console.log(response))
 }

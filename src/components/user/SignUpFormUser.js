@@ -12,20 +12,37 @@ import MaterialUIForm from 'react-material-ui-form';
 
 import JssProvider from 'react-jss/lib/JssProvider';
 import {Form} from 'react-bootstrap';
+
 import PropTypes from 'prop-types';//for default exports
+
 import validateInput from '../../validate/PatientSignUp';
 import { Redirect } from 'react-router-dom';
 import {useStyles} from '../../assets/Styles';
 
+
 import axios from 'axios';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker
+} from '@material-ui/pickers';
 
 class SignUpFormUser extends Component {
     constructor(props){
         super(props);
         this.state={
-            username:'',
+            title:'',
+            firstname:'',
+            lastname:'',
             email:'',
             password:'',
+            passwordConfirmation:'',
+            contactNumber:'',
+            dob:'',
+            nic:'',
+            city:'',
+            district:'',
             errors:{},
             isLoading:false
         }
@@ -34,7 +51,6 @@ class SignUpFormUser extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
     isValid=()=>{
-        console.log("how baout here");
         const{errors,isValid}=validateInput(this.state);
         console.log(isValid);
         if(!isValid){
@@ -64,23 +80,41 @@ class SignUpFormUser extends Component {
         const {errors} =this.state;
         return (
             <Form onSubmit={this.onSubmit}>
-                    {errors.username && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                    {errors.firstname && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
                     <Form.Group controlId="formusername">
                         <TextField
-                                id="name"
-                                label="User Name"
+                                id="firstname"
+                                label="First Name"
                                 className={useStyles.textField}
-                                type="email"
-                                name="username"
-                                autoComplete="email"
+                                type="text"
+                                name="firstname"
+                                autoComplete="firstname"
                                 margin="none"
                                 variant="outlined"
                                 style={{ width: '50vh' }}
                                 onChange={this.onChange}
-                                value={this.state.name}
+                                value={this.state.firstname}
                             />
                     </Form.Group>
                     
+                    {errors.lastname && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                    <Form.Group controlId="formusername">
+                        <TextField
+                                id="lastname"
+                                label="Last Name"
+                                className={useStyles.textField}
+                                type="text"
+                                name="lastname"
+                                autoComplete="lastname"
+                                margin="none"
+                                variant="outlined"
+                                style={{ width: '50vh' }}
+                                onChange={this.onChange}
+                                value={this.state.lastname}
+                            />
+                    </Form.Group>
+                    
+
                     {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
                     <Form.Group controlId="formemail">
                         <TextField
@@ -88,13 +122,14 @@ class SignUpFormUser extends Component {
                             label="Email"
                             className={useStyles.textField}
                             type="email"
+                            
                             name="email"
                             autoComplete="email"
                             margin="none"
                             variant="outlined"
                             style={{ width: '50vh' }}
                             onChange={this.onChange}
-                            value={this.state.name}
+                            value={this.state.email}
 
                         />
                     </Form.Group>
@@ -106,15 +141,99 @@ class SignUpFormUser extends Component {
                             id="password"
                             label="Password"
                             className={useStyles.textField}
-                            type="email"
+                            type="password"
                             name="password"
                             autoComplete="email"
                             margin="none"
                             variant="outlined"
                             style={{ width: '50vh' }}
                             onChange={this.onChange}
-                            value={this.state.name}
+                            value={this.state.password}
                         />
+                    </Form.Group>
+
+                    {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
+                    <Form.Group controlId="formpassword">
+                        <TextField
+
+                            id="passwordConfirmation"
+                            label="Re-type Password"
+                            className={useStyles.textField}
+                            type="password"
+                            name="passwordConfirmation"
+                            autoComplete="password"
+                            margin="none"
+                            variant="outlined"
+                            style={{ width: '50vh' }}
+                            onChange={this.onChange}
+                            value={this.state.passwordConfirmation}
+                        />
+                    </Form.Group>
+
+                    {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                    <Form.Group controlId="formusername">
+                        <TextField
+                                id="contactNumber"
+                                label="Contact Number"
+                                className={useStyles.textField}
+                                type="text"
+                                name="contactNumber"
+                                autoComplete="contactNumber"
+                                margin="none"
+                                variant="outlined"
+                                style={{ width: '50vh' }}
+                                onChange={this.onChange}
+                                value={this.state.contactNumber}
+                        />
+                    </Form.Group>
+                        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+
+                            <KeyboardDatePicker
+                                    disableToolbar
+                                    variant="inline"
+                                    format="MM/dd/yyyy"
+                                    margin="normal"
+                                    id="dob"
+                                    label="Date of birth"
+                                    value={this.state.dob}
+                                    onChange={this.onChange}
+                                    KeyboardButtonProps={{
+                                        'aria-label': 'change date',
+                                    }}
+                            />
+                        </MuiPickersUtilsProvider>
+
+                    {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                    <Form.Group controlId="formusername">
+                        <TextField
+                                id="contactNumber"
+                                label="Contact Number"
+                                className={useStyles.textField}
+                                type="text"
+                                name="contactNumber"
+                                autoComplete="contactNumber"
+                                margin="none"
+                                variant="outlined"
+                                style={{ width: '50vh' }}
+                                onChange={this.onChange}
+                                value={this.state.contactNumber}
+                            />
+                    </Form.Group>
+                    {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                    <Form.Group controlId="formusername">
+                        <TextField
+                                id="contactNumber"
+                                label="Contact Number"
+                                className={useStyles.textField}
+                                type="text"
+                                name="contactNumber"
+                                autoComplete="contactNumber"
+                                margin="none"
+                                variant="outlined"
+                                style={{ width: '50vh' }}
+                                onChange={this.onChange}
+                                value={this.state.contactNumber}
+                            />
                     </Form.Group>
                     <Form.Group controlId="formbutton">
                         <Button
