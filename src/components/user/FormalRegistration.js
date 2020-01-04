@@ -53,17 +53,18 @@ class FormalRegistration extends Component {
     onSubmit=(e)=>{
         e.preventDefault();
         console.log("shit");
-        // axios.post('http://localhost:8080/api/users',{user:this.state});
-
+        
         if(this.isValid()){
             console.log("ho");
-            this.setState({errors:{}});
-            this.props.userSignUpRequest(this.state).then(
-                ()=>{
-                    return <Redirect to='http://google.com'/>;
-                },
-                ({data})=>this.setState({errors:data,isLoading:false})
-                );
+            this.setState({errors:{},accountType:'quick'});
+
+            this.props.userSignUpRequest(this.state).then( result => {
+                alert("success");
+             }, function(error) {
+                console.log(error);
+             });
+        }else{
+            this.setState({})
         }
     }
     
@@ -72,7 +73,7 @@ class FormalRegistration extends Component {
         const {errors} =this.state;
         return (
                 <Form onSubmit={this.onSubmit}>
-                        {errors.firstname && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                        {errors.firstname && <span style={{color:'red'}} className="help-block">{errors.firstname}</span>}
                         <Form.Group controlId="formusername">
                             <TextField
                                     id="firstname"
@@ -89,7 +90,7 @@ class FormalRegistration extends Component {
                                 />
                         </Form.Group>
                         
-                        {errors.lastname && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                        {errors.lastname && <span style={{color:'red'}} className="help-block">{errors.lastname}</span>}
                         <Form.Group controlId="formlastname">
                             <TextField
                                     id="lastname"
@@ -144,7 +145,7 @@ class FormalRegistration extends Component {
                             />
                         </Form.Group>
 
-                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
+                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.passwordConfirmation}<br></br></span> }
                         <Form.Group controlId="formpasswordconfirmation">
                             <TextField
 
@@ -162,7 +163,7 @@ class FormalRegistration extends Component {
                             />
                         </Form.Group>
 
-                        {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
+                        {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.contactNumber}</span>}
                         <Form.Group controlId="formcontactnumber">
                             <TextField
                                     id="contactNumber"
@@ -214,7 +215,7 @@ class FormalRegistration extends Component {
                                 />
                         </Form.Group>
 
-                        {errors.disctrict && <span style={{color:'red'}} className="help-block">{errors.district}</span>}
+                        {errors.district && <span style={{color:'red'}} className="help-block">{errors.district}</span>}
                         <Form.Group controlId="formdistrict">
                             <TextField
                                     id="district"

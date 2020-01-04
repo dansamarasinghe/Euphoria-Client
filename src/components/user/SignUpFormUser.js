@@ -31,7 +31,7 @@ class SignUpFormUser extends Component {
         }
     }
     userSignUpRequest=(state)=>{
-        axios.post('http://localhost:8080/api/user/signin',JSON.stringify(state),{headers: {
+        return axios.post('http://localhost:8080/api/user/quicksignup',JSON.stringify(state),{headers: {
         'Content-Type': 'application/json',
         }})
         .then((response)=>console.log(response))

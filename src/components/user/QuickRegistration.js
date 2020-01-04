@@ -46,14 +46,12 @@ class QuickRegistration extends Component {
             console.log("ho");
             this.setState({errors:{},accountType:'quick'});
 
-            this.props.userSignUpRequest(this.state).then(
-                ()=>{
-                    //     return <Redirect to='http://google.com'/>;
-                    axios.post('http://localhost:8080/api/users',{user:this.state});
-                }
-                ,
-                ({data})=>this.setState({errors:data,isLoading:false})
-            );
+            this.props.userSignUpRequest(this.state).then( result => {
+                alert("success");
+             }, function(error) {
+                console.log(error);
+                
+             });
         }
     }
     
@@ -100,7 +98,7 @@ class QuickRegistration extends Component {
                             />
                         </Form.Group>
 
-                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
+                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.passwordConfirmation}<br></br></span> }
                         <Form.Group controlId="formpasswordconfirmationq">
                             <TextField
 
