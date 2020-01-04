@@ -62,7 +62,7 @@ class SignUpPage extends Component {
                                 style={{ minHeight: '70vh',marginTop:'0' }}
                             >
                                 <div style={{backgroundColor:'white',padding:'100px',marginTop:'0'}}>
-                                    <Grid container xs={12} direction="column" justify="center" alignItems="center" >
+                                    <Grid container  direction="column" justify="center" alignItems="center" >
                                         <Typography  variant="h4" gutterBottom>
                                         Get started!
                                         </Typography>
@@ -72,7 +72,7 @@ class SignUpPage extends Component {
                                             <style>{'body { background-color: white; }'}</style>
                                         </Helmet>
                                         
-                                        <SignUpFormUser userSignUpRequest={userSignUpRequest} />
+                                        <SignUpFormUser/>
                                     </Grid>   
                                 </div>
                             </Grid> 
@@ -81,8 +81,6 @@ class SignUpPage extends Component {
             <Grid container spacing={3}>
 
                     <Grid item xs={12} style={{ marginBottom:'0' }}
-                                alignItems="center"
-                                justify="center"
                     >
                         <Footer></Footer>
                         {/* <FooterLandingPage></FooterLandingPage> */}
@@ -94,8 +92,6 @@ class SignUpPage extends Component {
     
 }
 
-SignUpFormUser.propTypes={
-    userSignUpRequest : PropTypes.func.isRequired
-}
 
-export default connect(null,{userSignUpRequest})(SignUpPage);
+
+export default SignUpPage;
