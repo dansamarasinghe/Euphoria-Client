@@ -3,6 +3,7 @@ import CounselorNavBar from "../../components/counselor/CounselorNavBar";
 import {Container, Grid} from "@material-ui/core";
 import ForumQuestionCard from "../../components/forum/QuestionCard";
 import AppoinmentCard from "../../components/forum/AppoinmentCard";
+
 import axios from 'axios';
 
 class CounselorAppointments extends Component {
@@ -63,11 +64,11 @@ class CounselorAppointments extends Component {
                 <Container>
                     <Grid container>
                         <AppoinmentCard
-                            customer={"Missaka Iddamalgoda"}
-                            username={"@Misidda"}
+                            customer={this.state.name}
+                            username={this.state.username}
                             time={"8:00 AM"}
                             date={"2019-11-20"}
-                            status={"Pending"}
+                            status={this.state.status}
                         >
                         </AppoinmentCard>
                     </Grid>
