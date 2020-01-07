@@ -5,7 +5,6 @@ import { FormControl,FormGroup,Button,Box } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 import {Form,Tab,Nav,Row,Col} from 'react-bootstrap';
-
 import PropTypes from 'prop-types';//for default exports
 
 import {validateFormalSignUp} from '../../validate/PatientSignUpValidation';
@@ -15,16 +14,16 @@ import {useStyles} from '../../assets/Styles';
 import axios from 'axios';
 import DateFnsUtils from '@date-io/date-fns';
 import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker
+    MuiPickersUtilsProvider,
+    KeyboardTimePicker,
+    KeyboardDatePicker
 } from '@material-ui/pickers';
 
 class FormalRegistration extends Component {
     constructor(props){
         super(props);
         this.state={
-            title:'',
+            gender:'',
             firstname:'',
             lastname:'',
             email:'',
@@ -40,7 +39,10 @@ class FormalRegistration extends Component {
         }
     }
     onChange=(e)=>{
+        console.log(e.target.value)
+        console.log(e.target.name)
         this.setState({[e.target.name]:e.target.value})
+        console.log(this.state)
     }
     isValid=()=>{
         const{errors,isValid}=validateFormalSignUp(this.state);
@@ -73,6 +75,7 @@ class FormalRegistration extends Component {
         const {errors} =this.state;
         return (
                 <Form onSubmit={this.onSubmit}>
+
                         {errors.firstname && <span style={{color:'red'}} className="help-block">{errors.firstname}</span>}
                         <Form.Group controlId="formusername">
                             <TextField
@@ -105,6 +108,15 @@ class FormalRegistration extends Component {
                                     onChange={this.onChange}
                                     value={this.state.lastname}
                                 />
+                        </Form.Group>
+
+                        <Form.Group controlId="exampleForm.ControlSelect1">
+                                <Form.Label>Gender</Form.Label>
+                                <Form.Control as="select" name="gender" onChange={this.onChange}>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Other</option>
+                                </Form.Control>
                         </Form.Group>
                         
 
@@ -179,7 +191,21 @@ class FormalRegistration extends Component {
                                     value={this.state.contactNumber}
                             />
                         </Form.Group>
-                        
+                        <Form.Group>
+                            <TextField
+                                id="date"
+                                label="Birthday"
+                                type="date"
+                                name="dob"
+                                defaultValue="2020-01-01"
+                                className={useStyles.textField}
+                                InputLabelProps={{
+                                shrink: true,
+                                }}
+                                onChange={this.onChange}
+                            />
+
+                        </Form.Group>
 
                         {errors.nic && <span style={{color:'red'}} className="help-block">{errors.nic}</span>}
                         <Form.Group controlId="formnic">

@@ -38,6 +38,7 @@ class QuickRegistration extends Component {
         }
         return isValid;
     }
+    
     onSubmit=(e)=>{
         e.preventDefault();
         console.log("shit");
@@ -54,7 +55,6 @@ class QuickRegistration extends Component {
              });
         }
     }
-    
     render() {
         
         const {errors} =this.state;

@@ -3,6 +3,12 @@ import {Navbar,Form,FormControl,Nav,Button} from 'react-bootstrap';
 import logo from '../assets/eu-logo.png';
 export default class NavBarLandingPage extends Component {
     render() {
+        let button;
+        if(this.props.page!="signIn"){
+            button=<Button variant="outline-info" href="/user/login">Sign In</Button>;
+        }else{
+            button=null;
+        }
         return (
             <Navbar bg="dark" variant="dark" sticky="top">
                 <img
@@ -19,7 +25,7 @@ export default class NavBarLandingPage extends Component {
                 </Nav>
 
                 <Form inline>
-                    <Button variant="outline-info">Sign In</Button>
+                    {button}
                 </Form>
             </Navbar>
 

@@ -7,7 +7,17 @@ import CounselorBody from '../../components/user/CounselorBody'
 import {UserLayout} from '../../components/user/UserLayout';
 import NavbarUser from '../../components/user/NavbarUser';
 import { Jumbotron } from '../../components/user/Jumbotron';
-export default class Counselors extends Component {
+
+import axios from 'axios';
+
+class Counselors extends Component {
+
+    constructor(props){
+        super(props);
+        this.state={
+            counselors:[]
+        }
+    }
     elements = [
         {
         "doctor_id":1,
@@ -46,26 +56,39 @@ export default class Counselors extends Component {
         "picName":"foreman"
         },
     ];
-    counselors=[];
+    
 
-
-    items = this.elements.map((doc)=>
-            <div key={doc.doctor_id}>
-                 <CounselorBody doc={doc}></CounselorBody>
-            </div>
-    );
+    
+    loadCounselors=()=>{
+        axios.get('http://localhost:8080/api/user/getCounselors',{headers: {
+            'Content-Type': 'application/json',
+        }})
+        .then(res=>{
+            console.log(res.data)
+            const data=res.data;
+            this.setState({counselors:data})
+        })
+    }
     
     handleClick=(e)=>{
         e.preventDefault();
         
         
     }
+    componentDidMount(){
+        console.log("mounted counselor");
+        this.loadCounselors();
+    }
     
-
+    
     render() {
-        
+       const items = this.state.counselors.map((doc)=>
+            <div key={doc.doctor_id}>
+                    <CounselorBody doc={doc}></CounselorBody>
+            </div>
+        );
         return (
-             <React.Fragment>
+            <React.Fragment>
                 <NavbarUser></NavbarUser>
                 <Jumbotron></Jumbotron>
                 <UserLayout>
@@ -81,10 +104,11 @@ export default class Counselors extends Component {
                             </Row> 
                             
                         <Row>
-                            {this.items}
+                            {items}
                         </Row>
                 </UserLayout>
              </React.Fragment>
         )
     }
 }
+export default Counselors;

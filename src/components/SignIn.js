@@ -27,6 +27,7 @@ import logo from '../assets/eu-logo.png';
 import axios from 'axios';
 
 import UserProfile from '../assets/UserProfile';
+import Counselors from '../views/user/Counselors'
 
 function Copyright() {
   return (
@@ -87,7 +88,7 @@ class SignIn extends Component{
   handleClick=(e)=>{
     e.preventDefault();
     console.log("redirect");
-    
+    console.log(this.state)
     axios.post('http://localhost:8080/api/user/signin',JSON.stringify(this.state),{headers: {
         'Content-Type': 'application/json',
     }})
@@ -95,6 +96,8 @@ class SignIn extends Component{
       if(response.data){
         UserProfile.setEmail(this.state.email);
         UserProfile.setName(this.state.name);
+        // return <Redirect to='/users/counselors'/>
+        // this.props.history.push('/user/counselors',Counselors);
         this.props.history.push('/user/counselors');
       }else{
         alert("Invalid combination of username and password");
@@ -163,7 +166,7 @@ class SignIn extends Component{
                       </Link>
                     </Grid>
                     <Grid item>
-                      <Link href="#" variant="body2">
+                      <Link href="/user/signup" variant="body2">
                         {"Don't have an account? Sign Up"}
                       </Link>
                     </Grid>
