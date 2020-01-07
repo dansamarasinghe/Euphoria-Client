@@ -3,7 +3,7 @@ import CounselorNavBar from "../../components/counselor/CounselorNavBar";
 import {Container, Grid} from "@material-ui/core";
 import ForumQuestionCard from "../../components/forum/QuestionCard";
 import AppoinmentCard from "../../components/forum/AppoinmentCard";
-<<<<<<< HEAD
+
 import axios from 'axios';
 
 class CounselorAppointments extends Component {
@@ -12,25 +12,39 @@ class CounselorAppointments extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            items: [],
-            'name':'',
-            'status':'',
-            'username':''
-
+            items: []
         };
     }
 
      componentDidMount() {
-        axios.post('http://localhost:8080/api/user/sign',JSON.stringify(this.state),{headers: {
-            'Content-Type': 'application/json',
-        }})
-        .then((response)=>{
-          if(response.data){
-              this.setState({'name':'Danny','status':'pending','username':'@danny'})
-              alert("request has been made");
-          }else{
-          }
-        }) 
+         axios.get(`http://localhost:8080/api/counselor/appointments/1`)
+            .then(res => {
+                const persons = res.data;
+                // this.setState({ persons });
+                console.log(persons)
+            })
+
+        // fetch("http://localhost:8080/api/counselor/appointments/1")
+        //     // .then(res => res.json())
+        //     .then(
+        //         (result) => {
+        //             this.setState({
+        //                 isLoaded: true,
+        //                 items: result.items
+        //             });
+        //             console.log(result);
+        //         },
+        //         // Note: it's important to handle errors here
+        //         // instead of a catch() block so that we don't swallow
+        //         // exceptions from actual bugs in components.
+        //         (error) => {
+        //             this.setState({
+        //                 isLoaded: true,
+        //                 error
+        //             });
+        //             console.log(error);
+        //         }
+        //     )
     }
 
     onFetchComplete(res){
@@ -41,10 +55,6 @@ class CounselorAppointments extends Component {
         }
     }
 
-=======
-
-class CounselorAppointments extends Component {
->>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
     render() {
         return (
             <>
@@ -54,19 +64,11 @@ class CounselorAppointments extends Component {
                 <Container>
                     <Grid container>
                         <AppoinmentCard
-<<<<<<< HEAD
                             customer={this.state.name}
                             username={this.state.username}
                             time={"8:00 AM"}
                             date={"2019-11-20"}
                             status={this.state.status}
-=======
-                            customer={"Missaka Iddamalgoda"}
-                            username={"@Misidda"}
-                            time={"8:00 AM"}
-                            date={"2019-11-20"}
-                            status={"Pending"}
->>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
                         >
                         </AppoinmentCard>
                     </Grid>
