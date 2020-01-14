@@ -9,6 +9,7 @@ import NavbarUser from '../../components/user/NavbarUser';
 import { Jumbotron } from '../../components/user/Jumbotron';
 
 import axios from 'axios';
+import UserProfile from '../../assets/UserProfile';
 
 class Counselors extends Component {
 
@@ -67,6 +68,8 @@ class Counselors extends Component {
             console.log(res.data)
             const data=res.data;
             this.setState({counselors:data})
+        }).catch(err=>{
+            console.log(err);
         })
     }
     
@@ -78,12 +81,13 @@ class Counselors extends Component {
     componentDidMount(){
         console.log("mounted counselor");
         this.loadCounselors();
+        console.log("the user is"+UserProfile.getName())
     }
     
     
     render() {
        const items = this.state.counselors.map((doc)=>
-            <div key={doc.doctor_id}>
+            <div key={doc.counselor_id}>
                     <CounselorBody doc={doc}></CounselorBody>
             </div>
         );

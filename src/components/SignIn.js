@@ -94,14 +94,14 @@ class SignIn extends Component{
     }})
     .then((response)=>{
       if(response.data){
-        UserProfile.setEmail(this.state.email);
-        UserProfile.setName(this.state.name);
-        // return <Redirect to='/users/counselors'/>
-        // this.props.history.push('/user/counselors',Counselors);
+        console.log("signed in");
+        const user=response.data[0]
+        UserProfile.setEmail(user.email);
+        UserProfile.setName(user.firstname);
+        UserProfile.setId(user.uid)
         this.props.history.push('/user/counselors');
       }else{
-        alert("Invalid combination of username and password");
-        this.setState({"email":'',"password":''});
+        alert("wrong username or password");
       }
     }) 
     
