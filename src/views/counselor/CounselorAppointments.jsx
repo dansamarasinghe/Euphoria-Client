@@ -1,8 +1,7 @@
 import React, {Component} from "react";
 import CounselorNavBar from "../../components/counselor/CounselorNavBar";
 import {Container, Grid} from "@material-ui/core";
-import ForumQuestionCard from "../../components/forum/QuestionCard";
-import AppoinmentCard from "../../components/forum/AppoinmentCard";
+import AppoinmentCard from "../../components/counselor/AppoinmentCard";
 import axios from 'axios';
 
 class CounselorAppointments extends Component {
@@ -16,12 +15,13 @@ class CounselorAppointments extends Component {
     }
 
      componentDidMount() {
-         axios.get(`http://localhost:8080/api/counselor/appointments/1`)
-            .then(res => {
-                const persons = res.data;
-                // this.setState({ persons });
-                console.log(persons)
-            })
+         // axios.get(`http://localhost:8080/api/counselor/appointments/1`)
+         //    .then(res => {
+         //        const persons = res.data;
+         //        // this.setState({ persons });
+         //        console.log(persons);
+         //        this.onFetchComplete(persons);
+         //    })
 
         // fetch("http://localhost:8080/api/counselor/appointments/1")
         //     // .then(res => res.json())

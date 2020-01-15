@@ -1,5 +1,5 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { container, primaryColor } from "./jss/material-kit-react";
+import {makeStyles} from '@material-ui/core/styles';
+import {container, primaryColor} from "./jss/material-kit-react";
 
 export const useStyles = makeStyles(theme => ({
     container: {
