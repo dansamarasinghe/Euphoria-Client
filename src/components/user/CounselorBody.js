@@ -9,7 +9,7 @@ export default class CounselorBody extends Component {
         const doctor=this.props.doc;
         const patient={
             "user_id":1,
-            "user_name":"danny"
+            "user_name":"Daniel Carter"
         }
         const details={...doctor,...patient};
         console.log(details)

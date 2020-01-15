@@ -6,6 +6,13 @@ import Typography from '@material-ui/core/Typography';
 
 class AppoinmentCard extends Component {
 
+<<<<<<< HEAD
+
+    handleClick=()=>{
+        this.setState({'status':'Approved'})
+    }
+=======
+>>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
     render() {
         return (
             <Grid item xs={4}>
@@ -45,7 +52,11 @@ class AppoinmentCard extends Component {
                     </CardContent>
 
                     <CardActions style={{float:"right"}}>
+<<<<<<< HEAD
+                        <Button onClick={this.handleClick}>Approve</Button>
+=======
                         <Button>Approve</Button>
+>>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
                         <Button>Reject</Button>
                     </CardActions>
                 </Card>
