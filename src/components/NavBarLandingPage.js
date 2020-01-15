@@ -1,6 +1,7 @@
-import React, { Component } from 'react'
-import {Navbar,Form,FormControl,Nav,Button} from 'react-bootstrap';
+import React, {Component} from 'react'
+import {Button, Form, Nav, Navbar} from 'react-bootstrap';
 import logo from '../assets/eu-logo.png';
+
 export default class NavBarLandingPage extends Component {
     render() {
         return (

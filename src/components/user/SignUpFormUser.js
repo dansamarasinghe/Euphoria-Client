@@ -1,32 +1,13 @@
-import React, { Component } from 'react'
-import { InputLabel,Input,FormHelperText } from '@material-ui/core';
+import React, {Component} from 'react'
+import {Button} from '@material-ui/core';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import clsx from 'clsx';
-
-import { FormControl,FormGroup,Button,Box } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
-import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import MaterialUIForm from 'react-material-ui-form';
-
-import JssProvider from 'react-jss/lib/JssProvider';
 import {Form} from 'react-bootstrap';
 
-import PropTypes from 'prop-types';//for default exports
-
+import PropTypes from 'prop-types'; //for default exports
 import validateInput from '../../validate/PatientSignUp';
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 import {useStyles} from '../../assets/Styles';
-
-
-import axios from 'axios';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker
-} from '@material-ui/pickers';
 
 class SignUpFormUser extends Component {
     constructor(props){
@@ -96,7 +77,7 @@ class SignUpFormUser extends Component {
                                 value={this.state.firstname}
                             />
                     </Form.Group>
-                    
+
                     {errors.lastname && <span style={{color:'red'}} className="help-block">{errors.username}</span>}
                     <Form.Group controlId="formusername">
                         <TextField
@@ -122,7 +103,7 @@ class SignUpFormUser extends Component {
                             label="Email"
                             className={useStyles.textField}
                             type="email"
-                            
+
                             name="email"
                             autoComplete="email"
                             margin="none"

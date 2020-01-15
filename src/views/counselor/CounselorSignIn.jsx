@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
-// import { connect } from 'react-redux';
-
 import {Button, Card, CardActions, CardContent, CardHeader, Container} from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
 import {Form, Image, Nav, Navbar} from "react-bootstrap";
 import Logo from '../../assets/eu-logo.png';
+
+// import { connect } from 'react-redux';
 
 class CounselorSignIn extends Component {
 

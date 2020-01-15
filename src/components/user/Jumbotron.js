@@ -1,5 +1,5 @@
 import React from 'react';
-import {Jumbotron as Jumbo,Container} from 'react-bootstrap';
+import {Container, Jumbotron as Jumbo} from 'react-bootstrap';
 import styled from 'styled-components';
 import welcomeImage from '../../assets/img/welcome.jpg';
 

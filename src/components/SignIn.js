@@ -1,4 +1,4 @@
-import React,{useState,useEffect,Component} from 'react';
+import React, {Component} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -8,20 +8,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 
 import Container from '@material-ui/core/Container';
-
-import {connect} from 'react-redux';
-import { useSelector, useDispatch } from "react-redux";
-import {signIn} from '../actions/signInActions';
-import {signInStyles} from '../assets/Styles';
-
-import { Redirect } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 
 import logo from '../assets/eu-logo.png';
 import axios from 'axios';
