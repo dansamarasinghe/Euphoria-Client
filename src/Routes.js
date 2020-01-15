@@ -8,6 +8,7 @@ import NoMatch from './views/user/NoMatch';
 import Counselors from './views/user/Counselors';
 import CounselorAppointments from "./views/counselor/CounselorAppointments";
 import CounselorViewPatientRecords from "./views/counselor/CounselorViewPatientRecords";
+import CounselorSignIn from "./views/counselor/CounselorSignIn";
 
 export default class Routes extends Component {
     render() {
@@ -21,6 +22,8 @@ export default class Routes extends Component {
 
               <Route exact path={"/counselor/appointments"} component={CounselorAppointments}/>
               <Route exact path={"/counselor/patients/records"} component={CounselorViewPatientRecords}/>
+              <Route exact path={"/counselor/sign-in"} component={CounselorSignIn}/>
+
               <Route component={NoMatch}/>
             </Switch>
         )
