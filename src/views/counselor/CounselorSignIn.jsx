@@ -1,44 +1,16 @@
 import React, {Component} from 'react'
-// import { connect } from 'react-redux';
-
 import {Button, Card, CardActions, CardContent, CardHeader, Container} from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
 import {Form, Image, Nav, Navbar} from "react-bootstrap";
 import Logo from '../../assets/eu-logo.png';
+
+// import { connect } from 'react-redux';
 
 class CounselorSignIn extends Component {
 
     render() {
         return (
             <>
-
-                {/*Navbar-Start*/}
-                <Navbar expand={'md'} sticky={'top'} variant={"dark"} bg={"primary"} style={{marginBottom:"10px"}} collapseOnSelect>
-                    {/*<Container>*/}
-
-                        <Image src={Logo}
-                               alt={"Euphoria Logo"}
-                               width={"4%"}
-                               fluid={true}
-                        />
-
-                        <Navbar.Brand>Euphoria</Navbar.Brand>
-
-                        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-                        <Navbar.Collapse id="responsive-navbar-nav">
-                            <Nav className={"mr-auto"}>
-                                <Nav.Link>Home</Nav.Link>
-                                <Nav.Link>Questions</Nav.Link>
-                                <Nav.Link>Patients</Nav.Link>
-                            </Nav>
-                            <Form inline>
-                                <Button variant="outline-info">Sign In</Button>
-                            </Form>
-                        </Navbar.Collapse>
-                    {/*</Container>*/}
-                </Navbar>
-                {/*Navbar-End*/}
-
                 {/*Body-Start*/}
                 <Container maxWidth="lg">
                     <Card>

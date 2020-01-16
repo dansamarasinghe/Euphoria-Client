@@ -1,18 +1,15 @@
 import React, {Component} from 'react'
-// import { connect } from 'react-redux';
-
-import {Button, Card, CardActions, CardContent, CardHeader, Container, Grid} from '@material-ui/core'
+import {Button, Card, CardActions, CardContent, CardHeader, Grid} from '@material-ui/core'
 import Typography from '@material-ui/core/Typography';
 
-class AppoinmentCard extends Component {
+// import { connect } from 'react-redux';
 
-<<<<<<< HEAD
+class AppoinmentCard extends Component {
 
     handleClick=()=>{
         this.setState({'status':'Approved'})
     }
-=======
->>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
+
     render() {
         return (
             <Grid item xs={4}>
@@ -52,11 +49,8 @@ class AppoinmentCard extends Component {
                     </CardContent>
 
                     <CardActions style={{float:"right"}}>
-<<<<<<< HEAD
-                        <Button onClick={this.handleClick}>Approve</Button>
-=======
+                        {/*<Button onClick={this.handleClick}>Approve</Button>*/}
                         <Button>Approve</Button>
->>>>>>> 8400a83f465339a67514b81bb9d6de5b6afcbbeb
                         <Button>Reject</Button>
                     </CardActions>
                 </Card>

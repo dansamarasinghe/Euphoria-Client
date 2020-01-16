@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import {Row,Col,Card,Button,ListGroupItem} from 'react-bootstrap';
+import React, {Component} from 'react'
+import {Col, Row} from 'react-bootstrap';
 
 import house from '../../assets/img/doctor/house.jpg';
 import CounselorBody from '../../components/user/CounselorBody'
 
 import {UserLayout} from '../../components/user/UserLayout';
 import NavbarUser from '../../components/user/NavbarUser';
-import { Jumbotron } from '../../components/user/Jumbotron';
+import {Jumbotron} from '../../components/user/Jumbotron';
+
 export default class Counselors extends Component {
     elements = [
         {
