@@ -34,3 +34,10 @@ export const returnPatientRecords = (patientRecords) => {
     };
 };
 
+export const returnAppointment = (appointments) => {
+    return {
+        type: actionTypes.GET_APPOINTMENTS,
+        appointments: appointments
+    };
+};
+
