@@ -27,3 +27,25 @@ class PatientRecordCard extends Component {
             prescriptionEditorState:editorState,
         });
     };
+
+    render() {
+        let title="New Patient Record";
+        if (this.props.title){
+            title=this.props.title;
+        }
+
+        let now=new Date(new Date()+"UTC").toISOString().split('T');
+        let timestamp=now[0]+" "+now[1].split(':')[0]+':'+now[1].split(':')[1];
+        if (this.props.timestamp){
+            timestamp=this.props.timestamp;
+        }
+
+        let recordEditorState=null;
+        if (this.state.recordEditorState){
+            recordEditorState=this.props.recordEditorState;
+        }
+
+        let prescriptionEditorState=null;
+        if (this.props.prescriptionEditorState){
+            prescriptionEditorState=this.props.prescriptionEditorState;
+        }
