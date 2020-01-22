@@ -49,3 +49,48 @@ class PatientRecordCard extends Component {
         if (this.props.prescriptionEditorState){
             prescriptionEditorState=this.props.prescriptionEditorState;
         }
+
+        return (
+            <Grid item>
+
+                {/*Card-Start*/}
+                <Card>
+
+                    <CardContent>
+                        <Grid item className={"header"}>
+                            <Typography variant={"subtitle1"}>
+                                {timestamp}
+                            </Typography>
+                            <Typography variant={"h3"} style={{fontSize: "1.5em"}}>
+                                {title}
+                            </Typography>
+                        </Grid>
+                        <hr style={{border:"1px solid",height:0}}/>
+                        <Grid item className={"record"}>
+                            <Typography variant={"subtitle1"} color={"textSecondary"}>
+                                Record
+                            </Typography>
+                            <EuphoriaEditor defaultState={recordEditorState} onEditorStateChange={this.onRecordEditorStateChange}/>
+                        </Grid>
+                        <hr/>
+                        <Grid item className={"prescription"}>
+                            <Typography variant={"subtitle1"} color={"textSecondary"}>
+                                Prescription
+                            </Typography>
+                            <EuphoriaEditor defaultState={prescriptionEditorState} onEditorStateChange={this.prescriptionEditorStateChange}/>
+                        </Grid>
+                    </CardContent>
+
+                    {/*<CardActions style={{float: "right"}}>*/}
+                    {/*    <Button>Read More</Button>*/}
+                    {/*</CardActions>*/}
+                </Card>
+                {/*Card-End*/}
+
+            </Grid>
+        );
+    };
+
+}
+
+export default PatientRecordCard;
