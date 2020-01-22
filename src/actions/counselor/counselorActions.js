@@ -14,3 +14,8 @@ const axios = require('axios').default;
     }
 })();
 
+export const signInSuccess = () => {
+    return {
+        type: actionTypes.COUNSELOR_SIGN_IN
+    };
+};
