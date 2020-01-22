@@ -41,3 +41,8 @@ export const returnAppointment = (appointments) => {
     };
 };
 
+export const approvalAppointments = (appointment) => {
+    return {
+        type: actionTypes.APPROVE_APPOINTMENTS,
+    };
+};
