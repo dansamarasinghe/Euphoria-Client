@@ -19,3 +19,10 @@ export const signInSuccess = () => {
         type: actionTypes.COUNSELOR_SIGN_IN
     };
 };
+
+export const signUpSuccess = (response) => {
+    return {
+        type: actionTypes.COUNSELOR_SIGN_UP,
+        response: response
+    };
+};
