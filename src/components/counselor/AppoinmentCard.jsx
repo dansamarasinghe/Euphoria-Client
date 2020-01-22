@@ -57,3 +57,6 @@ class AppoinmentCard extends Component {
         );
     };
 }
+
+export default AppoinmentCard;
+// export default connect(null,{CounselorSignIn});
