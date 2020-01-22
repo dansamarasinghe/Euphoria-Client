@@ -46,3 +46,18 @@ export const approvalAppointments = (appointment) => {
         type: actionTypes.APPROVE_APPOINTMENTS,
     };
 };
+
+export const signIn = (state) => dispatch => {
+    console.log(state);
+    axios.defaults.headers.common.Authorization = null;
+    return axios.post('http://localhost:8080/authenticate', state, {
+        headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
+        }
+    }).then((response) => {
+        console.log(response.data);
+        localStorage.setItem("JWT", response.data.jwt);
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.jwt;
+        dispatch(signInSuccess());
+    });
