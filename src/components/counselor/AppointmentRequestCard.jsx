@@ -39,3 +39,24 @@ class AppointmentRequestCard extends Component {
             console.log(err);
         })
     };
+
+    onReject = () => {
+        let appointment = this.state.appointment;
+        appointment.status = "REJECTED";
+        console.log(appointment);
+        axios.post('http://localhost:8080/api/counselor/appointments',
+            appointment,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        ).then((response) => {
+            this.setState({
+                status: "REJECTED",
+                disableActions: true,
+            })
+        }).catch((err) => {
+            console.log(err);
+        })
+    };
