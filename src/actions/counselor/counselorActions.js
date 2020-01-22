@@ -75,3 +75,14 @@ export const signIn = (state) => dispatch => {
     //     console.log(err);
     // });
 };
+
+export const signUp = (state) => dispatch => {
+    return axios.post(
+        'http://localhost:8080/api/counselor/sign-up', JSON.stringify(state), {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+        dispatch(signUpSuccess(response))
+    })
+};
