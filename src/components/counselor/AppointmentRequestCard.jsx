@@ -60,3 +60,26 @@ class AppointmentRequestCard extends Component {
             console.log(err);
         })
     };
+
+    onStart = () => {
+        let appointment = this.state.appointment;
+        appointment.status = "COMPLETED";
+        // console.log(appointment);
+        localStorage.setItem('user',appointment.id.user);
+        axios.post('http://localhost:8080/api/counselor/appointments',
+            appointment,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        ).then((response) => {
+            this.setState({
+                status: "COMPLETED",
+                disableActions: true,
+            })
+            this.history.pushState(appointment.id.user, 'login');
+        }).catch((err) => {
+            console.log(err);
+        })
+    };
