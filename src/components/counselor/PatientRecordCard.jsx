@@ -21,3 +21,9 @@ class PatientRecordCard extends Component {
             recordEditorState:editorState,
         });
     };
+
+    prescriptionEditorStateChange = (editorState) => {
+        this.setState({
+            prescriptionEditorState:editorState,
+        });
+    };
