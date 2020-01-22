@@ -15,3 +15,9 @@ class PatientRecordCard extends Component {
             prescriptionEditorState:props.record.prescription
         };
     }
+
+    onRecordEditorStateChange = (editorState) => {
+        this.setState({
+            recordEditorState:editorState,
+        });
+    };
