@@ -112,3 +112,13 @@ export const getAppointments = (status) => dispatch => {
     })
 };
 
+export const updateAppointmentStatus = (id, status) => dispatch => {
+    return axios.get('http://localhost:8090/api/counselor/appointments/' + id,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+        return response;
+    })
+};
