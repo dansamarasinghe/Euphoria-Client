@@ -44,3 +44,16 @@ class AppoinmentCard extends Component {
                             {this.props.question}
                         </Typography>
                     </CardContent>
+                    
+                    <CardActions style={{float:"right"}}>
+                        {/*<Button onClick={this.handleClick}>Approve</Button>*/}
+                        <Button>Approve</Button>
+                        <Button>Reject</Button>
+                    </CardActions>
+                </Card>
+                {/*Card-End*/}
+
+            </Grid>
+        );
+    };
+}
