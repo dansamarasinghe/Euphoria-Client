@@ -18,3 +18,29 @@ class AppoinmentCard extends Component {
                         title={this.props.user}
                         subheader={this.props.username}
                     />
+                    <CardContent>
+                        <Grid container spacing={2}>
+                            <Grid item xs={6}>
+                                <Typography color={"textSecondary"} style={{fontSize:"2em"}}>
+                                    {this.props.time}
+                                </Typography>
+                            </Grid>
+
+                            <Grid item xs={6}>
+                                <Grid item xs={12}>
+                                    <Typography style={{fontSize:"1em"}}>
+                                        {this.props.date}
+                                    </Typography>
+                                </Grid>
+
+                                <Grid item xs={12}>
+                                    <Typography style={{fontSize:"1em"}}>
+                                        {this.props.status}
+                                    </Typography>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                        <Typography variant={"body1"} color={"textPrimary"}>
+                            {this.props.question}
+                        </Typography>
+                    </CardContent>
