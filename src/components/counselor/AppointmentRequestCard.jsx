@@ -83,3 +83,26 @@ class AppointmentRequestCard extends Component {
             console.log(err);
         })
     };
+
+    render() {
+
+        let actions;
+        if (this.state.status === 'PENDING' || this.state.status === 'REJECTED' ) {
+            actions =
+                <>
+                    <Button onClick={this.onApprove} disabled={this.state.disableActions}>Approve</Button>
+                    <Button onClick={this.onReject} disabled={this.state.disableActions}>Reject</Button>
+                </>
+        } else if (this.state.status === 'ACCEPTED'){
+            actions =
+                <>
+                    <Button onClick={this.onStart} >Start session</Button>
+                </>
+        } else {
+            actions=<></>
+        }
+
+        let createdAt=this.state.appointment.id.createdAt;
+
+        return (
+            <Grid item xs={6}>
