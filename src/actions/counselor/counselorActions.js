@@ -86,3 +86,14 @@ export const signUp = (state) => dispatch => {
         dispatch(signUpSuccess(response))
     })
 };
+
+export const getPatientRecords = (user) => dispatch => {
+    return axios.get('http://localhost:8080/api/counselor/patient-records/' + user,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+        dispatch(returnPatientRecords(response))
+    })
+};
