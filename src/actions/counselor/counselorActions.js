@@ -26,3 +26,11 @@ export const signUpSuccess = (response) => {
         response: response
     };
 };
+
+export const returnPatientRecords = (patientRecords) => {
+    return {
+        type: actionTypes.GET_PATIENT_RECORDS,
+        patientRecords: patientRecords
+    };
+};
+
