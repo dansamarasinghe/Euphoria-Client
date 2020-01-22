@@ -8,3 +8,13 @@ class AppoinmentCard extends Component {
     handleClick=()=>{
         this.setState({'status':'Approved'})
     }
+    render() {
+        return (
+            <Grid item xs={4}>
+
+                {/*Card-Start*/}
+                <Card>
+                    <CardHeader
+                        title={this.props.user}
+                        subheader={this.props.username}
+                    />
