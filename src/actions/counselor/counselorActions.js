@@ -61,3 +61,17 @@ export const signIn = (state) => dispatch => {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.jwt;
         dispatch(signInSuccess());
     });
+
+    // let url = 'http://localhost:8080/api/counselor/sign-in';
+    // const headers = {
+    //     "Content-Type": "application/json",
+    // };
+    // axios.post(url, JSON.stringify(state), {
+    //     headers: headers
+    // })
+    //     .then(response => {
+    //         console.log(response);
+    //     }).catch(err => {
+    //     console.log(err);
+    // });
+};
