@@ -97,3 +97,18 @@ export const getPatientRecords = (user) => dispatch => {
         dispatch(returnPatientRecords(response))
     })
 };
+
+export const getAppointments = (status) => dispatch => {
+    axios.get('http://localhost:8080/api/counselor/appointments/' + status,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+    }).then((response) => {
+        // dispatch(returnPatientRecords(response))
+        return response.data;
+    }).catch((err) => {
+        return err
+    })
+};
+
