@@ -50,3 +50,12 @@ class CounselorSignIn extends Component {
             loginUsername:'',
         }
     };
+
+    signIn = () => {
+        console.log(this.state.name, this.state.password);
+        const signInCredentials = {
+            username: this.state.loginUsername,
+            password: this.state.loginPassword
+        }
+        this.props.signIn(signInCredentials);
+    };
