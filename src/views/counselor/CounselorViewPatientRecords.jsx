@@ -7,3 +7,16 @@ import AppointmentRequestCard from "../../components/counselor/AppointmentReques
 const axios = require('axios').default;
 // import * as actions from "../../actions";
 // import {connect} from "react-redux";
+
+class CounselorViewPatientRecords extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            records:null,
+            // error: null,
+            // isLoaded: false,
+            // items: []
+        };
+
+        // this.props.getPatientRecords("userID");
+    }
