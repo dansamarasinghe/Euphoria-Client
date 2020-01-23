@@ -23,3 +23,30 @@ class CounselorSignIn extends Component {
             isSignUp: props.isSignUp
         })
     };
+
+    state = {
+        loginUsername:null,
+        loginPassword:null,
+        name: null,
+        username: null,
+        password: null,
+        confirmPassword: null,
+        email: null,
+        speciality: null,
+        hospital: null,
+        city: null,
+        picName: null,
+        signIn: null,
+        isSignUp: false,
+        description:null,
+        slmcNumber:null,
+        errors: {
+            name: '',
+            email: '',
+            password: '',
+            loginPassword:'',
+            confirmPassword:'',
+            slmcNumber:'',
+            loginUsername:'',
+        }
+    };
