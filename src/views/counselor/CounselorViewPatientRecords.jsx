@@ -81,3 +81,21 @@ class CounselorViewPatientRecords extends Component {
 
 }
 
+// const mapStateToProps = state => {
+//     return {
+//         patientRecords: state.counselorReducer.patientRecords,
+//     };
+// };
+//
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         getPatientRecords: (user) => dispatch(actions.getPatientRecords(user))
+//     };
+// };
+//
+// export default connect(
+//     mapStateToProps,
+//     mapDispatchToProps
+// )(CounselorViewPatientRecords);
+
+export default CounselorViewPatientRecords;
