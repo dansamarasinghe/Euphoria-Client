@@ -20,3 +20,20 @@ class CounselorViewPatientRecords extends Component {
 
         // this.props.getPatientRecords("userID");
     }
+
+    componentDidMount(){
+        axios.get('http://localhost:8080/api/counselor/patient-records/'+this.state.user.id,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then((response) => {
+            this.setState({
+                records:response.data,
+            })
+        }).catch((err) => {
+            return err
+        })
+    };
+
+    
