@@ -59,3 +59,34 @@ class CounselorSignIn extends Component {
         }
         this.props.signIn(signInCredentials);
     };
+
+    signUp = () => {
+
+        // if(this.state.password === this.state.confirmPassword){
+            const loginCredentials = {
+                username: this.state.username,
+                email: this.state.email,
+                password: this.state.password
+            };
+
+            const signUpCredentials = {
+                name:this.state.name,
+                username: this.state.username,
+                description: this.state.description,
+                specialty: this.state.speciality,
+                hospital: this.state.hospital,
+                city: this.state.city,
+                picName : this.state.picName.split('\\')[2],
+                loginCredentials: loginCredentials,
+                slmcNumber:this.state.slmcNumber
+            };
+
+            this.props.signUp(signUpCredentials);
+
+            window.location.reload();
+        // }else{
+        //     alert('Passwords are not matched!')
+        // }
+
+
+    };
