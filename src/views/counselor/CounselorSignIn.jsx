@@ -109,3 +109,46 @@ class CounselorSignIn extends Component {
         const value = e.target.value;
 
         let errors = this.state.errors;
+
+        switch (name) {
+            case 'name':
+                errors.name =
+                    value.length < 0
+                        ? 'User Name must not be null'
+                        : '';
+                break;
+            case 'email':
+                errors.email =
+                    validEmailRegex.test(value)
+                        ? ''
+                        : 'Email is not valid!';
+                break;
+            case 'password':
+                errors.password =
+                    value.length < 8
+                        ? 'Password must be 8 characters long!'
+                        : '';
+                break;
+            case 'loginPassword':
+                errors.password =
+                    value.length < 8
+                        ? 'Password is empty!'
+                        : '';
+                break;
+            case 'confirmPassword':
+                errors.confirmPassword=
+                    this.state.confirmPassword !== this.state.password
+                        ? 'Passwords are not matched!'
+                        : '';
+                break;
+            default:
+                break;
+        }
+        this.setState({errors, [name]: value});
+    };
+
+    componentDidUpdate() {
+        if (this.props.signedIn) {
+            this.props.history.push("/counselor/appointments");
+        }
+    };
