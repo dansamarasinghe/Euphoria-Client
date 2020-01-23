@@ -440,4 +440,21 @@ class CounselorSignIn extends Component {
     };
 }
 
+const mapStateToProps = state => {
+    return {
+        signedIn: state.counselorReducer.signedIn,
+    };
+};
 
+const mapDispatchToProps = dispatch => {
+    return {
+        signIn: (state) => dispatch(actions.signIn(state)),
+        signUp: (state) => dispatch(actions.signUp(state)),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CounselorSignIn);
+// export default connect(null,{CounselorSignIn});
