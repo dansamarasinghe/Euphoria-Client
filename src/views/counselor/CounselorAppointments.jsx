@@ -50,3 +50,29 @@ componentDidMount(){
         })
 };
 
+render() {
+    // this.fetchAppointments();
+    return (
+        <div>
+            <CounselorNavBar></CounselorNavBar>
+
+            <Grid container spacing={3}>
+                {this.state.appointments !== null ?
+                        this.state.appointments.map((appointment, key) => (
+                            <>
+
+                                {/*Card-Start*/}
+                                <AppointmentRequestCard keyValue={key} appointment={appointment}/>
+                                {/*Card-End*/}
+
+                            </>
+                        )) : <h3 style={{textAlign: 'center'}}> Loading...</h3>
+                }
+            </Grid>
+        </div>
+
+    );
+};
+}
+
+export default CounselorAppointments;
