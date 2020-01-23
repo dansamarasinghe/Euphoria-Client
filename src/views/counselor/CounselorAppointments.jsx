@@ -16,3 +16,22 @@ class CounselorAppointments extends Component {
             appointments: null,
         };
     }
+
+/*
+    componentDidMount() {
+        axios.get('http://localhost:8080/api/counselor/appointments/PENDING',
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }).then((response) => {
+            this.setState({
+                appointments:response.data,
+            })
+        }).catch((err) => {
+            return err
+        })
+
+    }
+*/
+
