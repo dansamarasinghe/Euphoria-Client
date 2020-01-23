@@ -90,3 +90,22 @@ class CounselorSignIn extends Component {
 
 
     };
+
+    changeMode = () => {
+        this.setState({
+            isSignUp: !this.state.isSignUp
+        });
+    }
+
+    handleChange = e => {
+        e.preventDefault();
+        this.setState({
+            [e.target.id]: e.target.value
+        });
+        // console.log(e.target.value.split('\\')[2]);
+
+
+        const name = e.target.id;
+        const value = e.target.value;
+
+        let errors = this.state.errors;
