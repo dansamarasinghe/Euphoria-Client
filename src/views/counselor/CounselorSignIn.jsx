@@ -14,3 +14,12 @@ const validateForm = (errors) => {
     );
     return valid;
 };
+
+class CounselorSignIn extends Component {
+
+    constructor(props) {
+        super(props);
+        this.setState({
+            isSignUp: props.isSignUp
+        })
+    };
