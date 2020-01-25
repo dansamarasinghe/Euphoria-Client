@@ -1,12 +1,13 @@
 import React, { Component,useState } from 'react'
 import {Modal,Button,ButtonToolbar,Form,Card,Image} from 'react-bootstrap'
+
 function MyVerticallyCenteredModal(props) {
     const [msg,setMsg]=useState('');
     const handleChange=(e)=>{
        setMsg(e.target.value);
        console.log(e.target.value);
     }
-
+    const {doc,makerequest}=props;
     return (
       <Modal
         {...props}
@@ -16,7 +17,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-                    <Image variant="top" src={require('../../assets/img/doctor/'+props.doc.picName+'.jpg')} 
+                    <Image variant="top" src={require('../../assets/img/doctor/'+doc.picName+'.jpg')} 
                             style={{
                                 margin:'20px',
                                 width: '90px',
@@ -24,7 +25,7 @@ function MyVerticallyCenteredModal(props) {
                                 objectFit:'cover'}}
                             roundedCircle
                     />
-                {props.doc.counselor_name}
+                {doc.counselor_name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -32,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
           <Form.Control as="textarea" onChange={handleChange} placeholder="Type a message to your counselor" rows="3" />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="info" onClick={()=>{props.makeRequest(msg)}} style={{margin:'20px'}}>Send</Button>
+          <Button variant="info" onClick={()=>{makerequest(msg)}} style={{margin:'20px'}}>Send</Button>
           <Button variant="danger" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
@@ -46,6 +47,7 @@ export default class CounselorRequestModal extends Component {
         }
     }
     render() {
+        const {doc,makerequest}=this.props;
         return (
             <ButtonToolbar>
               <Button variant="primary" onClick={() => this.setState({modalShow:true})}>
@@ -55,8 +57,8 @@ export default class CounselorRequestModal extends Component {
               <MyVerticallyCenteredModal
                 show={this.state.modalShow}
                 onHide={() => this.setState({modalShow:false})}
-                doc={this.props.doc}
-                makeRequest={this.props.makeRequest}
+                doc={doc}
+                makerequest={makerequest}
               />
             </ButtonToolbar>
           );

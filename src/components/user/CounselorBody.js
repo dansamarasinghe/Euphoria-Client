@@ -40,7 +40,7 @@ export default class CounselorBody extends Component {
                             <Card.Subtitle className="mb-2 text-muted">{this.props.doc.specialty}</Card.Subtitle>
                             <Card.Text>{this.props.doc.description}</Card.Text>
                             
-                            <CounselorRequestModal doc={this.props.doc} makeRequest={this.makeRequest}></CounselorRequestModal>
+                            <CounselorRequestModal doc={this.props.doc} makerequest={this.makeRequest}></CounselorRequestModal>
                             {/* <Button variant="primary" onClick={this.handleClick}>Request</Button> */}
                         </Card.Body>
                     </Card>
