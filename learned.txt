@@ -8,3 +8,16 @@ promise(params)
   .then(resp => { /* This callback is called is promise is resolved */ },
         cause => {/* This callback is called if primise is rejected */})
   .catch(error => { /* This callback is called if an unmanaged error is thrown */ });
+
+#filter
+let x=["a","b","c"];
+let y=x.filter((letter)=>{return letter=='d'});
+if(y==0){
+    
+}else{
+var index = x.indexOf('d')
+  if (index !== -1) {
+    x.splice(index, 1);
+  }
+}
+print(x)

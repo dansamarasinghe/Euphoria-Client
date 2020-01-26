@@ -6,6 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import axios from 'axios';
+
 
 export default class AddPost extends Component {
   render() {
@@ -27,7 +29,11 @@ export default class AddPost extends Component {
 
 
 function MyVerticallyCenteredModal(props) {
-    const [msg,setMsg]=useState('');
+    const [post,setPost]=useState({
+        post_title:'',
+        post_description:''
+    });
+    const {createpost}=props;
     const [state, setState] = React.useState({
         anxious: false,
         depressed: false,
@@ -36,15 +42,28 @@ function MyVerticallyCenteredModal(props) {
         stressed: false,
         other: false
       });
-    const handleChange=(e)=>{
-       setMsg(e.target.value);
-       console.log(e.target.value);
+    const [emotion_tags,setEmotions]=React.useState([]);
+    const handleChange=e=>{
+       
+       setPost({...state,[e.target.name]:e.target.value});
     }
     const handleCheck = name => event => {
         setState({ ...state, [name]: event.target.checked });
-        // console.log(state);
-    };
 
+        // if the emotion exists remove it,if it doesn't add it
+        // this is like a toggle of emotions.if we press the same check box twice,first time we're adding 
+        // second time we're removing it.
+        const index=emotion_tags.indexOf(name)
+        if(index==-1){
+            setEmotions([...emotion_tags,name]);
+        }else{
+            emotion_tags.splice(index,1);
+        }
+
+    };
+    const handleSend=()=>{
+
+    }
     return (
       <Modal
         {...props}
@@ -70,10 +89,12 @@ function MyVerticallyCenteredModal(props) {
           <div className={styles.root}>
                 <TextField
                 id="standard-full-width"
+                name="post_title"
+                value={post.post_title}
                 label="Label"
                 style={{ margin: 8 }}
-                placeholder="Placeholder"
-                helperText="Full width!"
+                placeholder="Enter title"
+                helperText="It'll help you to get more attention"
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
@@ -82,7 +103,14 @@ function MyVerticallyCenteredModal(props) {
                 />
           </div>
 
-          <Form.Control as="textarea" onChange={handleChange} placeholder="Type a message to your counselor" rows="3" />
+          <Form.Control 
+            as="textarea" 
+            name="post_description"
+            onChange={handleChange} 
+            placeholder="Type a message to your counselor" 
+            rows="3" 
+            value={post.post_description}
+         />
 
           <div>
             <FormGroup row>
@@ -169,6 +197,17 @@ class CreatePostModal extends Component {
             modalShow:false
         }
     }
+    createPost=(post)=>{    
+        axios.post('http://localhost:8080/api/users',JSON.stringify(post),{headers: {
+            'Content-Type': 'application/json',
+        }}).then((res)=>{
+            console.log(res);
+        }).catch(err=>{
+            console.log(err);
+        });
+        
+
+    }
     render() {
         return (
             <ButtonToolbar>
@@ -179,7 +218,7 @@ class CreatePostModal extends Component {
               <MyVerticallyCenteredModal
                 show={this.state.modalShow}
                 onHide={() => this.setState({modalShow:false})}
-        
+                createpost={this.createPost}
                 
               />
             </ButtonToolbar>
