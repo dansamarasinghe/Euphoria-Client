@@ -1,47 +1,51 @@
 import React, {Component} from 'react'
-import {Button, Card, CardActions, CardContent, CardHeader, Container} from '@material-ui/core'
-import Typography from '@material-ui/core/Typography';
-import {Form, Image, Nav, Navbar} from "react-bootstrap";
-import Logo from '../../assets/eu-logo.png';
-
-// import { connect } from 'react-redux';
+import "./CounselorSignIn.scss"
+import {Grid, Card, CardContent, TextField, Typography, Button} from "@material-ui/core";
+import logo from "../../assets/eu-logo.png"
+import {signIn} from "../../actions/signInActions";
 
 class CounselorSignIn extends Component {
 
     render() {
         return (
             <>
-                {/*Body-Start*/}
-                <Container maxWidth="lg">
-                    <Card>
-                        <CardHeader
-                            title={"Question Title"}
-                            subheader={Date().toLocaleString()}
-                        />
+                <Grid container id="rootGrid">
+                    <Grid xs={12} sm={8} md={6} lg={4}>
+                        <Card className={'transparent'}>
+                            <CardContent>
+                                <Grid container id={'logoGrid'} className={"imgRaised"}>
+                                    <Grid item>
+                                        <img src={logo}/>
+                                    </Grid>
 
-                        <CardContent>
-                            <Typography variant={"body1"} color={"textPrimary"}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque delectus dignissimos,
-                                distinctio ducimus eius facilis harum id incidunt magni nesciunt nihil obcaecati
-                                pariatur
-                                provident quae ratione tenetur vel, velit vitae.
-                            </Typography>
-                            <Typography variant={"body1"} color={"textPrimary"}>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque delectus dignissimos,
-                                distinctio ducimus eius facilis harum id incidunt magni nesciunt nihil obcaecati
-                                pariatur
-                                provident quae ratione tenetur vel, velit vitae.
-                            </Typography>
-                        </CardContent>
+                                    <Grid item xs={12} className={'brandText'}>
+                                        <Typography>Euphoria</Typography>
+                                    </Grid>
 
-                        <CardActions>
-                            <Button>Answer</Button>
-                            <Button>Watch</Button>
-                        </CardActions>
-                    </Card>
-                </Container>
-                {/*Body-End*/}
+                                </Grid>
+                                <hr/>
+                                <Grid container id={'fieldGrid'} spacing={2}>
+                                    <Grid item xs={8}>
+                                        <TextField className={'txtFld-small'} variant={'outlined'} label={'Username'}  fullWidth/>
+                                    </Grid>
 
+                                    <Grid item xs={8}>
+                                        <TextField className={'txtFld-small'} variant={'outlined'} type={'password'} label={'Password'} fullWidth/>
+                                    </Grid>
+
+                                    <Grid item xs={12} sm={10} id={'buttonGrid'} className={'verticalCenter spaceBetween'}>
+                                        <Button> Forgot your password?</Button>
+                                        <Button variant={"outlined"} color={"primary"} id={'signInBtn'} type={"submit"} >Sign In</Button>
+                                    </Grid>
+
+                                    <Grid item xs={12} className={'horizontalCenter'}>
+                                        <Button className={'btn-small'}>Not a member? Join as a counselor today.</Button>
+                                    </Grid>
+                                </Grid>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
             </>
         );
     };
