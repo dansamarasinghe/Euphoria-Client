@@ -1,0 +1,87 @@
+
+
+#rootGrid{
+  background-image: url("../../assets/img/wallpapers/wall1.jpg");
+  background-size: cover;
+  height: 100vh;
+  align-items: center;
+  padding: 2em;
+}
+
+hr{
+  height: 1em;
+}
+
+#logoGrid{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  img{
+    height: 30vh;
+  }
+
+  .brandText{
+    p{
+      font-size: 2em;
+      text-shadow: 0px 3px 3px #282c34;
+      color: royalblue;
+      font: 80px 'Roboto Thin';
+    }
+  }
+}
+
+
+#fieldGrid{
+  justify-content: center;
+  align-items: center;
+}
+
+.verticalCenter{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.horizontalCenter{
+  display: grid;
+  justify-content: center;
+}
+
+.spaceBetween{
+  justify-content: space-between;
+}
+
+#fypTxt{
+  float: left;
+}
+
+#signInBtn{
+  float: right;
+  align-self: flex-end;
+}
+
+.transparent{
+  background-color: rgba(white, 0.5);
+}
+
+.txtFld-small{
+
+  input{
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+  }
+
+  label{
+    transform: translate(0.8em,0.9em) scale(1);
+  }
+
+}
+
+.btn-small{
+  .MuiButton-label {
+    font-size: 0.8em;
+    text-transform: none;
+    font-weight: normal;
+  }
+}
