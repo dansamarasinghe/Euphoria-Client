@@ -1,5 +1,5 @@
 var UserProfile = (function() {
-    var user_id="";
+    var user_id="2";
     var user_name = "";
     var user_email="";
     var user_type='user';

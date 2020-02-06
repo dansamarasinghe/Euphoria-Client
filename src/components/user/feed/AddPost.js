@@ -7,6 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from 'axios';
+import UserProfile from '../../../assets/UserProfile';
 
 
 export default class AddPost extends Component {
@@ -29,11 +30,9 @@ export default class AddPost extends Component {
 
 
 function MyVerticallyCenteredModal(props) {
-    const [post,setPost]=useState({
-        post_title:'',
-        post_description:''
-    });
-    const {createpost}=props;
+    const [post_title,setPostTitle]=useState('');
+    const [post_description,setPostDescription]=useState('');
+    const createpost=props.createpost;
     const [state, setState] = React.useState({
         anxious: false,
         depressed: false,
@@ -43,9 +42,17 @@ function MyVerticallyCenteredModal(props) {
         other: false
       });
     const [emotion_tags,setEmotions]=React.useState([]);
-    const handleChange=e=>{
+    
+    
+    
+    const handleTitle=e=>{
        
-       setPost({...state,[e.target.name]:e.target.value});
+       setPostTitle(e.target.value);
+    }
+    
+    const handleDescription=e=>{
+       
+       setPostDescription(e.target.value);
     }
     const handleCheck = name => event => {
         setState({ ...state, [name]: event.target.checked });
@@ -62,7 +69,9 @@ function MyVerticallyCenteredModal(props) {
 
     };
     const handleSend=()=>{
-
+        const user_id=UserProfile.getId;
+        const post={post_title,post_description,emotion_tags,user_id}
+        console.log(post)
     }
     return (
       <Modal
@@ -72,6 +81,9 @@ function MyVerticallyCenteredModal(props) {
         centered
       >
         <Modal.Header closeButton>
+
+
+
           <Modal.Title id="contained-modal-title-vcenter">
                     <Image variant="top" src={require('../../../assets/profile/girl.jpeg')} 
                             style={{
@@ -90,26 +102,26 @@ function MyVerticallyCenteredModal(props) {
                 <TextField
                 id="standard-full-width"
                 name="post_title"
-                value={post.post_title}
-                label="Label"
+                value={post_title}
+                label="Title"
                 style={{ margin: 8 }}
-                placeholder="Enter title"
-                helperText="It'll help you to get more attention"
+                //helperText="It'll help you to get more attention"
                 fullWidth
                 margin="normal"
                 InputLabelProps={{
                     shrink: true,
                 }}
+                onChange={handleTitle}
                 />
           </div>
 
           <Form.Control 
             as="textarea" 
             name="post_description"
-            onChange={handleChange} 
-            placeholder="Type a message to your counselor" 
+            onChange={handleDescription} 
+            placeholder="Let us know what's on your mind" 
             rows="3" 
-            value={post.post_description}
+            value={post_description}
          />
 
           <div>
@@ -184,7 +196,7 @@ function MyVerticallyCenteredModal(props) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="info"  style={{margin:'20px'}}>Send</Button>
+          <Button variant="info"  onClick={handleSend} style={{margin:'20px'}}>Send</Button>
           <Button variant="danger" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>
@@ -219,7 +231,6 @@ class CreatePostModal extends Component {
                 show={this.state.modalShow}
                 onHide={() => this.setState({modalShow:false})}
                 createpost={this.createPost}
-                
               />
             </ButtonToolbar>
           );
