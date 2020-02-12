@@ -24,7 +24,7 @@ export default class Routes extends Component {
                 <Route exact path={"/counselor/patients/records"} component={CounselorViewPatientRecords}/>
                 <Route exact path={"/counselor/sign-in"} component={CounselorSignIn}/>
                 {/*<Route component={NoMatch}/>*/}
-                <Redirect to="/counselor/appointments"/>
+                <Redirect to="/counselor/sign-in"/>
             </Switch>
         )
     }

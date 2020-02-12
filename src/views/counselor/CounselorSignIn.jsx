@@ -1,12 +1,46 @@
-import React, {Component} from 'react'
-import "./CounselorSignIn.scss"
+import React, {Component} from 'react';
+import "./CounselorSignIn.scss";
 import {Grid, Card, CardContent, TextField, Typography, Button} from "@material-ui/core";
-import logo from "../../assets/eu-logo.png"
-import {signIn} from "../../actions/signInActions";
+import logo from "../../assets/eu-logo.png";
+import {connect} from 'react-redux';
+import * as actions from "../../actions/index";
 
 class CounselorSignIn extends Component {
 
+    constructor(props) {
+        super(props);
+    };
+
+    state = {
+        username: null,
+        password: null,
+        signIn: null
+    };
+
+    signIn = () => {
+        console.log(this.state.username, this.state.password);
+        const signInCredentials = {
+            username: this.state.username,
+            password: this.state.password
+        }
+        this.props.signIn(signInCredentials);
+    };
+
+    handleChange = e => {
+        this.setState({
+            [e.target.id]: e.target.value
+        });
+    };
+
+    componentDidUpdate() {
+        if(this.props.signedIn){
+            this.props.history.push("/counselor/appointments");
+        }
+    };
+
+
     render() {
+
         return (
             <>
                 <Grid container id="rootGrid">
@@ -26,20 +60,44 @@ class CounselorSignIn extends Component {
                                 <hr/>
                                 <Grid container id={'fieldGrid'} spacing={2}>
                                     <Grid item xs={8}>
-                                        <TextField className={'txtFld-small'} variant={'outlined'} label={'Username'}  fullWidth/>
+                                        <TextField id={'username'}
+                                                   onChange={e => this.handleChange(e)}
+                                                   className={'txtFld-small'}
+                                                   variant={'outlined'}
+                                                   label={'Username'}
+                                                   fullWidth
+                                        />
                                     </Grid>
 
                                     <Grid item xs={8}>
-                                        <TextField className={'txtFld-small'} variant={'outlined'} type={'password'} label={'Password'} fullWidth/>
+                                        <TextField
+                                            id={'password'}
+                                            onChange={e => this.handleChange(e)}
+                                            className={'txtFld-small'}
+                                            variant={'outlined'}
+                                            type={'password'}
+                                            label={'Password'}
+                                            fullWidth/>
                                     </Grid>
 
-                                    <Grid item xs={12} sm={10} id={'buttonGrid'} className={'verticalCenter spaceBetween'}>
+                                    <Grid item xs={12} sm={10} id={'buttonGrid'}
+                                          className={'verticalCenter spaceBetween'}>
                                         <Button> Forgot your password?</Button>
-                                        <Button variant={"outlined"} color={"primary"} id={'signInBtn'} type={"submit"} >Sign In</Button>
+                                        <Button
+                                            variant={"outlined"}
+                                            color={"primary"}
+                                            id={'signInBtn'}
+                                            type={"submit"}
+                                            onClick={() => this.signIn()}
+                                        >
+                                            Sign
+                                            In
+                                        </Button>
                                     </Grid>
 
                                     <Grid item xs={12} className={'horizontalCenter'}>
-                                        <Button className={'btn-small'}>Not a member? Join as a counselor today.</Button>
+                                        <Button className={'btn-small'}>Not a member? Join as a counselor
+                                            today.</Button>
                                     </Grid>
                                 </Grid>
                             </CardContent>
@@ -51,5 +109,20 @@ class CounselorSignIn extends Component {
     };
 }
 
-export default CounselorSignIn;
+const mapStateToProps = state => {
+    return {
+        signedIn: state.counselorReducer.signedIn,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        signIn: (state) => dispatch(actions.signIn(state)),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CounselorSignIn);
 // export default connect(null,{CounselorSignIn});
