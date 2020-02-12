@@ -1,51 +1,75 @@
 import React, {Component} from 'react'
-import "./CounselorSignIn.scss"
-import {Grid, Card, CardContent, TextField, Typography, Button} from "@material-ui/core";
-import logo from "../../assets/eu-logo.png"
-import {signIn} from "../../actions/signInActions";
+// import { connect } from 'react-redux';
+
+import {Button, Card, CardActions, CardContent, CardHeader, Container} from '@material-ui/core'
+import Typography from '@material-ui/core/Typography';
+import {Form, Image, Nav, Navbar} from "react-bootstrap";
+import Logo from '../../assets/eu-logo.png';
 
 class CounselorSignIn extends Component {
 
     render() {
         return (
             <>
-                <Grid container id="rootGrid">
-                    <Grid xs={12} sm={8} md={6} lg={4}>
-                        <Card className={'transparent'}>
-                            <CardContent>
-                                <Grid container id={'logoGrid'} className={"imgRaised"}>
-                                    <Grid item>
-                                        <img src={logo}/>
-                                    </Grid>
 
-                                    <Grid item xs={12} className={'brandText'}>
-                                        <Typography>Euphoria</Typography>
-                                    </Grid>
+                {/*Navbar-Start*/}
+                <Navbar expand={'md'} sticky={'top'} variant={"dark"} bg={"primary"} style={{marginBottom:"10px"}} collapseOnSelect>
+                    {/*<Container>*/}
 
-                                </Grid>
-                                <hr/>
-                                <Grid container id={'fieldGrid'} spacing={2}>
-                                    <Grid item xs={8}>
-                                        <TextField className={'txtFld-small'} variant={'outlined'} label={'Username'}  fullWidth/>
-                                    </Grid>
+                        <Image src={Logo}
+                               alt={"Euphoria Logo"}
+                               width={"4%"}
+                               fluid={true}
+                        />
 
-                                    <Grid item xs={8}>
-                                        <TextField className={'txtFld-small'} variant={'outlined'} type={'password'} label={'Password'} fullWidth/>
-                                    </Grid>
+                        <Navbar.Brand>Euphoria</Navbar.Brand>
 
-                                    <Grid item xs={12} sm={10} id={'buttonGrid'} className={'verticalCenter spaceBetween'}>
-                                        <Button> Forgot your password?</Button>
-                                        <Button variant={"outlined"} color={"primary"} id={'signInBtn'} type={"submit"} >Sign In</Button>
-                                    </Grid>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+                        <Navbar.Collapse id="responsive-navbar-nav">
+                            <Nav className={"mr-auto"}>
+                                <Nav.Link>Home</Nav.Link>
+                                <Nav.Link>Questions</Nav.Link>
+                                <Nav.Link>Patients</Nav.Link>
+                            </Nav>
+                            <Form inline>
+                                <Button variant="outline-info">Sign In</Button>
+                            </Form>
+                        </Navbar.Collapse>
+                    {/*</Container>*/}
+                </Navbar>
+                {/*Navbar-End*/}
 
-                                    <Grid item xs={12} className={'horizontalCenter'}>
-                                        <Button className={'btn-small'}>Not a member? Join as a counselor today.</Button>
-                                    </Grid>
-                                </Grid>
-                            </CardContent>
-                        </Card>
-                    </Grid>
-                </Grid>
+                {/*Body-Start*/}
+                <Container maxWidth="lg">
+                    <Card>
+                        <CardHeader
+                            title={"Question Title"}
+                            subheader={Date().toLocaleString()}
+                        />
+
+                        <CardContent>
+                            <Typography variant={"body1"} color={"textPrimary"}>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque delectus dignissimos,
+                                distinctio ducimus eius facilis harum id incidunt magni nesciunt nihil obcaecati
+                                pariatur
+                                provident quae ratione tenetur vel, velit vitae.
+                            </Typography>
+                            <Typography variant={"body1"} color={"textPrimary"}>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque delectus dignissimos,
+                                distinctio ducimus eius facilis harum id incidunt magni nesciunt nihil obcaecati
+                                pariatur
+                                provident quae ratione tenetur vel, velit vitae.
+                            </Typography>
+                        </CardContent>
+
+                        <CardActions>
+                            <Button>Answer</Button>
+                            <Button>Watch</Button>
+                        </CardActions>
+                    </Card>
+                </Container>
+                {/*Body-End*/}
+
             </>
         );
     };
