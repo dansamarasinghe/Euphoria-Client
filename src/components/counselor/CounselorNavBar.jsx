@@ -23,7 +23,6 @@ class CounselorNavBar extends Component {
                     <Navbar.Brand>Euphoria</Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
-
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className={"mr-auto"}>
                             <Nav.Link>Home</Nav.Link>
@@ -31,7 +30,7 @@ class CounselorNavBar extends Component {
                             <Nav.Link>Appointments</Nav.Link>
                         </Nav>
                         <Form inline>
-                            <Button variant="outlined">Sign In</Button>
+                            <Button variant="outline-info">Sign In</Button>
                         </Form>
                     </Navbar.Collapse>
                     {/*</Container>*/}
