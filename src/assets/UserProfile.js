@@ -36,10 +36,13 @@ var UserProfile = (function() {
     return {
       getId: getId,
       setId: setId,
+
       getName: getName,
       setName: setName,
+
       getEmail: getName,
       setEmail: setName,
+      
       getUserType:setUserType,
       setUserType:setUserType
     }

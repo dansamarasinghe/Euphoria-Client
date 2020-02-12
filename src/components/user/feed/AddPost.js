@@ -8,8 +8,6 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from 'axios';
 import UserProfile from '../../../assets/UserProfile';
-
-
 export default class AddPost extends Component {
   render() {
     return (
@@ -33,6 +31,7 @@ function MyVerticallyCenteredModal(props) {
     const [post_title,setPostTitle]=useState('');
     const [post_description,setPostDescription]=useState('');
     const createpost=props.createpost;
+    const redirect=props.redirect;
     const [state, setState] = React.useState({
         anxious: false,
         depressed: false,
@@ -69,9 +68,10 @@ function MyVerticallyCenteredModal(props) {
 
     };
     const handleSend=()=>{
-        const user_id=UserProfile.getId;
+        const user_id=UserProfile.getId();
+        console.log(user_id)
         const post={post_title,post_description,emotion_tags,user_id}
-        console.log(post)
+        createpost(post);
     }
     return (
       <Modal
@@ -210,12 +210,13 @@ class CreatePostModal extends Component {
         }
     }
     createPost=(post)=>{    
-        axios.post('http://localhost:8080/api/users',JSON.stringify(post),{headers: {
+        axios.post('http://localhost:8080/api/user/newpost',JSON.stringify(post),{headers: {
             'Content-Type': 'application/json',
         }}).then((res)=>{
             console.log(res);
+            window.location.replace('/user/feed')
         }).catch(err=>{
-            console.log(err);
+            alert("Something Went Wrong");
         });
         
 
@@ -231,6 +232,7 @@ class CreatePostModal extends Component {
                 show={this.state.modalShow}
                 onHide={() => this.setState({modalShow:false})}
                 createpost={this.createPost}
+                
               />
             </ButtonToolbar>
           );

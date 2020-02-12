@@ -21,8 +21,8 @@ const Styles=styled.div`
     background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
     }
     .profileImage{
-        max-height: 101px
-        max-width : 110px
+        max-height: 81px
+        max-width : 90px
 
     }
 `;
@@ -54,7 +54,7 @@ export default class NavbarUser extends Component {
         return (
         <Styles>
 
-            <Navbar bg="dark" variant="dark">
+            <Navbar fixed="top" style={{height:'10%'}} bg="dark" variant="dark">
                 <img
                     src={logo}
                     width="80"
@@ -68,7 +68,7 @@ export default class NavbarUser extends Component {
                     <Nav.Link href={url.concat("/user/counselors")}>Counselors</Nav.Link>
                 </Nav>
                 
-                <Nav className="justify-content-end">
+                <Nav >
 
                     
                     <IconButton
@@ -77,7 +77,7 @@ export default class NavbarUser extends Component {
                         aria-haspopup="true"
                         onClick={this.handleMenu}
                         >
-                    <Image src={profilePic} roundedCircle className="profileImage" />
+                    <Image src={profilePic} roundedCircle  className="profileImage" />
                     </IconButton>
                     <Menu
                         id="menu-appbar"

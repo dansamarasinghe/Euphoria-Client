@@ -15,7 +15,7 @@ class Feed extends Component {
         }
     }
         
-
+    
     componentDidMount=()=>{
         axios.get('http://localhost:8080/api/user/getposts',{headers: {
             'Content-Type': 'application/json',
@@ -24,13 +24,16 @@ class Feed extends Component {
             console.log("user id is ");
             console.log(res.data)
             this.setState({posts:res.data})
+            
         }).catch(err=>{
             console.log(err);
         })
     }
 
+    
     render() {
-            
+        const {history}=this.props;
+        
         const posts=this.state.posts.map((post)=>(<div key={post.user_id.uid} style={{margin:'20px'}}><PostComponent style={{display:'flex'}} post={post}></PostComponent></div>));
         return (
             <React.Fragment>
@@ -45,12 +48,12 @@ class Feed extends Component {
                     <Col xs={3}></Col>
                 </Row> */}
                 <Grid container spacing={3}>
-                    <Grid item xs>
+                    <Grid item xs={2}>
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={8}>
                         {posts}
                     </Grid>
-                    <Grid item xs>
+                    <Grid item xs={2}>
                         <AddPost></AddPost>
                     </Grid>
                 </Grid>

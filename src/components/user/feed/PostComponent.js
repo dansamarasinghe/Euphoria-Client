@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card,Button,Image,Accordion} from 'react-bootstrap';
-import styled from 'styled-components';
-import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
+import {Container} from 'react-bootstrap';
 
 class LongText extends Component { 
     state = { showAll: false }
@@ -29,10 +29,7 @@ class LongText extends Component {
     }
 }
 class CommentComponent extends Component{
-    constructor(props){
-        super(props);
-    }
-
+    
     render(){   
         const pic=this.props.comment.commented_user_id.pic_name;
         return(
@@ -109,7 +106,20 @@ class PostComponent extends Component {
                                     </Card.Header>
                                     <Accordion.Collapse eventKey="1">
                                     <Card.Body  style={{width:'150%'}}>
-                                        {all_comms}
+                                        <Container>
+
+                                            <div>
+                                                <TextField
+                                                    id="standard-textarea"
+                                                    label="Multiline Placeholder"
+                                                    placeholder="Placeholder"
+                                                    multiline
+                                                />
+                                            </div>
+                                            <div>
+                                                {all_comms}
+                                            </div>
+                                        </Container>
                                     </Card.Body>
                                     </Accordion.Collapse>
                                 </Card>
