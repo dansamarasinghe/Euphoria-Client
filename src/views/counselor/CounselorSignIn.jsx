@@ -4,8 +4,7 @@ import {Grid, Card, CardContent, TextField, Typography, Button} from "@material-
 import logo from "../../assets/eu-logo.png";
 import {connect} from 'react-redux';
 import * as actions from "../../actions/index";
-
-
+        
 class CounselorSignIn extends Component {
 
     constructor(props) {
@@ -99,6 +98,7 @@ class CounselorSignIn extends Component {
                                     <Grid item xs={12} className={'horizontalCenter'}>
                                         <Button className={'btn-small'}>Not a member? Join as a counselor
                                             today.</Button>
+
                                     </Grid>
                                 </Grid>
                             </CardContent>
