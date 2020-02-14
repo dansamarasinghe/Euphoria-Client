@@ -112,3 +112,11 @@ export const signInStyles = makeStyles(theme => ({
       width: 200,
     },
   }));
+  export const commentTextStyle = makeStyles(theme => ({
+    root: {
+      '& .MuiTextField-root': {
+        margin: theme.spacing(1),
+        width: 200,
+      },
+    },
+  }));

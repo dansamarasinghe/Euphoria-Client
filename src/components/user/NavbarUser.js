@@ -5,11 +5,8 @@ import profilePic from '../../assets/profile/me.jpeg';
 import styled from 'styled-components';
 
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Avatar from '@material-ui/core/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import {url} from '../../assets/URL';
 
 const Styles=styled.div`

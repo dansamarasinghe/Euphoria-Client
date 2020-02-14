@@ -2,25 +2,19 @@ import React, { Component,useState} from 'react'
 import {Modal,Button,ButtonToolbar,Form,Card,Image} from 'react-bootstrap'
 import { Plus } from 'react-bootstrap-icons';
 import {CreatePostStyles as styles} from '../../../assets/Styles'
-import TextField from '@material-ui/core/TextField';
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@material-ui/core/FormGroup';
+
+import {FormGroup,Checkbox,TextField,Tooltip} from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
+
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from 'axios';
 import UserProfile from '../../../assets/UserProfile';
 export default class AddPost extends Component {
   render() {
     return (
-      <Card>
-                <Card.Body>
-                        <div style={{border:'3px',padding:'0em 4em'}}>
-                            <Card.Title>Add Post</Card.Title>
-                        </div>
                         <div style={{border:'3px',padding:'2em 4em'}}>
                             <CreatePostModal></CreatePostModal>
                         </div>
-                </Card.Body>
-        </Card>
     )
   }
 }
@@ -31,7 +25,6 @@ function MyVerticallyCenteredModal(props) {
     const [post_title,setPostTitle]=useState('');
     const [post_description,setPostDescription]=useState('');
     const createpost=props.createpost;
-    const redirect=props.redirect;
     const [state, setState] = React.useState({
         anxious: false,
         depressed: false,
@@ -224,10 +217,11 @@ class CreatePostModal extends Component {
     render() {
         return (
             <ButtonToolbar>
-              <Button variant="light" onClick={() => this.setState({modalShow:true})}>
-              <Plus size={70}></Plus>
-                Request
+            <Tooltip title="Add New Post">
+              <Button variant="outline-primary" size="sm" style={{borderRadius:'50%'}}  onClick={() => this.setState({modalShow:true})}>
+                <Plus size={50}></Plus>
               </Button>
+             </Tooltip>
               <MyVerticallyCenteredModal
                 show={this.state.modalShow}
                 onHide={() => this.setState({modalShow:false})}

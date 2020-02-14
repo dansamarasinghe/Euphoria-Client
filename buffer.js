@@ -27,4 +27,11 @@
 
 export default App;
 
+                                                <TextField
+                                                    id="outlined-textarea"
+                                                    label="Multiline Placeholder"
+                                                    placeholder="Placeholder"
+                                                    multiline
+                                                    variant="outlined"
+                                                />
 
