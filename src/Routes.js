@@ -9,6 +9,11 @@ import Counselors from './views/user/Counselors';
 import CounselorAppointments from "./views/counselor/CounselorAppointments";
 import CounselorViewPatientRecords from "./views/counselor/CounselorViewPatientRecords";
 import CounselorSignIn from "./views/counselor/CounselorSignIn";
+import AdminDashboard from "./views/admin/AdminDashboard";
+import AdminAdministrators from "./views/admin/AdminAdministrators";
+import AdminCounselors from "./views/admin/AdminCounselors";
+import AdminUsers from "./views/admin/AdminUsers";
+import AddAdminForm from "./views/admin/AddAdminForm";
 
 export default class Routes extends Component {
     render() {
@@ -23,6 +28,12 @@ export default class Routes extends Component {
               <Route exact path={"/counselor/appointments"} component={CounselorAppointments}/>
               <Route exact path={"/counselor/patients/records"} component={CounselorViewPatientRecords}/>
               <Route exact path={"/counselor/sign-in"} component={CounselorSignIn}/>
+
+              <Route exact path={"/admin/dashboard"} component={AdminDashboard}/>
+              <Route exact path={"/admin/administrators"} component={AdminAdministrators}/>
+              <Route exact path={"/admin/counselors"} component={AdminCounselors}/>
+              <Route exact path={"/admin/users"} component={AdminUsers}/>
+              <Route exact path={"/admin/addAdminForm"} component={AddAdminForm}/>
 
               <Route component={NoMatch}/>
             </Switch>
