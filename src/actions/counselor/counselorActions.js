@@ -8,10 +8,18 @@ export const signInSuccess = () => {
     };
 };
 
+
+export const signUpSuccess = (response) => {
+    return {
+        type: actionTypes.COUNSELOR_SIGN_UP,
+        response:response
+    };
+};
+
 export const signIn = (state) => dispatch => {
     console.log(state);
 
-    return axios.post('http://localhost:8080/api/counselor/sign-in', JSON.stringify(state), {
+    return axios.post('http://localhost:8090/api/counselor/sign-in', JSON.stringify(state), {
         headers: {
             'Content-Type': 'application/json',
         }
@@ -32,8 +40,17 @@ export const signIn = (state) => dispatch => {
     //     }).catch(err => {
     //     console.log(err);
     // });
-
-
-
 };
+
+
+export const signUp = (state) => dispatch => {
+    return axios.post(
+        'http://localhost:8090/api/counselor/sign-up', JSON.stringify(state), {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+            dispatch(signUpSuccess(response))
+    })
+}
 
