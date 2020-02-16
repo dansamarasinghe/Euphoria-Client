@@ -195,6 +195,27 @@ class CounselorSignIn extends Component {
                                         </label>
                                     </Grid>
 
+                                    <Grid item xs={6}>
+                                        <TextField id={'username'}
+                                                   onChange={e => this.handleChange(e)}
+                                                   className={'txtFld-small'}
+                                                   variant={'outlined'}
+                                                   label={'Username'}
+                                                   fullWidth
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={6}>
+                                        <TextField
+                                            id={'password'}
+                                            onChange={e => this.handleChange(e)}
+                                            className={'txtFld-small'}
+                                            variant={'outlined'}
+                                            type={'password'}
+                                            label={'Password'}
+                                            fullWidth/>
+                                    </Grid>
+
                                     <Grid item xs={12} sm={10} id={'buttonGrid'}
                                           className={'verticalCenter spaceBetween'}>
                                         <Button
