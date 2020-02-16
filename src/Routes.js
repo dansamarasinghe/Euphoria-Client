@@ -14,6 +14,8 @@ import AdminAdministrators from "./views/admin/AdminAdministrators";
 import AdminCounselors from "./views/admin/AdminCounselors";
 import AdminUsers from "./views/admin/AdminUsers";
 import AddAdminForm from "./views/admin/AddAdminForm";
+import AdminProfile from "./views/admin/AdminProfile";
+import ViewPosts from "./views/admin/ViewPosts";
 
 export default class Routes extends Component {
     render() {
@@ -34,6 +36,8 @@ export default class Routes extends Component {
               <Route exact path={"/admin/counselors"} component={AdminCounselors}/>
               <Route exact path={"/admin/users"} component={AdminUsers}/>
               <Route exact path={"/admin/addAdminForm"} component={AddAdminForm}/>
+              <Route exact path={"/admin/adminProfile"} component={AdminProfile}/>
+              <Route exact path={"/admin/viewPosts"} component={ViewPosts}/>
 
               <Route component={NoMatch}/>
             </Switch>

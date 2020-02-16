@@ -11,11 +11,12 @@ class AdminNavbar extends Component{
                 <Nav.Link href="/admin/administrators">Administrators</Nav.Link>
                 <Nav.Link href="/admin/counselors">Counselors</Nav.Link>
                 <Nav.Link href="/admin/users">Users</Nav.Link>
+                <Nav.Link href="/admin/viewPosts">Posts Review</Nav.Link>
                 </Nav>
                     <Navbar.Toggle />
                     <Navbar.Collapse className="justify-content-end">
                         <Navbar.Text>
-                        Signed in as: <a href="#login">NipuniYR</a>
+                        Signed in as: <a href="/admin/adminProfile">NipuniYR</a>
                         </Navbar.Text>
                     </Navbar.Collapse>
             </Navbar>

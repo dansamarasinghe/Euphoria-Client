@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Button,Form} from 'react-bootstrap';
 import Card from "../../components/admin/Card";
+import Validator from 'validator';
 import axios from 'axios';
 
 class AddAdminForm extends Component{
@@ -25,6 +26,26 @@ class AddAdminForm extends Component{
     }
 
     addAdmin(){
+        //***************************************************CHECK VALIDATION LATER****************************************** */
+        if(Validator.isEmpty(this.state.firstName)){
+            alert("First Name is required");
+        }
+        if(Validator.isEmpty(this.state.lastName)){
+            alert("Last Name is a required");
+        }
+        if(Validator.isEmpty(this.state.email) || Validator.isEmail(this.state.email)){
+            alert("Invalid Email");
+        }
+        if(Validator.isEmpty(this.state.adminUsername)){
+            alert("Username Name is a required");
+        }
+        if(Validator.isEmpty(this.state.adminPassword)){
+            alert("Password Name is a required");
+        }
+        if(Validator.isEmpty(this.state.activeStatus)){
+            alert("Please mark Active Status");
+        }
+        
         axios.post("http://localhost:8080/api/admin/addAdmin",JSON.stringify(this.state),{
             headers: {
                 'Content-Type': 'application/json',
@@ -47,7 +68,7 @@ class AddAdminForm extends Component{
                 ctTableFullWidth
                 ctTableResponsive
                 content={
-                    <Form noValidate>
+                    <Form>
                         <Form.Group controlId="formBasicFirstName">
                             <Form.Label>First Name</Form.Label>
                             <Form.Control type="name" name="firstName" value={this.state.firstName} placeholder="FirstName" onChange={this.handleChange}/>
@@ -72,11 +93,6 @@ class AddAdminForm extends Component{
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" name="adminPassword" value={this.state.adminPassword} placeholder="Password" onChange={this.handleChange}/>
                         </Form.Group>
-
-                        {/*<Form.Group controlId="formBasicActiveStatus">
-                            <Form.Label>Active Status</Form.Label>
-                            <Form.Control type="activeStatus" name="activeStatus"  value={this.state.activeStatus} placeholder="Active" onChange={this.handleChange}/>
-                </Form.Group>*/}
                             
                         <Form.Group controlId="formBasicRadio">
                             <Form.Label>Active Status</Form.Label>
@@ -84,7 +100,7 @@ class AddAdminForm extends Component{
                             <Form.Check type="radio" label="Inactive" name="activeStatus" value="Inactive" onChange={this.handleChange} />
                         </Form.Group>
 
-                        <Button variant="primary" type="submit" onClick={()=>this.addAdmin()}> {/*add addAdmin() function */}
+                        <Button variant="primary" type="submit" onClick={()=>this.addAdmin()}>
                         Submit
                         </Button>
                     </Form>
