@@ -1,7 +1,7 @@
 var UserProfile = (function() {
-    var user_id="2";
+    var user_id="1";
     var user_name = "";
-    var user_email="";
+    var user_email="dan@gmail.com";
     var user_type='user';
     var activated="yes";
   

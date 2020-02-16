@@ -8,7 +8,7 @@ import {Form,Tab,Nav,Row,Col} from 'react-bootstrap';
 
 import {validateFormalSignUp} from '../../validate/PatientSignUpValidation';
 import {useStyles} from '../../assets/Styles';
-
+import axios from 'axios';
 
 class FormalRegistration extends Component {
     constructor(props){
@@ -51,11 +51,15 @@ class FormalRegistration extends Component {
             console.log("ho");
             this.setState({errors:{},accountType:'quick'});
 
-            this.props.userSignUpRequest(this.state).then( result => {
-                window.location.replace("/user/signupsuccess");
-             }, function(error) {
-                console.log(error);
-             });
+            axios.post('http://localhost:8080/api/user/formalsignup',JSON.stringify(this.state),{headers: {
+            'Content-Type': 'application/json',
+            }}).then( result => {
+                    window.location.replace("/user/signupsuccess");
+                }, function(error) {
+                    console.log(error);
+                }).catch(err=>{
+                    alert("something went wrong with the registration");
+                });
         }else{
             this.setState({})
         }

@@ -125,7 +125,7 @@ class PostComponent extends Component {
         const pic=this.props.post.user_id.pic_name;
         console.log()
         const all_comms=this.state.coms.map((c)=>(<div key={c.comment_id} style={{float:'left',width:'100%',margin:'10px'}}><CommentComponent comment={c}></CommentComponent></div>));
-        const emotion_tags=this.state.emo_tags.map((tag)=>(<Chip color="primary" clickable size="small" label={tag.emotion_tag} style={{margin:'5px'}}/>));
+        const emotion_tags=this.state.emo_tags.map((tag)=>(<Chip color="primary" clickable size="small" key={tag.id} label={tag.emotion_tag} style={{margin:'5px'}}/>));
         return (
             <React.Fragment>
 

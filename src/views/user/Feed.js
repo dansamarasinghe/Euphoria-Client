@@ -14,6 +14,9 @@ import FormControl from '@material-ui/core/FormControl';
 import ListItemText from '@material-ui/core/ListItemText';
 import Select from '@material-ui/core/Select';
 import Checkbox from '@material-ui/core/Checkbox';
+import NavbarUser from '../../components/user/NavbarUser';
+import { Jumbotron } from '../../components/user/Jumbotron';
+import {Container} from 'react-bootstrap';
 
 class Feed extends Component {
     constructor(props){
@@ -100,9 +103,13 @@ class Feed extends Component {
         console.log(content);
 
         
-        const posts=content.map((post)=>(<div key={post.user_id.uid} style={{margin:'20px'}}><PostComponent style={{display:'flex'}} post={post}></PostComponent></div>));
+        const posts=content.map((post)=>(<div key={post.post_id} style={{margin:'20px'}}><PostComponent style={{display:'flex'}} post={post}></PostComponent></div>));
         return (
+
             <React.Fragment>
+                <NavbarUser></NavbarUser>
+                <Jumbotron></Jumbotron>
+                <Container>
 
                 <Grid container spacing={3}  direction="row" justify="center" alignItems="center">
 
@@ -144,6 +151,7 @@ class Feed extends Component {
                         <AddPost></AddPost>
                     </Grid>
                 </Grid>
+            </Container>
             </React.Fragment>
 
                 

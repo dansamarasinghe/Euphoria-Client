@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 
-import SignIn from './components/SignIn'
+import EditUserProfile from './views/user/EditUserProfile';
 import SignUpPage from './views/user/SignUpPage';
 import HomePageUser from './views/user/HomePageUser';
+import Feed from './views/user/Feed';
 import {BrowserRouter as Router,Route,Switch} from 'react-router-dom';
 import NoMatch from './views/user/NoMatch';
 import Counselors from './views/user/Counselors';
@@ -17,11 +18,12 @@ export default class Routes extends Component {
               <Route exact path="/user/login" component={SignInPage}/>
               <Route exact path="/user/signup" component={SignUpPage}/>
               <Route exact path="/user/homepage" component={HomePageUser}/>
-              <Route exact path="/user/feed" component={HomePageUser}/>
+              <Route exact path="/user/feed" component={Feed}/>
               <Route exact path="/user/counselors" component={Counselors}/>
               <Route exact path="/user/counsil" component={CounselorAppointment}/>
               <Route exact path="/user/signupsuccess" component={CheckEmailPage}/>
               <Route exact path="/user/stats" component={Statistics}/>
+              <Route exact path="/user/userprofile" component={EditUserProfile}/>
 
               <Route component={NoMatch}/>
             </Switch>
