@@ -11,6 +11,17 @@ import SignInPage from './views/user/SignInPage';
 import CheckEmailPage from './views/user/CheckEmailPage';
 import CounselorAppointment from './views/counselor/CounselorAppointments';
 import Statistics from './views/admin/Statistics'
+import CounselorAppointments from "./views/counselor/CounselorAppointments";
+import CounselorViewPatientRecords from "./views/counselor/CounselorViewPatientRecords";
+import CounselorSignIn from "./views/counselor/CounselorSignIn";
+import AdminDashboard from "./views/admin/AdminDashboard";
+import AdminAdministrators from "./views/admin/AdminAdministrators";
+import AdminCounselors from "./views/admin/AdminCounselors";
+import AdminUsers from "./views/admin/AdminUsers";
+import AddAdminForm from "./views/admin/AddAdminForm";
+import AdminProfile from "./views/admin/AdminProfile";
+import ViewPosts from "./views/admin/ViewPosts";
+
 export default class Routes extends Component {
     render() {
         return (
@@ -24,6 +35,14 @@ export default class Routes extends Component {
               <Route exact path="/user/signupsuccess" component={CheckEmailPage}/>
               <Route exact path="/user/stats" component={Statistics}/>
               <Route exact path="/user/userprofile" component={EditUserProfile}/>
+
+              <Route exact path={"/admin/dashboard"} component={AdminDashboard}/>
+              <Route exact path={"/admin/administrators"} component={AdminAdministrators}/>
+              <Route exact path={"/admin/counselors"} component={AdminCounselors}/>
+              <Route exact path={"/admin/users"} component={AdminUsers}/>
+              <Route exact path={"/admin/addAdminForm"} component={AddAdminForm}/>
+              <Route exact path={"/admin/adminProfile"} component={AdminProfile}/>
+              <Route exact path={"/admin/viewPosts"} component={ViewPosts}/>
 
               <Route component={NoMatch}/>
             </Switch>
