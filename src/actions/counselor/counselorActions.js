@@ -12,7 +12,14 @@ export const signInSuccess = () => {
 export const signUpSuccess = (response) => {
     return {
         type: actionTypes.COUNSELOR_SIGN_UP,
-        response:response
+        response: response
+    };
+};
+
+export const returnPatientRecords = (patientRecords) => {
+    return {
+        type: actionTypes.GET_PATIENT_RECORDS,
+        patientRecords: patientRecords
     };
 };
 
@@ -50,7 +57,18 @@ export const signUp = (state) => dispatch => {
                 'Content-Type': 'application/json',
             }
         }).then((response) => {
-            dispatch(signUpSuccess(response))
+        dispatch(signUpSuccess(response))
+    })
+};
+
+export const getPatientRecords = (user) => dispatch => {
+    return axios.get('http://localhost:8090/api/counselor/patient-records/' + user,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+            dispatch(returnPatientRecords(response))
     })
 }
 

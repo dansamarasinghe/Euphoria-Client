@@ -1,4 +1,5 @@
 export {
     signIn,
-    signUp
+    signUp,
+    getPatientRecords
 } from './counselor/counselorActions';
