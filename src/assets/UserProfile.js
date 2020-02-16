@@ -1,9 +1,14 @@
 var UserProfile = (function() {
-    var user_id="2";
+    var user_id="1";
     var user_name = "";
-    var user_email="";
+    var user_email="dan@gmail.com";
     var user_type='user';
+    var activated="yes";
   
+   
+    var getActivated = function() {
+      return activated;  
+    };
     var getId = function() {
       return user_id;    
     };
@@ -17,6 +22,9 @@ var UserProfile = (function() {
       return user_type;  
     };
   
+    var setActivated = function(value) {
+        activated = value;     
+    };
     var setId = function(id) {
         user_id = id;     
     };
@@ -44,7 +52,10 @@ var UserProfile = (function() {
       setEmail: setName,
       
       getUserType:setUserType,
-      setUserType:setUserType
+      setUserType:setUserType,
+
+      getActivated:getActivated,
+      setActivated:setActivated
     }
   
   })();

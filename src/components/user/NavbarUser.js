@@ -5,11 +5,8 @@ import profilePic from '../../assets/profile/me.jpeg';
 import styled from 'styled-components';
 
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import Avatar from '@material-ui/core/Menu';
-import AccountCircle from '@material-ui/icons/AccountCircle';
 import {url} from '../../assets/URL';
 
 const Styles=styled.div`
@@ -47,7 +44,14 @@ export default class NavbarUser extends Component {
     
     handleClose = () => {
         this.setState({open:!(this.state.open)});
+        window.location.replace('/user/userprofile');
+        
     };
+    signOut=()=>{
+        this.setState({open:!(this.state.open)});
+        window.location.replace('/user/login');
+
+    }
 
 
     render() {
@@ -64,6 +68,7 @@ export default class NavbarUser extends Component {
                 />
                 <Navbar.Brand href="#home">Euphoria</Navbar.Brand>
                 <Nav className="mr-auto">
+                    <Nav.Link href={url.concat("/user/homepage")}>Home</Nav.Link>
                     <Nav.Link href={url.concat("/user/feed")}>Feed</Nav.Link>
                     <Nav.Link href={url.concat("/user/counselors")}>Counselors</Nav.Link>
                 </Nav>
@@ -94,8 +99,8 @@ export default class NavbarUser extends Component {
                         open={this.state.open}
                         onClose={this.handleClose}
                     >
-                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                        <MenuItem onClick={this.handleClose} >Profile</MenuItem>
+                        <MenuItem onClick={this.signOut}>Sign Out</MenuItem>
                     </Menu> 
                     
                 </Nav>

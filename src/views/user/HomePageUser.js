@@ -7,6 +7,7 @@ import {Helmet} from 'react-helmet';
 
 
 import Feed from './Feed';
+import UserHome from './UserHome';
 import Counselors from './Counselors';
 import NoMatch from './NoMatch';
 
@@ -23,7 +24,7 @@ export default class HomePageUser extends Component {
         <NavbarUser></NavbarUser>
         <Jumbotron></Jumbotron>
         <UserLayout>
-            <Feed></Feed>
+            <UserHome></UserHome>
         </UserLayout>
       </React.Fragment>
     )
