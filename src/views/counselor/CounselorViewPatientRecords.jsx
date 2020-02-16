@@ -37,7 +37,8 @@ class CounselorViewPatientRecords extends Component {
                     </Grid>
                     <Grid container direction={"row"} spacing={1}>
                         <Grid item xs={12} sm={3}>
-                            <ProfileInfoCard></ProfileInfoCard>
+                            {/** TODO: pass props to these  */}
+                            <ProfileInfoCard ></ProfileInfoCard>
                         </Grid>
                         <Grid item xs={12} sm={9}>
                             <PatientRecordCard></PatientRecordCard>

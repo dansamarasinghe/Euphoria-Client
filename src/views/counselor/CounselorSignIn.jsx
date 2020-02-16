@@ -29,6 +29,7 @@ class CounselorSignIn extends Component {
     };
 
     signIn = () => {
+        console.log(this.state.username, this.state.password);
         const signInCredentials = {
             username: this.state.username,
             password: this.state.password
@@ -262,6 +263,27 @@ class CounselorSignIn extends Component {
                                             fullWidth
                                             type={'password'}
                                         />
+                                    </Grid>
+
+                                    <Grid item xs={6}>
+                                        <TextField id={'username'}
+                                                   onChange={e => this.handleChange(e)}
+                                                   className={'txtFld-small'}
+                                                   variant={'outlined'}
+                                                   label={'Username'}
+                                                   fullWidth
+                                        />
+                                    </Grid>
+
+                                    <Grid item xs={6}>
+                                        <TextField
+                                            id={'password'}
+                                            onChange={e => this.handleChange(e)}
+                                            className={'txtFld-small'}
+                                            variant={'outlined'}
+                                            type={'password'}
+                                            label={'Password'}
+                                            fullWidth/>
                                     </Grid>
 
                                     <Grid item xs={12} sm={10} id={'buttonGrid'}
