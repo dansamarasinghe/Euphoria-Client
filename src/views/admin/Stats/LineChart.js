@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Bar, Line, Pie} from 'react-chartjs-2';
+import { Line} from 'react-chartjs-2';
 import {Container} from 'react-bootstrap';
 class LineChart extends Component{
   constructor(props){
@@ -32,12 +32,20 @@ class LineChart extends Component{
             options={{
                 title:{
                 display:this.props.displayTitle,
-                text:'Largest Cities In '+this.props.location,
+                text:this.props.title,
                 fontSize:25
                 },
                 legend:{
                 display:this.props.displayLegend,
                 position:this.props.legendPosition
+                },
+                scales: {
+                  yAxes: [{
+                      ticks: {
+                          min: 0,
+                          stepSize: 0.5
+                      }
+                  }]
                 }
             }}
             />

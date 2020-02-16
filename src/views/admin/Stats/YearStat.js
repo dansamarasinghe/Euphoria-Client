@@ -23,8 +23,9 @@ export default class YearStat extends Component {
         .then(res=>{
             const list=res.data;
             console.log(list);
+            list.sort((a, b) => (a.year > b.year) ? 1 : -1)
             list.map((d)=>{
-                this.state.year.push(d.district);
+                this.state.year.push(d.year);
                 this.state.count.push(d.count);
                 return null;
             });
@@ -60,10 +61,11 @@ export default class YearStat extends Component {
     }
   render() {
     const loading=this.state.isLoaded;
-    console.log(this.state.year);
+    const title="Yearly Distribution of Users"
+    
     return (
         <div>
-            { loading && <LineChart chartData={this.state.chartData}></LineChart>}
+            { loading && <LineChart chartData={this.state.chartData} title={title}></LineChart>}
         </div>
     )
   }

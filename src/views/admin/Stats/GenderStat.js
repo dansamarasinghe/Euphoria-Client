@@ -24,7 +24,7 @@ export default class GenderStat extends Component {
         }})
         .then(res=>{
             res.data.map((d)=>{
-                gender.push(d.district);
+                gender.push(d.gender);
                 count.push(d.count);
                 return null;
             });
@@ -32,7 +32,7 @@ export default class GenderStat extends Component {
             this.setState({
                 isLoaded:true,
                 chartData:{
-                    labels: ['Male','Female'],
+                    labels: [...gender],
                     datasets:[
                     {
                         label:'Population',

@@ -36,7 +36,8 @@ class PieChart extends Component{
                 legend:{
                 display:this.props.displayLegend,
                 position:this.props.legendPosition
-                }
+                },
+                cutoutPercentage:50
             }}
             />
         </div>
