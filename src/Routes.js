@@ -15,9 +15,6 @@ import SignInPage from './views/user/SignInPage';
 import CheckEmailPage from './views/user/CheckEmailPage';
 import CounselorAppointment from './views/counselor/CounselorAppointments';
 import Statistics from './views/admin/Statistics'
-import CounselorAppointments from "./views/counselor/CounselorAppointments";
-import CounselorViewPatientRecords from "./views/counselor/CounselorViewPatientRecords";
-import CounselorSignIn from "./views/counselor/CounselorSignIn";
 import AdminDashboard from "./views/admin/AdminDashboard";
 import AdminAdministrators from "./views/admin/AdminAdministrators";
 import AdminCounselors from "./views/admin/AdminCounselors";
