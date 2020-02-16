@@ -1,16 +1,12 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { FormControl,FormGroup,Button,Box } from '@material-ui/core';
-import TextField from '@material-ui/core/TextField';
+import {Grid} from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 
-import {Form,Tab,Nav,Row,Col} from 'react-bootstrap';
-
-import PropTypes from 'prop-types';//for default exports
+import {Container,Tab,Nav,Row,Col} from 'react-bootstrap';
 
 import validateInput from '../../validate/PatientSignUpValidation';
-import { Redirect } from 'react-router-dom';
-import {useStyles} from '../../assets/Styles';
 
 import QuickRegistration from './QuickRegistration';
 import FormalRegistration from './FormalRegistration';
@@ -39,29 +35,66 @@ class SignUpFormUser extends Component {
     
     render() {
         return (
-            <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-                    <Row>
-                        <Col sm={3}>
-                        <Nav variant="pills" className="flex-column">
-                            <Nav.Item>
-                            <Nav.Link eventKey="first">Quick Registration</Nav.Link>
-                            </Nav.Item>
-                            <Nav.Item>
-                            <Nav.Link eventKey="second">Formal Registration</Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-                        </Col>
-                        <Col sm={9}>
-                        <Tab.Content>
-                            <Tab.Pane eventKey="first">
-                                <QuickRegistration userSignUpRequest={this.userSignUpRequest}></QuickRegistration>
-                            </Tab.Pane>
-                            <Tab.Pane eventKey="second">
-                                <FormalRegistration userSignUpRequest={this.userSignUpRequest}></FormalRegistration>              
-                            </Tab.Pane>
-                        </Tab.Content>
-                        </Col>
-                    </Row>
+            <Tab.Container id="left-tabs-example" defaultActiveKey="first" style={{height:'600px',width:'800px'}}>
+
+                    <Grid>
+                        <Grid container  direction="row" justify="center" alignItems="center" >
+                            <div style={{marginBottom:'50px'}}>
+                                <Typography  variant="h4" gutterBottom>
+                                        Get started!
+                                </Typography>
+
+                            </div>
+                        </Grid>
+                        <div style={{marginTop:'20px',marginBottom:'20px'}}>
+                                <Grid container
+                                    direction="row"
+                                    justify="center"
+                                    alignItems="center"
+                                >
+
+                                        <Nav variant="pills" className="flex-column">
+                                            <Grid container>
+                                            <Grid item>
+                                                    <Nav.Item>
+                                                        <Nav.Link eventKey="first">Formal Registration</Nav.Link>
+                                                    </Nav.Item>
+                                            </Grid>
+                                            <Grid item>
+                                                    <Nav.Item>
+                                                    <Nav.Link eventKey="second">Quick Registration</Nav.Link>
+                                                </Nav.Item>
+                                            </Grid>
+                                            </Grid>
+                                        </Nav>
+                            </Grid>
+                        </div>
+
+
+                    <Grid container 
+                        direction="row"
+                        justify="center"
+                        alignItems="center">
+                            <Tab.Content>
+                                <Tab.Pane eventKey="first">
+                                    <Container>
+                                        <div style={{shapeOutside:'border-box'}}>
+                                            <FormalRegistration userSignUpRequest={this.userSignUpRequest}></FormalRegistration>              
+                                        </div>
+                                    </Container>
+
+                                </Tab.Pane>
+                                <Tab.Pane eventKey="second">
+                                    <Container>
+                                        <div>
+                                            <QuickRegistration userSignUpRequest={this.userSignUpRequest}></QuickRegistration>
+
+                                        </div>
+                                    </Container>
+                                </Tab.Pane>
+                            </Tab.Content>
+                    </Grid>
+                </Grid>
             </Tab.Container>
             
         )

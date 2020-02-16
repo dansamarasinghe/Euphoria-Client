@@ -1,23 +1,14 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { FormControl,FormGroup,Button,Box } from '@material-ui/core';
+import { FormControl,FormGroup,Button,Box,Grid } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
 import {Form,Tab,Nav,Row,Col} from 'react-bootstrap';
-import PropTypes from 'prop-types';//for default exports
 
 import {validateFormalSignUp} from '../../validate/PatientSignUpValidation';
-import { Redirect } from 'react-router-dom';
 import {useStyles} from '../../assets/Styles';
 
-import axios from 'axios';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardTimePicker,
-    KeyboardDatePicker
-} from '@material-ui/pickers';
 
 class FormalRegistration extends Component {
     constructor(props){
@@ -61,7 +52,7 @@ class FormalRegistration extends Component {
             this.setState({errors:{},accountType:'quick'});
 
             this.props.userSignUpRequest(this.state).then( result => {
-                alert("success");
+                window.location.replace("/user/signupsuccess");
              }, function(error) {
                 console.log(error);
              });
@@ -75,199 +66,242 @@ class FormalRegistration extends Component {
         const {errors} =this.state;
         return (
                 <Form onSubmit={this.onSubmit}>
-
-                        {errors.firstname && <span style={{color:'red'}} className="help-block">{errors.firstname}</span>}
-                        <Form.Group controlId="formusername">
-                            <TextField
-                                    id="firstname"
-                                    label="First Name"
-                                    className={useStyles.textField}
-                                    type="text"
-                                    name="firstname"
-                                    autoComplete="firstname"
-                                    margin="none"
-                                    variant="outlined"
-                                    style={{ width: '50vh' }}
-                                    onChange={this.onChange}
-                                    value={this.state.firstname}
-                                />
-                        </Form.Group>
-                        
-                        {errors.lastname && <span style={{color:'red'}} className="help-block">{errors.lastname}</span>}
-                        <Form.Group controlId="formlastname">
-                            <TextField
-                                    id="lastname"
-                                    label="Last Name"
-                                    className={useStyles.textField}
-                                    type="text"
-                                    name="lastname"
-                                    autoComplete="lastname"
-                                    margin="none"
-                                    variant="outlined"
-                                    style={{ width: '50vh' }}
-                                    onChange={this.onChange}
-                                    value={this.state.lastname}
-                                />
-                        </Form.Group>
-
-                        <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>Gender</Form.Label>
-                                <Form.Control as="select" name="gender" onChange={this.onChange}>
-                                    <option>Male</option>
-                                    <option>Female</option>
-                                    <option>Other</option>
-                                </Form.Control>
-                        </Form.Group>
-                        
-
-                        {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
-                        <Form.Group controlId="formemail">
-                            <TextField
-                                id="email"
-                                label="Email"
-                                className={useStyles.textField}
-                                type="email"
-                                
-                                name="email"
-                                autoComplete="email"
-                                margin="none"
-                                variant="outlined"
-                                style={{ width: '50vh' }}
-                                onChange={this.onChange}
-                                value={this.state.email}
-
-                            />
-                        </Form.Group>
                     
-                        {errors.password && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
-                        <Form.Group controlId="formpassword">
-                            <TextField
+                    <Form.Row>
 
-                                id="password"
+                        <Form.Group as={Col} md="4" controlId="validationCustom01">
+                        <Form.Label>First name</Form.Label>
+                                    <Form.Control 
+                                        label="First Name"
+                                        className={useStyles.textField}
+                                        type="text"
+                                        name="firstname"
+                                        autoComplete="firstname"
+                                        margin="none"
+                                        variant="outlined"
+                                        onChange={this.onChange}
+                                        value={this.state.firstname} 
+                                    />
+                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        {errors.firstname && <span style={{color:'red'}} className="help-block">{errors.firstname}</span>}
+                        </Form.Group>
+
+                        <Form.Group as={Col} md="4" controlId="validationCustom02">
+                        <Form.Label>Last name</Form.Label>
+                                
+                                    <Form.Control 
+                                        label="Last Name"
+                                        className={useStyles.textField}
+                                        type="text"
+                                        name="lastname"
+                                        autoComplete="lastname"
+                                        margin="none"
+                                        variant="outlined"
+                                        onChange={this.onChange}
+                                        value={this.state.lastname} />
+                        <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                        {errors.lastname && <span style={{color:'red'}} className="help-block">{errors.lastname}</span>}
+                        </Form.Group>
+
+
+                        <Form.Group as={Col} md="4" controlId="validationCustomUsername">
+                            <Form.Label>Gender</Form.Label>
+                                    <Form.Control as="select" name="gender" onChange={this.onChange}>
+                                        <option>Male</option>
+                                        <option>Female</option>
+                                        <option>Other</option>
+                                    </Form.Control>
+                        </Form.Group>
+                        </Form.Row>
+
+                        <Form.Row>
+                        <Form.Group as={Col} md="6" controlId="validationCustom03">
+                        <Form.Label>Email</Form.Label>
+                                <Form.Control 
+                                    type="email" 
+                                    placeholder="Enter email" 
+                                    label="Email"
+                                    className={useStyles.textField}
+                                    name="email"
+                                    autoComplete="email"
+                                    margin="none"
+                                    variant="outlined"
+                                    onChange={this.onChange}
+                                    value={this.state.email}
+                                    style={{width:'60%',}}
+                                />
+                        {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
+                        </Form.Group>
+
+
+                        <Form.Group as={Col} md="3" controlId="validationCustom04">
+                        <div style={{marginLeft:'-200px'}}>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password" 
+                                placeholder="Password" 
                                 label="Password"
                                 className={useStyles.textField}
-                                type="password"
                                 name="password"
                                 autoComplete="email"
                                 margin="none"
                                 variant="outlined"
-                                style={{ width: '50vh' }}
                                 onChange={this.onChange}
                                 value={this.state.password}
+                                style={{width:'50%'}}
                             />
+                        {errors.password && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
+                        </div>
                         </Form.Group>
 
-                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.passwordConfirmation}<br></br></span> }
-                        <Form.Group controlId="formpasswordconfirmation">
-                            <TextField
 
-                                id="passwordConfirmation"
-                                label="Re-type Password"
-                                className={useStyles.textField}
-                                type="password"
-                                name="passwordConfirmation"
-                                autoComplete="password"
-                                margin="none"
-                                variant="outlined"
-                                style={{ width: '50vh' }}
-                                onChange={this.onChange}
-                                value={this.state.passwordConfirmation}
-                            />
-                        </Form.Group>
-
-                        {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.contactNumber}</span>}
-                        <Form.Group controlId="formcontactnumber">
-                            <TextField
-                                    id="contactNumber"
-                                    label="Contact Number"
-                                    className={useStyles.textField}
-                                    type="text"
-                                    name="contactNumber"
-                                    autoComplete="contactNumber"
-                                    margin="none"
-                                    variant="outlined"
-                                    style={{ width: '50vh' }}
-                                    onChange={this.onChange}
-                                    value={this.state.contactNumber}
-                            />
-                        </Form.Group>
-                        <Form.Group>
-                            <TextField
-                                id="date"
-                                label="Birthday"
-                                type="date"
-                                name="dob"
-                                defaultValue="2020-01-01"
-                                className={useStyles.textField}
-                                InputLabelProps={{
-                                shrink: true,
-                                }}
-                                onChange={this.onChange}
-                            />
-
-                        </Form.Group>
-
-                        {errors.nic && <span style={{color:'red'}} className="help-block">{errors.nic}</span>}
-                        <Form.Group controlId="formnic">
-                            <TextField
-                                    id="nic"
-                                    label="NIC"
-                                    className={useStyles.textField}
-                                    type="text"
-                                    name="nic"
-                                    autoComplete="nic"
-                                    margin="none"
-                                    variant="outlined"
-                                    style={{ width: '50vh' }}
-                                    onChange={this.onChange}
-                                    value={this.state.nic}
-                                />
-                        </Form.Group>
+                        <Form.Group as={Col} md="3" controlId="validationCustom05">
+                            <div style={{marginLeft:'-230px'}}>
                         
-                        {errors.city && <span style={{color:'red'}} className="help-block">{errors.city}</span>}
-                        <Form.Group controlId="formcity">
-                            <TextField
-                                    id="city"
-                                    label="City"
+                                <Form.Label>Re-type password</Form.Label>
+
+                                    <Form.Control
+                                    type="password" 
+                                    placeholder="Password Confirmation" 
+                                    label="Re-type Password"
                                     className={useStyles.textField}
-                                    type="text"
-                                    name="city"
-                                    autoComplete="city"
+                                    name="passwordConfirmation"
+                                    autoComplete="password"
                                     margin="none"
                                     variant="outlined"
-                                    style={{ width: '50vh' }}
                                     onChange={this.onChange}
-                                    value={this.state.city}
+                                    value={this.state.passwordConfirmation}
+                                    style={{width:'50%'}}
                                 />
+                                {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.passwordConfirmation}<br></br></span> }
+                            </div>
                         </Form.Group>
 
-                        {errors.district && <span style={{color:'red'}} className="help-block">{errors.district}</span>}
-                        <Form.Group controlId="formdistrict">
-                            <TextField
-                                    id="district"
-                                    label="District"
-                                    className={useStyles.textField}
-                                    type="text"
-                                    name="district"
-                                    autoComplete="district"
-                                    margin="none"
-                                    variant="outlined"
-                                    style={{ width: '50vh' }}
-                                    onChange={this.onChange}
-                                    value={this.state.district}
-                                />
-                        </Form.Group>
-                        <Form.Group controlId="formbutton">
-                            <Button
-                                variant="contained"
-                                color="primary"
-                                style={{ width: '10vh' }}
-                                type="submit"
-                            >
-                                Send
-                            </Button>
-                        </Form.Group>
+                        <Form.Row>
+                            <Form.Group as={Col} md="6" controlId="validationCustom03">
+                            <Form.Label>Contact Number</Form.Label>
                             
+                                    <Form.Control 
+                                        label="Contact Number"
+                                        className={useStyles.textField}
+                                        type="text"
+                                        name="contactNumber"
+                                        autoComplete="contactNumber"
+                                        margin="none"
+                                        variant="outlined"
+                                        onChange={this.onChange}
+                                        value={this.state.contactNumber} 
+                                        style={{width:'70%'}}
+                                        
+                                    />
+                                    {errors.contactNumber && <span style={{color:'red'}} className="help-block">{errors.contactNumber}</span>}
+                            </Form.Group>
+
+
+                            <Form.Group as={Col} md="3" controlId="validationCustom04">
+                                <TextField
+                                        id="date"
+                                        label="Birthday"
+                                        type="date"
+                                        name="dob"
+                                        defaultValue="2020-01-01"
+                                        className={useStyles.textField}
+                                        InputLabelProps={{
+                                        shrink: true,
+                                        }}
+                                        onChange={this.onChange}
+                                        style={{marginLeft:'-70px',marginTop:'10px'}}
+                                    />
+                            </Form.Group>
+                            <Form.Group as={Col} md="3" controlId="validationCustom05">
+                            <Form.Label>NIC</Form.Label>
+
+                                    <Form.Control 
+                                            label="NIC"
+                                            className={useStyles.textField}
+                                            type="text"
+                                            name="nic"
+                                            autoComplete="nic"
+                                            margin="none"
+                                            variant="outlined"
+                                            style={{width:'250%'}}
+                                            onChange={this.onChange}
+                                            value={this.state.nic} 
+                                    />
+                                <div style={{width:'200px'}}>
+                                    {errors.nic && <span style={{color:'red'}} className="help-block">{errors.nic}</span>}
+                                </div>
+
+                            </Form.Group>
+                             <Form.Group as={Col} md="3" controlId="validationCustom05">
+                            
+                            
+                            </Form.Group>
+
+                        </Form.Row>
+                        <Form.Row>
+                            <Form.Group as={Col} md="6" controlId="validationCustom03">
+                            <Form.Label>City</Form.Label>
+                                
+                                    <Form.Control 
+                                        label="City"
+                                        className={useStyles.textField}
+                                        type="text"
+                                        name="city"
+                                        autoComplete="city"
+                                        margin="none"
+                                        variant="outlined"
+                                        style={{ width: '50vh' }}
+                                        onChange={this.onChange}
+                                        value={this.state.city}
+                                    />
+                                    {errors.city && <span style={{color:'red'}} className="help-block">{errors.city}</span>}
+                            </Form.Group>
+                                        
+
+                            <Form.Group as={Col} md="3" controlId="validationCustom04">
+                                
+                            <Form.Label>District</Form.Label>
+                                    <Form.Control 
+                                        label="District"
+                                        className={useStyles.textField}
+                                        type="text"
+                                        name="district"
+                                        autoComplete="district"
+                                        margin="none"
+                                        variant="outlined"
+                                        style={{ width: '50vh' }}
+                                        onChange={this.onChange}
+                                        value={this.state.district}
+                                    />
+                                    {errors.district && <span style={{color:'red'}} className="help-block">{errors.district}</span>}
+                            </Form.Group>
+
+
+                            <Form.Group as={Col} md="3" controlId="validationCustom05">
+                            
+                            
+                            </Form.Group>
+                            </Form.Row>
+
+
+                            </Form.Row>
+                            <Form.Group>
+                                <Form.Check
+                                required
+                                label="Agree to terms and conditions"
+                                feedback="You must agree before submitting."
+                                />
+                            </Form.Group>
+                            <Button
+                                    variant="contained"
+                                    color="primary"
+                                    style={{ width: '10vh' }}
+                                    type="submit"
+                                    >
+                                    Send
+                            </Button>
+                                                    
                     </Form> 
             
         )

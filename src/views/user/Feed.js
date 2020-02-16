@@ -5,7 +5,7 @@ import {Row,Col} from 'react-bootstrap'
 import PostComponent from '../../components/user/feed/PostComponent'
 import axios from 'axios';
 import {Grid,TextField} from '@material-ui/core';
-
+import CheckEmailPage from './CheckEmailPage';
 
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';

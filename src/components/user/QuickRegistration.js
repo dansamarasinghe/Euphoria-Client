@@ -48,9 +48,9 @@ class QuickRegistration extends Component {
             this.setState({errors:{},accountType:'quick'});
 
             this.props.userSignUpRequest(this.state).then( result => {
-                alert("success");
+                window.location.replace("/user/signupsuccess");
              }, function(error) {
-                console.log(error);
+                alert('Error occured');
                 
              });
         }
@@ -61,11 +61,12 @@ class QuickRegistration extends Component {
         return (
         
                 <Form onSubmit={this.onSubmit}>
-                        {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
+                    <Form.Label>Email</Form.Label>
+
                         <Form.Group controlId="formemailq">
                             <TextField
                                 id="emailq"
-                                label="Email"
+                                label="Enter email"
                                 className={useStyles.textField}
                                 type="email"
                                 
@@ -78,14 +79,18 @@ class QuickRegistration extends Component {
                                 value={this.state.email}
 
                             />
+                            <br/>
+                            
+                        {errors.email && <span style={{color:'red'}} className="help-block">{errors.email}</span>}
                         </Form.Group>
                     
-                        {errors.password && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
                         <Form.Group controlId="formpasswordq">
+                             <Form.Label>Password</Form.Label>
+                            <br/>
                             <TextField
 
                                 id="passwordq"
-                                label="Password"
+                                label="Enter password"
                                 className={useStyles.textField}
                                 type="password"
                                 name="password"
@@ -96,10 +101,15 @@ class QuickRegistration extends Component {
                                 onChange={this.onChange}
                                 value={this.state.password}
                             />
+                            <br/>
+                            
+                            {errors.password && <span style={{color:'red'}} className="help-block">{errors.password}<br></br></span> }
                         </Form.Group>
 
-                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.passwordConfirmation}<br></br></span> }
                         <Form.Group controlId="formpasswordconfirmationq">
+                            <Form.Label>Password Confirmation</Form.Label>
+                            <br/>
+
                             <TextField
 
                                 id="passwordConfirmationq"
@@ -114,6 +124,9 @@ class QuickRegistration extends Component {
                                 onChange={this.onChange}
                                 value={this.state.passwordConfirmation}
                             />
+                            <br/>
+
+                        {errors.passwordConfirmation && <span style={{color:'red'}} className="help-block">{errors.passwordConfirmation}<br></br></span> }
                         </Form.Group>
 
                         <Form.Group controlId="formbutton">
