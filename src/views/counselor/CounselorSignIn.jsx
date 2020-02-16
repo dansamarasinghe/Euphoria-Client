@@ -39,7 +39,7 @@ class CounselorSignIn extends Component {
 
     signUp = () => {
 
-        if(this.state.password === this.state.confirmPassword){
+        // if(this.state.password === this.state.confirmPassword){
             const loginCredentials = {
                 username: this.state.username,
                 email: this.state.email,
@@ -57,9 +57,9 @@ class CounselorSignIn extends Component {
             };
 
             this.props.signUp(signUpCredentials);
-        }else{
-            alert('Passwords are not matched!')
-        }
+        // }else{
+        //     alert('Passwords are not matched!')
+        // }
 
 
     };
@@ -241,29 +241,29 @@ class CounselorSignIn extends Component {
                                         </label>
                                     </Grid>
 
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            id={'password'}
-                                            onChange={e => this.handleChange(e)}
-                                            // className={'txtFld-small'}
-                                            variant={'outlined'}
-                                            label={'Password'}
-                                            fullWidth
-                                            type={'password'}
-                                        />
-                                    </Grid>
+                                    {/*<Grid item xs={6}>*/}
+                                    {/*    <TextField*/}
+                                    {/*        id={'password'}*/}
+                                    {/*        onChange={e => this.handleChange(e)}*/}
+                                    {/*        // className={'txtFld-small'}*/}
+                                    {/*        variant={'outlined'}*/}
+                                    {/*        label={'Password'}*/}
+                                    {/*        fullWidth*/}
+                                    {/*        type={'password'}*/}
+                                    {/*    />*/}
+                                    {/*</Grid>*/}
 
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            id={'confirm_password'}
-                                            onChange={e => this.handleChange(e)}
-                                            // className={'txtFld-small'}
-                                            variant={'outlined'}
-                                            label={'Confirm Password'}
-                                            fullWidth
-                                            type={'password'}
-                                        />
-                                    </Grid>
+                                    {/*<Grid item xs={6}>*/}
+                                    {/*    <TextField*/}
+                                    {/*        id={'confirm_password'}*/}
+                                    {/*        onChange={e => this.handleChange(e)}*/}
+                                    {/*        // className={'txtFld-small'}*/}
+                                    {/*        variant={'outlined'}*/}
+                                    {/*        label={'Confirm Password'}*/}
+                                    {/*        fullWidth*/}
+                                    {/*        type={'password'}*/}
+                                    {/*    />*/}
+                                    {/*</Grid>*/}
 
                                     <Grid item xs={6}>
                                         <TextField id={'username'}

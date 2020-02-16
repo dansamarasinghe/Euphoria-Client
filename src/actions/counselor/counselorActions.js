@@ -26,9 +26,10 @@ export const returnPatientRecords = (patientRecords) => {
 export const signIn = (state) => dispatch => {
     console.log(state);
 
-    return axios.post('http://localhost:8090/api/counselor/sign-in', JSON.stringify(state), {
+    return axios.post('http://localhost:8080/authenticate', state, {
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin':'*',
         }
     }).then((response) => {
         console.log(response);
@@ -52,7 +53,7 @@ export const signIn = (state) => dispatch => {
 
 export const signUp = (state) => dispatch => {
     return axios.post(
-        'http://localhost:8090/api/counselor/sign-up', JSON.stringify(state), {
+        'http://localhost:8080/api/counselor/sign-up', JSON.stringify(state), {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -62,7 +63,7 @@ export const signUp = (state) => dispatch => {
 };
 
 export const getPatientRecords = (user) => dispatch => {
-    return axios.get('http://localhost:8090/api/counselor/patient-records/' + user,
+    return axios.get('http://localhost:8080/api/counselor/patient-records/' + user,
         {
             headers: {
                 'Content-Type': 'application/json',
