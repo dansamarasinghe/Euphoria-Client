@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import {Button, Card, CardActions, CardContent, CardHeader} from '@material-ui/core'
-import Typography from '@material-ui/core/Typography';
-
 // import { connect } from 'react-redux';
+
+import {Button, Card, CardActions, CardContent, CardHeader, Container} from '@material-ui/core'
+import Typography from '@material-ui/core/Typography';
 
 class ForumQuestionCard extends Component {
 
