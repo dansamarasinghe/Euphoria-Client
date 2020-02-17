@@ -27,15 +27,17 @@ class CounselorSignIn extends Component {
 
     state = {
         name: null,
+        username: null,
         password: null,
         confirmPassword: null,
         email: null,
         speciality: null,
         hospital: null,
         city: null,
-
+        picName: null,
         signIn: null,
         isSignUp: false,
+        description:null
         errors: {
             name: '',
             email: '',
@@ -65,12 +67,13 @@ class CounselorSignIn extends Component {
             };
 
             const signUpCredentials = {
-                name: this.state.name,
-                description: null,
+                name:this.state.name,
+                username: this.state.username,
+                description: this.state.description,
                 specialty: this.state.speciality,
                 hospital: this.state.hospital,
                 city: this.state.city,
-                photoUrl: null,
+                picName : this.state.picName.split('\\')[2],
                 loginCredentials: loginCredentials
             };
 
@@ -96,6 +99,8 @@ class CounselorSignIn extends Component {
         this.setState({
             [e.target.id]: e.target.value
         });
+        // console.log(e.target.value.split('\\')[2]);
+
 
         const name = e.target.id;
         const value = e.target.value;
@@ -306,13 +311,14 @@ class CounselorSignIn extends Component {
                                     <Grid item xs={6}>
                                         <input
                                             accept="image/*"
-                                            id="btn-photo"
+                                            id="picName"
                                             type="file"
+                                            onChange={e => this.handleChange(e)}
                                         />
-                                        <label htmlFor="btn-photo">
+                                        <label htmlFor="picName">
                                             <Button
                                                 variant="outlined"
-                                                // component="span"
+                                                component="span"
                                                 fullWidth={true}
                                                 size={"large"}
                                                 startIcon={<CloudUploadIcon/>}
@@ -320,6 +326,18 @@ class CounselorSignIn extends Component {
                                                 Profile Photo
                                             </Button>
                                         </label>
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            id={'description'}
+                                            onChange={e => this.handleChange(e)}
+                                            className={'txtFld-small'}
+                                            variant={'outlined'}
+                                            label={'Description'}
+                                            multiline
+                                            rowsMax={'3'}
+                                            fullWidth/>
                                     </Grid>
 
                                     {/*<Grid item xs={6}>*/}
