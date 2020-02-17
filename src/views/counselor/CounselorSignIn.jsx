@@ -322,19 +322,6 @@ class CounselorSignIn extends Component {
                                         </label>
                                     </Grid>
 
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            id={'password'}
-                                            onChange={e => this.handleChange(e)}
-                                            // className={'txtFld-small'}
-                                            variant={'outlined'}
-                                            label={'Password'}
-                                            fullWidth
-                                            type={'password'}
-                                        />
-                                        {errors.password.length > 0 &&
-                                        <span style={error}>{errors.password}</span>}
-                                    </Grid>
                                     {/*<Grid item xs={6}>*/}
                                     {/*    <TextField*/}
                                     {/*        id={'password'}*/}
@@ -347,19 +334,6 @@ class CounselorSignIn extends Component {
                                     {/*    />*/}
                                     {/*</Grid>*/}
 
-                                    <Grid item xs={6}>
-                                        <TextField
-                                            id={'confirmPassword'}
-                                            onChange={e => this.handleChange(e)}
-                                            // className={'txtFld-small'}
-                                            variant={'outlined'}
-                                            label={'Confirm Password'}
-                                            fullWidth
-                                            type={'password'}
-                                        />
-                                        {errors.confirmPassword !== errors.password &&
-                                        <span style={error}>{errors.confirmPassword}</span>}
-                                    </Grid>
                                     {/*<Grid item xs={6}>*/}
                                     {/*    <TextField*/}
                                     {/*        id={'confirm_password'}*/}
