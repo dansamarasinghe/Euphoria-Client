@@ -87,7 +87,7 @@ class Counselors extends Component {
     
     render() {
        const items = this.state.counselors.map((doc)=>
-            <div key={doc.counselor_id}>
+            <div key={doc.id}>
                     <CounselorBody doc={doc}></CounselorBody>
             </div>
         );

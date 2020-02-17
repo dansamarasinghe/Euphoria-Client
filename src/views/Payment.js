@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import StripeCheckout from "react-stripe-checkout";
 import axios from 'axios';
+import UserProfile from '../assets/UserProfile'
 export default class Payment extends Component {
     
     constructor(props){
@@ -11,10 +12,10 @@ export default class Payment extends Component {
     }
     
     handleToken=(token, addresses)=> {
-        const counselor_id=this.props.counselor_id+"";
-        const user_id=this.props.uid;
-        const rating="1";
-        const rate_object={counselor_id,user_id,rating};
+        const counselorId=this.props.counselor_id;
+        const userId=1;
+        const rate=1;
+        const rate_object={counselorId,userId,rate};
         console.log("rate ob")
         console.log(rate_object);
         axios.post('http://localhost:8080/api/user/updatepayment',JSON.stringify(rate_object),{headers: {
