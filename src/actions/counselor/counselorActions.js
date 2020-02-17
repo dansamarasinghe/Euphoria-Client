@@ -1,6 +1,6 @@
 import * as actionTypes from '../types';
 
-const axios = require('axios');
+const axios = require('axios').default;
 
 export const signInSuccess = () => {
     return {
@@ -23,6 +23,20 @@ export const returnPatientRecords = (patientRecords) => {
     };
 };
 
+export const returnAppointment = (appointments) => {
+    return {
+        type: actionTypes.GET_APPOINTMENTS,
+        appointments: appointments
+    };
+};
+
+
+export const approvalAppointments = (appointment) => {
+    return {
+        type: actionTypes.APPROVE_APPOINTMENTS,
+    };
+};
+
 export const signIn = (state) => dispatch => {
     console.log(state);
 
@@ -32,7 +46,8 @@ export const signIn = (state) => dispatch => {
             'Access-Control-Allow-Origin':'*',
         }
     }).then((response) => {
-        console.log(response);
+        console.log(response.data);
+        axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.jwt;
         dispatch(signInSuccess());
     });
 
@@ -69,7 +84,33 @@ export const getPatientRecords = (user) => dispatch => {
                 'Content-Type': 'application/json',
             }
         }).then((response) => {
-            dispatch(returnPatientRecords(response))
+        dispatch(returnPatientRecords(response))
     })
-}
+};
+
+
+export const getAppointments = (status) => dispatch => {
+    return axios.get('http://localhost:8080/api/counselor/appointments/' + status,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }).then((response) => {
+        dispatch(returnPatientRecords(response))
+    })
+};
+
+export const approveAppointment = (id) => dispatch => {
+    // return axios.get('http://localhost:8090/api/counselor/appointments/' + id,
+    //     {
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         }
+    //     }).then((response) => {
+    //     dispatch(approvalAppointments(response))
+    // })
+};
+
+
+
 
