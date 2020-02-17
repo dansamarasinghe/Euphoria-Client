@@ -37,7 +37,7 @@ class CounselorSignIn extends Component {
         picName: null,
         signIn: null,
         isSignUp: false,
-        description:null
+        description:null,
         errors: {
             name: '',
             email: '',
@@ -58,7 +58,6 @@ class CounselorSignIn extends Component {
 
     signUp = () => {
 
-        if (this.state.password === this.state.confirmPassword) {
         // if(this.state.password === this.state.confirmPassword){
             const loginCredentials = {
                 name: this.state.name,
@@ -78,9 +77,8 @@ class CounselorSignIn extends Component {
             };
 
             this.props.signUp(signUpCredentials);
-        } else {
-            alert('Passwords are not matched!')
-        }
+
+            window.location.reload();
         // }else{
         //     alert('Passwords are not matched!')
         // }
