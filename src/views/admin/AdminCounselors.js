@@ -73,6 +73,7 @@ class AdminCounselors extends Component{
                                                     <td>{counselor.hospital}</td>
                                                     <td>{counselor.city}</td>
                                                     <td>{counselor.specialty}</td>
+                                                    <td><Button variant="danger">REMOVE</Button></td>
                                                 </tr>
                                             )
                                         )

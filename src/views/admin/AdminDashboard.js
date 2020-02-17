@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Row,Col,Button,Card} from 'react-bootstrap';
 import AdminNavbar from "../../components/admin/AdminNavbar";
-import StatsCard from "../../components/admin/StatsCard";
 import axios from 'axios';
 
 class AdminDashboard extends Component{
@@ -49,46 +48,41 @@ class AdminDashboard extends Component{
             <div className="container">
                 <div className="m-4">
                 <Row>
-                    <Col lg={3} sm={6}>
-                        <StatsCard
-                            bigIcon={<i className="pe-7s-server text-warning" />}
-                            statsText="Onilne Counselors"
-                            statsValue={this.state.onlineCounselors}
-                            statsIcon={<i className="fa fa-refresh" />}
-                            statsIconText="Updated now"
-                        />
+                    <Col lg={6} sm={12}>
+                        <Card className="text-center bg-success">
+                            <Card.Header>Online Counselors</Card.Header>
+                            <Card.Body>
+                                <Card.Text>{this.state.onlineCounselors}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
-                    <Col lg={3} sm={6}>
-                        <StatsCard
-                            bigIcon={<i className="pe-7s-wallet text-success" />}
-                            statsText="Registered Counselors"
-                            statsValue={this.state.registeredCounselors}
-                            statsIcon={<i className="fa fa-calendar-o" />}
-                            statsIconText="Last day"
-                        />
+                    <Col lg={6} sm={12}>
+                        <Card className="text-center bg-danger">
+                            <Card.Header>Registered Counselors</Card.Header>
+                            <Card.Body>
+                                <Card.Text>{this.state.registeredCounselors}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
-                    <Col lg={3} sm={6}>
-                        <StatsCard
-                            bigIcon={<i className="pe-7s-graph1 text-danger" />}
-                            statsText="Online Users"
-                            statsValue={this.state.onlineUsers}
-                            statsIcon={<i className="fa fa-clock-o" />}
-                            statsIconText="In the last hour"
-                        />
+                </Row>
+                <Row className="my-4">
+                    <Col lg={6} sm={12}>
+                        <Card className="text-center bg-warning">
+                            <Card.Header>Online Users</Card.Header>
+                            <Card.Body>
+                                <Card.Text>{this.state.onlineUsers}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
-                    <Col lg={3} sm={6}>
-                        <StatsCard
-                            bigIcon={<i className="fa fa-twitter text-info" />}
-                            statsText="Registered Users"
-                            statsValue={this.state.registeredUsers}
-                            statsIcon={<i className="fa fa-refresh" />}
-                            statsIconText="Updated now"
-                        />
+                    <Col lg={6} sm={12}>
+                        <Card className="text-center bg-info">
+                        <Card.Header>Registered Users</Card.Header>
+                            <Card.Body>
+                                <Card.Text>{this.state.registeredUsers}</Card.Text>
+                            </Card.Body>
+                        </Card>
                     </Col>
                     </Row>
-                </div>
-                <div className="m-4">
-                    <Button variant="success">ANALYSE</Button>
                 </div>
             </div>
             </React.Fragment>
