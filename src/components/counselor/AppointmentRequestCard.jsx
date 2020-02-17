@@ -23,7 +23,7 @@ class AppointmentRequestCard extends Component {
         let appointment=this.state.appointment;
         appointment.status = "ACCEPTED";
         axios.post('http://localhost:8080/api/counselor/appointments',
-            {appointmentRequest:appointment},
+            appointment,
             {
                 headers: {
                     'Content-Type': 'application/json',

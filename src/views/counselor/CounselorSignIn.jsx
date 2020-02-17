@@ -26,6 +26,8 @@ class CounselorSignIn extends Component {
     };
 
     state = {
+        loginUsername:null,
+        loginPassword:null,
         name: null,
         username: null,
         password: null,
@@ -45,15 +47,16 @@ class CounselorSignIn extends Component {
             password: '',
             loginPassword:'',
             confirmPassword:'',
-            slmcNumber:''
+            slmcNumber:'',
+            loginUsername:'',
         }
     };
 
     signIn = () => {
         console.log(this.state.name, this.state.password);
         const signInCredentials = {
-            username: this.state.name,
-            password: this.state.password
+            username: this.state.loginUsername,
+            password: this.state.loginPassword
         }
         this.props.signIn(signInCredentials);
     };
@@ -62,7 +65,7 @@ class CounselorSignIn extends Component {
 
         // if(this.state.password === this.state.confirmPassword){
             const loginCredentials = {
-                name: this.state.name,
+                username: this.state.username,
                 email: this.state.email,
                 password: this.state.password
             };
@@ -182,16 +185,16 @@ class CounselorSignIn extends Component {
                                 <hr/>
                                 <Grid container id={'fieldGrid'} spacing={2}>
                                     <Grid item xs={8}>
-                                        <TextField id={'name'}
+                                        <TextField id={'loginUsername'}
                                                    onChange={e => this.handleChange(e)}
                                                    className={'txtFld-small'}
                                                    variant={'outlined'}
-                                                   label={'name'}
+                                                   label={'Username'}
                                                    fullWidth
                                                    noValidate
                                         />
-                                        {errors.name.length === 0 &&
-                                        <span style={error}>{errors.name}</span>}
+                                        {errors.loginUsername.length === 0 &&
+                                        <span style={error}>{errors.loginUsername}</span>}
                                     </Grid>
 
                                     <Grid item xs={8}>
@@ -379,7 +382,7 @@ class CounselorSignIn extends Component {
                                     {/*</Grid>*/}
 
                                     <Grid item xs={6}>
-                                        <TextField id={'name'}
+                                        <TextField id={'username'}
                                                    onChange={e => this.handleChange(e)}
                                                    className={'txtFld-small'}
                                                    variant={'outlined'}
