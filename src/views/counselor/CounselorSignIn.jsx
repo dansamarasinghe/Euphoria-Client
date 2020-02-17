@@ -23,7 +23,7 @@ class CounselorSignIn extends Component {
         speciality: null,
         hospital: null,
         city: null,
-
+        picName: null,
         signIn: null,
         isSignUp: false
     };
@@ -52,7 +52,7 @@ class CounselorSignIn extends Component {
                 specialty: this.state.speciality,
                 hospital: this.state.hospital,
                 city: this.state.city,
-                photoUrl : null,
+                picName : this.state.picName.split('\\')[2],
                 loginCredentials: loginCredentials
             };
 
@@ -74,6 +74,8 @@ class CounselorSignIn extends Component {
         this.setState({
             [e.target.id]: e.target.value
         });
+        // console.log(e.target.value.split('\\')[2]);
+
     };
 
     componentDidUpdate() {
@@ -225,13 +227,14 @@ class CounselorSignIn extends Component {
                                     <Grid item xs={6}>
                                         <input
                                             accept="image/*"
-                                            id="btn-photo"
+                                            id="picName"
                                             type="file"
+                                            onChange={e => this.handleChange(e)}
                                         />
-                                        <label htmlFor="btn-photo">
+                                        <label htmlFor="picName">
                                             <Button
                                                 variant="outlined"
-                                                // component="span"
+                                                component="span"
                                                 fullWidth={true}
                                                 size={"large"}
                                                 startIcon={<CloudUploadIcon/>}
