@@ -16,14 +16,15 @@ class AppointmentRequestCard extends Component {
             key: props.keyValue,
             status: props.appointment.status
         };
-        console.log(this.state.appointment)
+        // console.log(this.state.appointment)
     }
 
     onApprove = () => {
         let appointment=this.state.appointment;
         appointment.status = "ACCEPTED";
+        console.log(appointment);
         axios.post('http://localhost:8080/api/counselor/appointments',
-            {appointmentRequest:appointment},
+            appointment,
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -31,7 +32,8 @@ class AppointmentRequestCard extends Component {
             }
         ).then((response) => {
             this.setState({
-                status: "ACCEPTED"
+                status: "ACCEPTED",
+                disableActions:true,
             })
         }).catch((err) => {
             console.log(err);
@@ -39,11 +41,25 @@ class AppointmentRequestCard extends Component {
     };
 
     onReject = () => {
-
-        this.setState({
-            status: "REJECTED"
+        let appointment=this.state.appointment;
+        appointment.status = "REJECTED";
+        console.log(appointment);
+        axios.post('http://localhost:8080/api/counselor/appointments',
+            appointment,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        ).then((response) => {
+            this.setState({
+                status: "REJECTED",
+                disableActions:true,
+            })
+        }).catch((err) => {
+            console.log(err);
         })
-    }
+    };
 
     render() {
         return (
@@ -87,8 +103,8 @@ class AppointmentRequestCard extends Component {
 
                     <CardActions style={{float: "right"}}>
                         {/*<Button onClick={this.handleClick}>Approve</Button>*/}
-                        <Button onClick={this.onApprove}>Approve</Button>
-                        <Button onClick={this.onReject}>Reject</Button>
+                        <Button onClick={this.onApprove} disabled={this.state.disableActions}>Approve</Button>
+                        <Button onClick={this.onReject} disabled={this.state.disableActions}>Reject</Button>
                     </CardActions>
                 </Card>
                 {/*Card-End*/}

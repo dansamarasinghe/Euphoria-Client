@@ -65,7 +65,7 @@ class CounselorSignIn extends Component {
 
         // if(this.state.password === this.state.confirmPassword){
             const loginCredentials = {
-                name: this.state.name,
+                username: this.state.username,
                 email: this.state.email,
                 password: this.state.password
             };
