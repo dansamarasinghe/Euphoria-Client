@@ -188,7 +188,8 @@ class FormalRegistration extends Component {
                                     <Form.Control 
                                         label="Contact Number"
                                         className={useStyles.textField}
-                                        type="text"
+                                        type="number"
+                                     
                                         name="contactNumber"
                                         autoComplete="contactNumber"
                                         margin="none"

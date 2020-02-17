@@ -37,8 +37,10 @@ class AdminDashboard extends Component{
 
     render(){
         return(
+            <React.Fragment>
+
+            <AdminNavbar/>
             <div className="container">
-                <AdminNavbar/>
                 <div className="m-4">
                 <Row>
                     <Col lg={3} sm={6}>
@@ -80,6 +82,7 @@ class AdminDashboard extends Component{
                     </Row>
                 </div>
             </div>
+            </React.Fragment>
         );
     }
 }

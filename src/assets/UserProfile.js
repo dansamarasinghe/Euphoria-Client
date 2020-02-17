@@ -2,7 +2,7 @@ var UserProfile = (function() {
     var user_id="1";
     var user_name = "";
     var user_email="dan@gmail.com";
-    var user_type='user';
+    var user_type="formal";
     var activated="yes";
   
    
@@ -51,7 +51,7 @@ var UserProfile = (function() {
       getEmail: getName,
       setEmail: setName,
       
-      getUserType:setUserType,
+      getUserType:getUserType,
       setUserType:setUserType,
 
       getActivated:getActivated,

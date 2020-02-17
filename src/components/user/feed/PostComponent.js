@@ -68,8 +68,8 @@ class CommentComponent extends Component{
                         </Grid>
 
                         <Grid container direction="row" justify="flex-end" alignItems="center">
-                            <Card.Link href="#">Card Link</Card.Link>
-                            <Card.Link href="#">Another Link</Card.Link>
+                
+                            <Card.Link href="#">Delete</Card.Link>
                         </Grid>
                     </Container>
                 </div>    
@@ -151,7 +151,7 @@ class PostComponent extends Component {
                             <Accordion>
                                 <Card style={{backgroundColor:'white'}}>
                                     <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                                        <Button variant="outline-primary">Comments</Button>
+                                        {UserProfile.getUserType=="formal"&&<Button variant="outline-primary">Comments</Button>}
                                     </Accordion.Toggle>
                                     <Accordion.Collapse eventKey="1">
                                         <Container>
