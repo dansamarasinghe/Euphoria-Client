@@ -180,7 +180,6 @@ class CounselorSignIn extends Component {
                                     <Grid item xs={12} className={'brandText'}>
                                         <Typography>Euphoria</Typography>
                                     </Grid>
-
                                 </Grid>
                                 <hr/>
                                 <Grid container id={'fieldGrid'} spacing={2}>
@@ -287,7 +286,7 @@ class CounselorSignIn extends Component {
                                                    onChange={e => this.handleChange(e)}
                                                    className={'txtFld-small'}
                                                    variant={'outlined'}
-                                                   label={'Email'}
+                                                   label={'SLMC Number'}
                                                    fullWidth
                                                    type={'text'}
                                         />
