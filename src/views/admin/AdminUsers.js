@@ -40,8 +40,10 @@ class AdminUsers extends Component{
 
     render(){
         return(
+            <React.Fragment>
+
+            <AdminNavbar/>
             <div className="container"> 
-                <AdminNavbar/>
                 <div className="m-4">
                     <Row>
                         <Col md={12}>
@@ -121,6 +123,7 @@ class AdminUsers extends Component{
                     </Row>
                 </div>
         </div>
+            </React.Fragment>
         );
     }
 }

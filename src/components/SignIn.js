@@ -86,7 +86,7 @@ class SignIn extends Component{
       if(response.data){
         UserProfile.setEmail(this.state.email);
         UserProfile.setName(this.state.name);
-        this.props.history.push('/user/counselors');
+        window.location.replace('/user/homepage')
       }else{
         alert("Invalid combination of username and password");
         this.setState({"email":'',"password":''});
@@ -154,7 +154,7 @@ class SignIn extends Component{
                       </Link>
                     </Grid>
                     <Grid item>
-                      <Link href="#" variant="body2">
+                      <Link href="/user/signup" variant="body2">
                         {"Don't have an account? Sign Up"}
                       </Link>
                     </Grid>
