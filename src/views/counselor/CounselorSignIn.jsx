@@ -38,6 +38,7 @@ class CounselorSignIn extends Component {
         signIn: null,
         isSignUp: false,
         description:null,
+        slmcNumber:null,
         errors: {
             name: '',
             email: '',
@@ -73,7 +74,8 @@ class CounselorSignIn extends Component {
                 hospital: this.state.hospital,
                 city: this.state.city,
                 picName : this.state.picName.split('\\')[2],
-                loginCredentials: loginCredentials
+                loginCredentials: loginCredentials,
+                slmcNumber:this.state.slmcNumber
             };
 
             this.props.signUp(signUpCredentials);
@@ -274,6 +276,19 @@ class CounselorSignIn extends Component {
                                         />
                                         {errors.email.length > 0 &&
                                         <span style={error}>{errors.email}</span>}
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <TextField id={'slmcNumber'}
+                                                   onChange={e => this.handleChange(e)}
+                                                   className={'txtFld-small'}
+                                                   variant={'outlined'}
+                                                   label={'Email'}
+                                                   fullWidth
+                                                   type={'text'}
+                                        />
+                                        {errors.slmcNumber.length > 0 &&
+                                        <span style={error}>{errors.slmcNumber}</span>}
                                     </Grid>
 
                                     <Grid item xs={6}>
