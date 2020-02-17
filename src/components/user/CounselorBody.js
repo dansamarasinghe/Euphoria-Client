@@ -56,7 +56,7 @@ export default class CounselorBody extends Component {
                 
                 <Col xs={4} >
                     <Card style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={require('../../assets/img/doctor/'+this.props.doc.picName+'.jpg')} 
+                        <Card.Img variant="top" src={require('../../assets/img/doctor/'+this.props.doc.picName)} 
                         style={{
                             width: '100%',
                             height: '20vw',

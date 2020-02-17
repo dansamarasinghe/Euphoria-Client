@@ -61,6 +61,7 @@ class AdminCounselors extends Component{
                                     <th>Hospital</th>
                                     <th>City</th>
                                     <th>speciality</th>
+                                    <th>SLMC Number</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -74,6 +75,7 @@ class AdminCounselors extends Component{
                                                     <td>{counselor.city}</td>
                                                     <td>{counselor.specialty}</td>
                                                     <td><Button variant="danger">REMOVE</Button></td>
+                                                    <td>{counselor.slmcNumber}</td>
                                                 </tr>
                                             )
                                         )
@@ -102,6 +104,7 @@ class AdminCounselors extends Component{
                                     <th>Hospital</th>
                                     <th>City</th>
                                     <th>speciality</th>
+                                    <th>SLMC Number</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -114,6 +117,7 @@ class AdminCounselors extends Component{
                                                     <td>{counselor.hospital}</td>
                                                     <td>{counselor.city}</td>
                                                     <td>{counselor.specialty}</td>
+                                                    <td>{counselor.slmcNumber}</td>
                                                     <td><Button variant="primary" onClick={()=>this.handleClick(counselor.id)}>Accept</Button></td>
                                                 </tr>
                                             )

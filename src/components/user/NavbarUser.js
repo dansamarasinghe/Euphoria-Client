@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import {url} from '../../assets/URL';
+import UserProfile from '../../assets/UserProfile';
 
 const Styles=styled.div`
     .bg-custom-1 {
@@ -82,7 +83,7 @@ export default class NavbarUser extends Component {
                         aria-haspopup="true"
                         onClick={this.handleMenu}
                         >
-                    <Image src={profilePic} roundedCircle  className="profileImage" />
+                    <Image src={require('../../assets/profile/'+UserProfile.getPic())} roundedCircle  className="profileImage" />
                     </IconButton>
                     <Menu
                         id="menu-appbar"
