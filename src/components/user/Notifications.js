@@ -25,14 +25,17 @@ export default class Notifications extends Component {
     .then(res=>{
         const uid=UserProfile.getId();
         const reqs=res.data;
+
+        console.log("-------------");
+        console.log(reqs);
+        console.log("------------------")
         const myreqs=reqs.filter(r=>{
-            console.log(r.user_counselor)
-            return r.user_counselor.user_id.uid==uid;
+            return r.id.user.uid==uid;
         })
         
         const mypending=[];
         myreqs.map(r=>{
-            if(r.appointmentStatus=="pending"){
+            if(r.status=="PENDING"){
                 mypending.push(r);
             }
         });
@@ -59,7 +62,6 @@ export default class Notifications extends Component {
             'Content-Type': 'application/json',
         }})
         .then(res=>{
-            console.log(res.data);
             const uid=UserProfile.getId();
             const reqs=res.data;
             const myreqs=reqs.filter(r=>{
@@ -83,8 +85,6 @@ export default class Notifications extends Component {
         'Content-Type': 'application/json',
     }})
     .then(res=>{
-        console.log('completed---------');
-        console.log(res.data);
         const uid=UserProfile.getId();
         const reqs=res.data;
         const myreqs=reqs.filter(r=>{
@@ -104,27 +104,27 @@ export default class Notifications extends Component {
    }
 
   render() {
+    console.log("****")
+    console.log(this.state.accepted);
+    console.log("****")
     const preqs=this.state.pending.map(
-        x=>(<div><ListGroup.Item variant="warning">Request made to {x.user_counselor.counselor_id.counselor_name} is still pending.
+        x=>(<div><ListGroup.Item variant="warning">Request made to {x.id.counselor.name} is still pending.
             </ListGroup.Item></div>
         ))
 
     const areqs=this.state.accepted.map(x=>(
-        <div><ListGroup.Item variant="success">{x.id.counselor_id.counselor_name} has accepted your request.The counselor will get in touch with you soon.Please complete the payment and  check your email if you're not formally registered.
-        <Payment counselor_id={x.id.counselor_id.counselor_id} uid={UserProfile.getId()}></Payment>
+        <div><ListGroup.Item variant="success">{x.id.counselor_id.name} has accepted your request.The counselor will get in touch with you soon.Please complete the payment and  check your email if you're not formally registered.
+        <Payment counselor_id={x.id.counselor_id.id} uid={UserProfile.getId()}></Payment>
         </ListGroup.Item></div>))
 
 
-    console.log('int the component')
-    console.log(this.state.completed)
-    console.log("****")
     const creqs=this.state.completed.map(x=>(
             <Accordion defaultActiveKey="0">
                 <Card>
                     <Card.Header>
-                    <h5>How was your session with {x.id.counselor_id.counselor_name}.Please rate your experience</h5>
+                    <h5>How was your session with {x.id.counselor_id.name}.Please rate your experience</h5>
                     <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                        <Rate counselor_id={x.id.counselor_id.counselor_id} uid={UserProfile.getId()}></Rate>
+                        <Rate counselor_id={x.id.counselor_id.id} uid={UserProfile.getId()}></Rate>
                     </Accordion.Toggle>
                     </Card.Header>
                     <Accordion.Collapse eventKey="1">

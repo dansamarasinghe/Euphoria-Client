@@ -25,7 +25,7 @@ function MyVerticallyCenteredModal(props) {
                                 objectFit:'cover'}}
                             roundedCircle
                     />
-                {doc.counselor_name}
+                {doc.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>

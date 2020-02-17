@@ -25,9 +25,13 @@ class Feed extends Component {
             posts:[],
             search:'',
             emo_tags : [
-                'Anxious',
-                'Depressed',
-                'Happy',
+                'anxious',
+                'depressed',
+                'suicidal',
+                'happy',
+                'sad',
+                'stressed',
+                'other'
             ],
             emotions:[]
         }
@@ -103,7 +107,8 @@ class Feed extends Component {
         console.log(content);
 
         
-        const posts=content.map((post)=>(<div key={post.post_id} style={{margin:'20px'}}><PostComponent style={{display:'flex'}} post={post}></PostComponent></div>));
+        const posts=content.map((post)=>(<div key={post.id} style={{margin:'20px'}}><PostComponent style={{display:'flex'}} post={post}></PostComponent></div>));
+        console.log(posts)
         return (
 
             <React.Fragment>

@@ -106,14 +106,15 @@ class PostComponent extends Component {
     postComment=()=>{
         const comment_description=this.state.new_comment;
         const user_id=UserProfile.getId();
-        const post_id=this.props.post.post_id;
+        const post_id=this.props.post.id;
         const comment_data={user_id,post_id, comment_description};
+        console.log(comment_data);
         axios.post('http://localhost:8080/api/user/addcomment',JSON.stringify(comment_data),{headers: {
             'Content-Type': 'application/json',
         }})
         .then(res=>{
+            
             this.setState({new_comment:''});
-            this.props.reload();
             alert('success');
         }).catch(err=>{
             console.log(err);

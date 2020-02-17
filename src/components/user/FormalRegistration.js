@@ -49,8 +49,8 @@ class FormalRegistration extends Component {
         
         if(this.isValid()){
             console.log("ho");
-            this.setState({errors:{},accountType:'quick'});
-
+            this.setState({errors:{}});
+            console.log(this.state);
             axios.post('http://localhost:8080/api/user/formalsignup',JSON.stringify(this.state),{headers: {
             'Content-Type': 'application/json',
             }}).then( result => {

@@ -9,7 +9,7 @@ export default class CounselorBody extends Component {
     makeRequest=(msg)=>{
         const user_counselor={
             "user_id":UserProfile.getId(),
-            "counselor_id":this.props.doc.counselor_id
+            "counselor_id":this.props.doc.id
         }
         const request_description=msg;
         const counselor_request_details={...user_counselor,request_description};
@@ -36,7 +36,7 @@ export default class CounselorBody extends Component {
                        
                         }} />
                         <Card.Body>
-                            <Card.Title>{this.props.doc.counselor_name}</Card.Title>
+                            <Card.Title>{this.props.doc.name}</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">{this.props.doc.specialty}</Card.Subtitle>
                             <Card.Text>{this.props.doc.description}</Card.Text>
                             <CounselorRequestModal doc={this.props.doc} makerequest={this.makeRequest}></CounselorRequestModal>
