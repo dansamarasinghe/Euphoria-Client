@@ -13,10 +13,10 @@ export default class Rate extends Component {
         this.setState({selectedValue:e.target.value});
     }
     submit=(e)=>{
-        const counselor_id=this.props.counselor_id+"";
-        const user_id=this.props.uid;
-        const rating=this.state.selectedValue;
-        const rate_object={counselor_id,user_id,rating};
+        const counselorId=this.props.counselor_id;
+        const userId=this.props.uid;
+        const rate=this.state.selectedValue;
+        const rate_object={counselorId,userId,rate};
         console.log("rate ob")
         console.log(rate_object);
         axios.post('http://localhost:8080/api/user/ratecounselor',JSON.stringify(rate_object),{headers: {

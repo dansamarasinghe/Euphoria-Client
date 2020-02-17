@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row,Col} from 'react-bootstrap';
+import {Row,Col,Button,Card} from 'react-bootstrap';
 import AdminNavbar from "../../components/admin/AdminNavbar";
 import StatsCard from "../../components/admin/StatsCard";
 import axios from 'axios';
@@ -16,6 +16,12 @@ class AdminDashboard extends Component{
     }
 
     componentDidMount(){
+        axios.get("http://localhost:8080/api/admin/getOnlineCounselors",JSON.stringify(this.state))
+        .then(res1=>{
+            const onlineCounselorCount=res1.data;
+            this.setState({onlineCounselors:onlineCounselorCount})
+            })
+
         axios.get("http://localhost:8080/api/admin/getRegisteredCounselors",JSON.stringify(this.state))
         .then(res2=>{
             const regCounselorCount=res2.data;
@@ -37,15 +43,17 @@ class AdminDashboard extends Component{
 
     render(){
         return(
+            <React.Fragment>
+
+            <AdminNavbar/>
             <div className="container">
-                <AdminNavbar/>
                 <div className="m-4">
                 <Row>
                     <Col lg={3} sm={6}>
                         <StatsCard
                             bigIcon={<i className="pe-7s-server text-warning" />}
-                            statsText="Onine Counselors"
-                            statsValue="0"
+                            statsText="Onilne Counselors"
+                            statsValue={this.state.onlineCounselors}
                             statsIcon={<i className="fa fa-refresh" />}
                             statsIconText="Updated now"
                         />
@@ -79,7 +87,11 @@ class AdminDashboard extends Component{
                     </Col>
                     </Row>
                 </div>
+                <div className="m-4">
+                    <Button variant="success">ANALYSE</Button>
+                </div>
             </div>
+            </React.Fragment>
         );
     }
 }

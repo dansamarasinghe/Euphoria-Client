@@ -25,7 +25,7 @@ function MyVerticallyCenteredModal(props) {
                                 objectFit:'cover'}}
                             roundedCircle
                     />
-                {doc.counselor_name}
+                {doc.name}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -33,7 +33,7 @@ function MyVerticallyCenteredModal(props) {
           <Form.Control as="textarea" onChange={handleChange} placeholder="Type a message to your counselor" rows="3" />
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="info" onClick={()=>{makerequest(msg)}} style={{margin:'20px'}}>Send</Button>
+          <Button variant="info" onClick={()=>{makerequest(msg);props.onHide()}} style={{margin:'20px'}}>Send</Button>
           <Button variant="danger" onClick={props.onHide}>Close</Button>
         </Modal.Footer>
       </Modal>

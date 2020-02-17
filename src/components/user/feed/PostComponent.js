@@ -68,8 +68,8 @@ class CommentComponent extends Component{
                         </Grid>
 
                         <Grid container direction="row" justify="flex-end" alignItems="center">
-                            <Card.Link href="#">Card Link</Card.Link>
-                            <Card.Link href="#">Another Link</Card.Link>
+                
+                            <Card.Link href="#">Delete</Card.Link>
                         </Grid>
                     </Container>
                 </div>    
@@ -106,14 +106,15 @@ class PostComponent extends Component {
     postComment=()=>{
         const comment_description=this.state.new_comment;
         const user_id=UserProfile.getId();
-        const post_id=this.props.post.post_id;
+        const post_id=this.props.post.id;
         const comment_data={user_id,post_id, comment_description};
+        console.log(comment_data);
         axios.post('http://localhost:8080/api/user/addcomment',JSON.stringify(comment_data),{headers: {
             'Content-Type': 'application/json',
         }})
         .then(res=>{
+            
             this.setState({new_comment:''});
-            this.props.reload();
             alert('success');
         }).catch(err=>{
             console.log(err);
@@ -150,7 +151,7 @@ class PostComponent extends Component {
                             <Accordion>
                                 <Card style={{backgroundColor:'white'}}>
                                     <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                                        <Button variant="outline-primary">Comments</Button>
+                                        {UserProfile.getUserType=="formal"&&<Button variant="outline-primary">Comments</Button>}
                                     </Accordion.Toggle>
                                     <Accordion.Collapse eventKey="1">
                                         <Container>
