@@ -78,7 +78,8 @@ function MyVerticallyCenteredModal(props) {
 
 
           <Modal.Title id="contained-modal-title-vcenter">
-                    <Image variant="top" src={require('../../../assets/profile/girl.jpeg')} 
+                    {/** TODO: changed following image from girl.jpeg to me.jpeg. check and resolve*/}
+                    <Image variant="top" src={require('../../../assets/profile/me.jpeg')}
                             style={{
                                 margin:'20px',
                                 width: '90px',

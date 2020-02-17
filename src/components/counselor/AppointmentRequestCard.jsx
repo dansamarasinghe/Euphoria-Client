@@ -4,15 +4,15 @@ import Typography from '@material-ui/core/Typography';
 
 // import { connect } from 'react-redux';
 
-class AppoinmentCard extends Component {
+class AppointmentRequestCard extends Component {
 
-    handleClick=()=>{
-        this.setState({'status':'Approved'})
+    handleClick = () => {
+        this.setState({'status': 'Approved'})
     }
 
     render() {
         return (
-            <Grid item xs={4}>
+            <Grid item xs={6}>
 
                 {/*Card-Start*/}
                 <Card>
@@ -24,31 +24,33 @@ class AppoinmentCard extends Component {
                     <CardContent>
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
-                                <Typography color={"textSecondary"} style={{fontSize:"2em"}}>
-                                    {this.props.time}
-                                </Typography>
-                            </Grid>
-
-                            <Grid item xs={6}>
                                 <Grid item xs={12}>
-                                    <Typography style={{fontSize:"1em"}}>
-                                        {this.props.date}
+                                    <Typography color={"textSecondary"} style={{fontSize: "1em"}}>
+                                        Requested at {this.props.time}
                                     </Typography>
                                 </Grid>
+                                {/*<Grid item xs={12}>*/}
+                                {/*    <Typography style={{fontSize: "1em"}}>*/}
+
+                                {/*    </Typography>*/}
+                                {/*</Grid>*/}
 
                                 <Grid item xs={12}>
-                                    <Typography style={{fontSize:"1em"}}>
+                                    <Typography style={{fontSize: "1em"}}>
                                         {this.props.status}
                                     </Typography>
                                 </Grid>
                             </Grid>
+
+                            <Grid item xs={6}>
+                                <Typography variant={"body1"} color={"textPrimary"}>
+                                    {this.props.description}
+                                </Typography>
+                            </Grid>
                         </Grid>
-                        <Typography variant={"body1"} color={"textPrimary"}>
-                            {this.props.question}
-                        </Typography>
                     </CardContent>
 
-                    <CardActions style={{float:"right"}}>
+                    <CardActions style={{float: "right"}}>
                         {/*<Button onClick={this.handleClick}>Approve</Button>*/}
                         <Button>Approve</Button>
                         <Button>Reject</Button>
@@ -61,5 +63,4 @@ class AppoinmentCard extends Component {
     };
 }
 
-export default AppoinmentCard;
-// export default connect(null,{CounselorSignIn});
+export default AppointmentRequestCard;

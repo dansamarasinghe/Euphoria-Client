@@ -1,7 +1,7 @@
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
-export default function validateInput(data){
+export default function validateQuickSignUp(data){ // TODO: Temporary fix.
     console.log("coming to here");
     
     let errors = {};

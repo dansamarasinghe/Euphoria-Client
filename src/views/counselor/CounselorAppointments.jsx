@@ -102,7 +102,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getAppointments: (status) => dispatch(actions.getAppointments(status)),
+        getAppointments: (status) => dispatch(actions.getAppointments("PENDING")),
         approveAppointment: (id) => dispatch(actions.approveAppointment(id)),
     };
 };

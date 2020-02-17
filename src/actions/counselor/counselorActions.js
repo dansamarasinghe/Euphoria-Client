@@ -1,6 +1,6 @@
 import * as actionTypes from '../types';
 
-const axios = require('axios');
+const axios = require('axios').default;
 
 export const signInSuccess = () => {
     return {
@@ -46,7 +46,8 @@ export const signIn = (state) => dispatch => {
             'Access-Control-Allow-Origin':'*',
         }
     }).then((response) => {
-        console.log(response);
+        console.log(response.data);
+        axios.defaults.headers.common['Authorization'] = 'Bearer '+response.data.jwt;
         dispatch(signInSuccess());
     });
 
