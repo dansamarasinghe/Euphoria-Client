@@ -1,6 +1,19 @@
 import * as actionTypes from '../types';
 
-const axios = require('axios');
+const axios = require('axios').default;
+
+
+// Check if user is logged in.
+(function () {
+    let authToken = localStorage.getItem("JWT");
+    if (authToken === null) {
+        // This means that there ISN'T JWT and no user is logged in.
+        axios.defaults.headers.common.Authorization = null;
+    } else {
+        // This means that there IS a JWT so someone must be logged in.
+        axios.defaults.headers.common.Authorization = `Bearer ${authToken}`;
+    }
+})();
 
 export const signInSuccess = () => {
     return {
@@ -39,13 +52,16 @@ export const approvalAppointments = (appointment) => {
 
 export const signIn = (state) => dispatch => {
     console.log(state);
-
-    return axios.post('http://localhost:8090/api/counselor/sign-in', JSON.stringify(state), {
+    axios.defaults.headers.common.Authorization = null;
+    return axios.post('http://localhost:8080/authenticate', state, {
         headers: {
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*',
         }
     }).then((response) => {
-        console.log(response);
+        console.log(response.data);
+        localStorage.setItem("JWT", response.data.jwt);
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + response.data.jwt;
         dispatch(signInSuccess());
     });
 
@@ -66,7 +82,7 @@ export const signIn = (state) => dispatch => {
 
 export const signUp = (state) => dispatch => {
     return axios.post(
-        'http://localhost:8090/api/counselor/sign-up', JSON.stringify(state), {
+        'http://localhost:8080/api/counselor/sign-up', JSON.stringify(state), {
             headers: {
                 'Content-Type': 'application/json',
             }
@@ -76,7 +92,7 @@ export const signUp = (state) => dispatch => {
 };
 
 export const getPatientRecords = (user) => dispatch => {
-    return axios.get('http://localhost:8090/api/counselor/patient-records/' + user,
+    return axios.get('http://localhost:8080/api/counselor/patient-records/' + user,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -88,25 +104,28 @@ export const getPatientRecords = (user) => dispatch => {
 
 
 export const getAppointments = (status) => dispatch => {
-    return axios.get('http://localhost:8090/api/counselor/appointments/' + status,
+    axios.get('http://localhost:8080/api/counselor/appointments/' + status,
+        {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+    }).then((response) => {
+        // dispatch(returnPatientRecords(response))
+        return response.data;
+    }).catch((err) => {
+        return err
+    })
+};
+
+export const updateAppointmentStatus = (id, status) => dispatch => {
+    return axios.get('http://localhost:8090/api/counselor/appointments/' + id,
         {
             headers: {
                 'Content-Type': 'application/json',
             }
         }).then((response) => {
-        dispatch(returnPatientRecords(response))
+        return response;
     })
-};
-
-export const approveAppointment = (id) => dispatch => {
-    // return axios.get('http://localhost:8090/api/counselor/appointments/' + id,
-    //     {
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         }
-    //     }).then((response) => {
-    //     dispatch(approvalAppointments(response))
-    // })
 };
 
 

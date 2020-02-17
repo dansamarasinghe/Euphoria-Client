@@ -57,6 +57,7 @@ class CounselorSignIn extends Component {
     signUp = () => {
 
         if (this.state.password === this.state.confirmPassword) {
+        // if(this.state.password === this.state.confirmPassword){
             const loginCredentials = {
                 name: this.state.name,
                 email: this.state.email,
@@ -77,6 +78,9 @@ class CounselorSignIn extends Component {
         } else {
             alert('Passwords are not matched!')
         }
+        // }else{
+        //     alert('Passwords are not matched!')
+        // }
 
 
     };
@@ -331,6 +335,17 @@ class CounselorSignIn extends Component {
                                         {errors.password.length > 0 &&
                                         <span style={error}>{errors.password}</span>}
                                     </Grid>
+                                    {/*<Grid item xs={6}>*/}
+                                    {/*    <TextField*/}
+                                    {/*        id={'password'}*/}
+                                    {/*        onChange={e => this.handleChange(e)}*/}
+                                    {/*        // className={'txtFld-small'}*/}
+                                    {/*        variant={'outlined'}*/}
+                                    {/*        label={'Password'}*/}
+                                    {/*        fullWidth*/}
+                                    {/*        type={'password'}*/}
+                                    {/*    />*/}
+                                    {/*</Grid>*/}
 
                                     <Grid item xs={6}>
                                         <TextField
@@ -345,6 +360,17 @@ class CounselorSignIn extends Component {
                                         {errors.confirmPassword !== errors.password &&
                                         <span style={error}>{errors.confirmPassword}</span>}
                                     </Grid>
+                                    {/*<Grid item xs={6}>*/}
+                                    {/*    <TextField*/}
+                                    {/*        id={'confirm_password'}*/}
+                                    {/*        onChange={e => this.handleChange(e)}*/}
+                                    {/*        // className={'txtFld-small'}*/}
+                                    {/*        variant={'outlined'}*/}
+                                    {/*        label={'Confirm Password'}*/}
+                                    {/*        fullWidth*/}
+                                    {/*        type={'password'}*/}
+                                    {/*    />*/}
+                                    {/*</Grid>*/}
 
                                     <Grid item xs={6}>
                                         <TextField id={'name'}
