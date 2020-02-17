@@ -1,5 +1,5 @@
-import React, {Component} from 'react'
-import {Image, Nav, Navbar} from 'react-bootstrap';
+import React, { Component } from 'react'
+import {Navbar,Form,FormControl,Nav,Button,DropdownButton,Dropdown,Image} from 'react-bootstrap';
 import logo from '../../assets/eu-logo.png';
 import profilePic from '../../assets/profile/me.jpeg';
 import styled from 'styled-components';
@@ -18,8 +18,8 @@ const Styles=styled.div`
     background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
     }
     .profileImage{
-        max-height: 101px
-        max-width : 110px
+        max-height: 81px
+        max-width : 90px
 
     }
 `;
@@ -44,14 +44,21 @@ export default class NavbarUser extends Component {
     
     handleClose = () => {
         this.setState({open:!(this.state.open)});
+        window.location.replace('/user/userprofile');
+        
     };
+    signOut=()=>{
+        this.setState({open:!(this.state.open)});
+        window.location.replace('/user/login');
+
+    }
 
 
     render() {
         return (
         <Styles>
 
-            <Navbar bg="dark" variant="dark">
+            <Navbar fixed="top" style={{height:'10%'}} bg="dark" variant="dark">
                 <img
                     src={logo}
                     width="80"
@@ -61,11 +68,12 @@ export default class NavbarUser extends Component {
                 />
                 <Navbar.Brand href="#home">Euphoria</Navbar.Brand>
                 <Nav className="mr-auto">
+                    <Nav.Link href={url.concat("/user/homepage")}>Home</Nav.Link>
                     <Nav.Link href={url.concat("/user/feed")}>Feed</Nav.Link>
                     <Nav.Link href={url.concat("/user/counselors")}>Counselors</Nav.Link>
                 </Nav>
                 
-                <Nav className="justify-content-end">
+                <Nav >
 
                     
                     <IconButton
@@ -74,7 +82,7 @@ export default class NavbarUser extends Component {
                         aria-haspopup="true"
                         onClick={this.handleMenu}
                         >
-                    <Image src={profilePic} roundedCircle className="profileImage" />
+                    <Image src={profilePic} roundedCircle  className="profileImage" />
                     </IconButton>
                     <Menu
                         id="menu-appbar"
@@ -91,8 +99,8 @@ export default class NavbarUser extends Component {
                         open={this.state.open}
                         onClose={this.handleClose}
                     >
-                        <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                        <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                        <MenuItem onClick={this.handleClose} >Profile</MenuItem>
+                        <MenuItem onClick={this.signOut}>Sign Out</MenuItem>
                     </Menu> 
                     
                 </Nav>
