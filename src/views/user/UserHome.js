@@ -66,8 +66,11 @@ class UserHome extends Component {
         return (
             <React.Fragment>
 
-                <Grid container spacing={3}  direction="row" justify="center" alignItems="center">
+                <Grid container spacing={3}  direction="row" justify="center" alignItems="left">
 
+                    <Grid item>
+                        <h3>Home</h3>
+                    </Grid>
                     <Grid item>
                         <TextField id="outlined-search" name="search" onChange={this.handleChange} label="Search field" type="search" variant="outlined" />
                     </Grid>

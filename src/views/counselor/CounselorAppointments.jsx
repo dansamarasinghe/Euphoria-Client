@@ -1,10 +1,13 @@
-import React, {Component} from "react";
+import React, {Component} from 'react'
+import {Button, Card, CardActions, CardContent, CardHeader, Grid} from '@material-ui/core'
+import Typography from '@material-ui/core/Typography';
 import CounselorNavBar from "../../components/counselor/CounselorNavBar";
-import {Container, Grid} from "@material-ui/core";
-import AppoinmentCard from "../../components/counselor/AppoinmentCard";
 import axios from 'axios';
+import * as actions from "../../actions";
+import {connect} from "react-redux";
 
-class CounselorAppointments extends Component {
+class AppointmentRequestCard extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -12,71 +15,99 @@ class CounselorAppointments extends Component {
             isLoaded: false,
             items: []
         };
+        this.props.getAppointments("PENDING");
+        console.log(this.props.appointments);
     }
 
-     componentDidMount() {
-         // axios.get(`http://localhost:8080/api/counselor/appointments/1`)
-         //    .then(res => {
-         //        const persons = res.data;
-         //        // this.setState({ persons });
-         //        console.log(persons);
-         //        this.onFetchComplete(persons);
-         //    })
+    handleClick = () => {
+        this.setState({'status': 'Approved'})
+    };
 
-        // fetch("http://localhost:8080/api/counselor/appointments/1")
-        //     // .then(res => res.json())
-        //     .then(
-        //         (result) => {
-        //             this.setState({
-        //                 isLoaded: true,
-        //                 items: result.items
-        //             });
-        //             console.log(result);
-        //         },
-        //         // Note: it's important to handle errors here
-        //         // instead of a catch() block so that we don't swallow
-        //         // exceptions from actual bugs in components.
-        //         (error) => {
-        //             this.setState({
-        //                 isLoaded: true,
-        //                 error
-        //             });
-        //             console.log(error);
-        //         }
-        //     )
-    }
-
-    onFetchComplete(res){
-        for (let i=0; i<res.length; i++){
-            var obj = res[i];
-
-
-        }
-    }
+    approve = (id) => {
+        console.log(id);
+        this.props.approveAppointment(id);
+    };
 
     render() {
         return (
-            <>
-
+            <div>
                 <CounselorNavBar></CounselorNavBar>
 
-                <Container>
-                    <Grid container>
-                        <AppoinmentCard
-                            customer={"Missaka Iddamalgoda"}
-                            username={"@Misidda"}
-                            time={"8:00 AM"}
-                            date={"2019-11-20"}
-                            status={"Pending"}
-                        >
-                        </AppoinmentCard>
-                    </Grid>
-                </Container>
+                <Grid container spacing={3}>
+                    {
+                        this.props.appointments !== null ?
+                            this.props.appointments.map((row, key) => (
+                                <Grid item xs={6}>
 
+                                    {/*Card-Start*/}
+                                    <Card>
+                                        <CardHeader
+                                            title={row.id.user.first_name + "\t\t" + row.id.user.last_name}
+                                            subheader={row.id.user.email}
+                                        />
 
-            </>
+                                        <CardContent>
+                                            <Grid container spacing={2}>
+                                                <Grid item xs={6}>
+                                                    <Grid item xs={12}>
+                                                        <Typography color={"textSecondary"} style={{fontSize: "1em"}}>
+                                                            Requested at {row.id.createdAt[0]}
+                                                        </Typography>
+                                                    </Grid>
+                                                    {/*<Grid item xs={12}>*/}
+                                                    {/*    <Typography style={{fontSize: "1em"}}>*/}
+
+                                                    {/*    </Typography>*/}
+                                                    {/*</Grid>*/}
+
+                                                    <Grid item xs={12}>
+                                                        <Typography style={{fontSize: "1em"}}
+                                                                    style={{color: 'red', fontWeight: 'bold'}}>
+                                                            {row.status}
+                                                        </Typography>
+                                                    </Grid>
+                                                </Grid>
+
+                                                <Grid item xs={6}>
+                                                    <Typography variant={"body1"} color={"textPrimary"}>
+                                                        {row.description}
+                                                    </Typography>
+                                                </Grid>
+                                            </Grid>
+                                        </CardContent>
+
+                                        <CardActions style={{float: "right"}}>
+                                            {/*<Button onClick={this.handleClick}>Approve</Button>*/}
+                                            <Button onClick={()=> this.approve(row.id)}>Approve</Button>
+                                            <Button>Reject</Button>
+                                        </CardActions>
+                                    </Card>
+                                    {/*Card-End*/}
+
+                                </Grid>
+                            )) : <h3 style={{textAlign: 'center'}}>Loading...</h3>
+                    }
+                </Grid>
+            </div>
+
         );
     };
 }
 
-export default CounselorAppointments;
+const mapStateToProps = state => {
+    return {
+        appointments: state.counselorReducer.appointments,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAppointments: (status) => dispatch(actions.getAppointments(status)),
+        approveAppointment: (id) => dispatch(actions.approveAppointment(id)),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(AppointmentRequestCard);
