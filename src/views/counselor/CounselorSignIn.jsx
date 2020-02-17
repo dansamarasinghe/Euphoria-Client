@@ -44,14 +44,15 @@ class CounselorSignIn extends Component {
             email: '',
             password: '',
             loginPassword:'',
-            confirmPassword:''
+            confirmPassword:'',
+            slmcNumber:''
         }
     };
 
     signIn = () => {
         console.log(this.state.name, this.state.password);
         const signInCredentials = {
-            name: this.state.name,
+            username: this.state.name,
             password: this.state.password
         }
         this.props.signIn(signInCredentials);
@@ -283,7 +284,7 @@ class CounselorSignIn extends Component {
                                                    onChange={e => this.handleChange(e)}
                                                    className={'txtFld-small'}
                                                    variant={'outlined'}
-                                                   label={'Email'}
+                                                   label={'SLMC Number'}
                                                    fullWidth
                                                    type={'text'}
                                         />

@@ -39,6 +39,7 @@ class CommentComponent extends Component{
     
     render(){   
         const pic=this.props.comment.commented_user_id.pic_name;
+        
         return(
             <Card style={{height:'150px'}}>
                 <div >
@@ -135,7 +136,7 @@ class PostComponent extends Component {
                         <Card.Header style={{fontFamily:'Georgia, serif',fontSize:'150%',height:''}} > 
                             <Container>
                                 <Grid container direction="row" justify="center" alignItems="center">
-                                    <Avatar alt="Remy Sharp" src={require('../../../assets/profile/'+UserProfile.getPic())} style={{height:'80px',width:'81px',margin:'10px'}}/>
+                                    <Avatar alt="Remy Sharp" src={require('../../../assets/profile/'+pic)} style={{height:'80px',width:'81px',margin:'10px'}}/>
                                     {this.props.post.user_id.firstname}
                                 </Grid>
 

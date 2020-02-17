@@ -17,7 +17,7 @@ function MyVerticallyCenteredModal(props) {
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
-                    <Image variant="top" src={require('../../assets/img/doctor/'+doc.picName+'.jpg')} 
+                    <Image variant="top" src={require('../../assets/img/doctor/'+doc.picName)} 
                             style={{
                                 margin:'20px',
                                 width: '90px',

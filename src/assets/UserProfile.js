@@ -66,6 +66,7 @@ var UserProfile = (function() {
 
       getPic:getPic,
       setPic:setPic
+
     }
   
   })();

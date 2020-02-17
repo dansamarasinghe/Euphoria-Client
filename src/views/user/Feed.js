@@ -29,7 +29,6 @@ class Feed extends Component {
                 'anxious',
                 'depressed',
                 'suicidal',
-                'happy',
                 'sad',
                 'stressed',
                 'other'
@@ -126,7 +125,7 @@ class Feed extends Component {
                     <Grid item>
                         
                         <FormControl style={{margin:'20px',width:'200px'}}>
-                            <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
+                            <InputLabel id="demo-mutiple-checkbox-label">Emotion Tags</InputLabel>
                             <Select
                             labelId="demo-mutiple-checkbox-label"
                             id="demo-mutiple-checkbox"
