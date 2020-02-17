@@ -1,4 +1,5 @@
 export const SIGN_IN='SIGN_IN';
+export const SIGN_UP='SIGN_UP';
 
 //counselor
 export const COUNSELOR_SIGN_IN = "COUNSELOR_SIGN_IN";
