@@ -6,6 +6,16 @@ import logo from "../../assets/eu-logo.png";
 import {connect} from 'react-redux';
 import * as actions from "../../actions/index";
 
+const validEmailRegex = RegExp(/^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+const validateForm = (errors) => {
+    let valid = true;
+    Object.values(errors).forEach(
+        (val) => val.length > 0 && (valid = false)
+    );
+    return valid;
+};
+
+
 class CounselorSignIn extends Component {
 
     constructor(props) {
@@ -16,7 +26,7 @@ class CounselorSignIn extends Component {
     };
 
     state = {
-        username: null,
+        name: null,
         password: null,
         confirmPassword: null,
         email: null,
@@ -25,13 +35,20 @@ class CounselorSignIn extends Component {
         city: null,
 
         signIn: null,
-        isSignUp: false
+        isSignUp: false,
+        errors: {
+            name: '',
+            email: '',
+            password: '',
+            loginPassword:'',
+            confirmPassword:''
+        }
     };
 
     signIn = () => {
-        console.log(this.state.username, this.state.password);
+        console.log(this.state.name, this.state.password);
         const signInCredentials = {
-            username: this.state.username,
+            name: this.state.name,
             password: this.state.password
         }
         this.props.signIn(signInCredentials);
@@ -39,25 +56,25 @@ class CounselorSignIn extends Component {
 
     signUp = () => {
 
-        if(this.state.password === this.state.confirmPassword){
+        if (this.state.password === this.state.confirmPassword) {
             const loginCredentials = {
-                username: this.state.username,
+                name: this.state.name,
                 email: this.state.email,
                 password: this.state.password
             };
 
             const signUpCredentials = {
-                username: this.state.username,
+                name: this.state.name,
                 description: null,
                 specialty: this.state.speciality,
                 hospital: this.state.hospital,
                 city: this.state.city,
-                photoUrl : null,
+                photoUrl: null,
                 loginCredentials: loginCredentials
             };
 
             this.props.signUp(signUpCredentials);
-        }else{
+        } else {
             alert('Passwords are not matched!')
         }
 
@@ -71,9 +88,51 @@ class CounselorSignIn extends Component {
     }
 
     handleChange = e => {
+        e.preventDefault();
         this.setState({
             [e.target.id]: e.target.value
         });
+
+        const name = e.target.id;
+        const value = e.target.value;
+
+        let errors = this.state.errors;
+
+        switch (name) {
+            case 'name':
+                errors.name =
+                    value.length < 0
+                        ? 'User Name must not be null'
+                        : '';
+                break;
+            case 'email':
+                errors.email =
+                    validEmailRegex.test(value)
+                        ? ''
+                        : 'Email is not valid!';
+                break;
+            case 'password':
+                errors.password =
+                    value.length < 8
+                        ? 'Password must be 8 characters long!'
+                        : '';
+                break;
+            case 'loginPassword':
+                errors.password =
+                    value.length < 8
+                        ? 'Password is empty!'
+                        : '';
+                break;
+            case 'confirmPassword':
+                errors.confirmPassword=
+                    this.state.confirmPassword !== this.state.password
+                        ? 'Passwords are not matched!'
+                        : '';
+                break;
+            default:
+                break;
+        }
+        this.setState({errors, [name]: value});
     };
 
     componentDidUpdate() {
@@ -84,6 +143,14 @@ class CounselorSignIn extends Component {
 
 
     render() {
+        const {errors} = this.state;
+
+        const error = {
+            color: '#db2269',
+            fontSize: '0.825em',
+            display: 'relative'
+        };
+
         let card
         if (!this.state.isSignUp) {
             card =
@@ -105,24 +172,29 @@ class CounselorSignIn extends Component {
                                 <hr/>
                                 <Grid container id={'fieldGrid'} spacing={2}>
                                     <Grid item xs={8}>
-                                        <TextField id={'username'}
+                                        <TextField id={'name'}
                                                    onChange={e => this.handleChange(e)}
                                                    className={'txtFld-small'}
                                                    variant={'outlined'}
-                                                   label={'Username'}
+                                                   label={'name'}
                                                    fullWidth
+                                                   noValidate
                                         />
+                                        {errors.name.length === 0 &&
+                                        <span style={error}>{errors.name}</span>}
                                     </Grid>
 
                                     <Grid item xs={8}>
                                         <TextField
-                                            id={'password'}
+                                            id={'loginPassword'}
                                             onChange={e => this.handleChange(e)}
                                             className={'txtFld-small'}
                                             variant={'outlined'}
                                             type={'password'}
                                             label={'Password'}
                                             fullWidth/>
+                                        {errors.loginPassword.length > 0 &&
+                                        <span style={error}>{errors.loginPassword}</span>}
                                     </Grid>
 
                                     <Grid item xs={12} sm={10} id={'buttonGrid'}
@@ -178,7 +250,10 @@ class CounselorSignIn extends Component {
                                                    label={'Name'}
                                                    fullWidth
                                                    type={'text'}
+                                                   noValidate
                                         />
+                                        {errors.name.length > 0 &&
+                                        <span style={error}>{errors.name}</span>}
                                     </Grid>
 
                                     <Grid item xs={12}>
@@ -190,6 +265,8 @@ class CounselorSignIn extends Component {
                                                    fullWidth
                                                    type={'email'}
                                         />
+                                        {errors.email.length > 0 &&
+                                        <span style={error}>{errors.email}</span>}
                                     </Grid>
 
                                     <Grid item xs={6}>
@@ -251,11 +328,13 @@ class CounselorSignIn extends Component {
                                             fullWidth
                                             type={'password'}
                                         />
+                                        {errors.password.length > 0 &&
+                                        <span style={error}>{errors.password}</span>}
                                     </Grid>
 
                                     <Grid item xs={6}>
                                         <TextField
-                                            id={'confirm_password'}
+                                            id={'confirmPassword'}
                                             onChange={e => this.handleChange(e)}
                                             // className={'txtFld-small'}
                                             variant={'outlined'}
@@ -263,10 +342,12 @@ class CounselorSignIn extends Component {
                                             fullWidth
                                             type={'password'}
                                         />
+                                        {errors.confirmPassword !== errors.password &&
+                                        <span style={error}>{errors.confirmPassword}</span>}
                                     </Grid>
 
                                     <Grid item xs={6}>
-                                        <TextField id={'username'}
+                                        <TextField id={'name'}
                                                    onChange={e => this.handleChange(e)}
                                                    className={'txtFld-small'}
                                                    variant={'outlined'}
