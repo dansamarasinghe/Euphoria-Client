@@ -16,6 +16,7 @@ class CounselorSignIn extends Component {
     };
 
     state = {
+        name: null,
         username: null,
         password: null,
         confirmPassword: null,
@@ -25,7 +26,8 @@ class CounselorSignIn extends Component {
         city: null,
         picName: null,
         signIn: null,
-        isSignUp: false
+        isSignUp: false,
+        description:null
     };
 
     signIn = () => {
@@ -47,8 +49,9 @@ class CounselorSignIn extends Component {
             };
 
             const signUpCredentials = {
+                name:this.state.name,
                 username: this.state.username,
-                description: null,
+                description: this.state.description,
                 specialty: this.state.speciality,
                 hospital: this.state.hospital,
                 city: this.state.city,
@@ -242,6 +245,18 @@ class CounselorSignIn extends Component {
                                                 Profile Photo
                                             </Button>
                                         </label>
+                                    </Grid>
+
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            id={'description'}
+                                            onChange={e => this.handleChange(e)}
+                                            className={'txtFld-small'}
+                                            variant={'outlined'}
+                                            label={'Description'}
+                                            multiline
+                                            rowsMax={'3'}
+                                            fullWidth/>
                                     </Grid>
 
                                     {/*<Grid item xs={6}>*/}
