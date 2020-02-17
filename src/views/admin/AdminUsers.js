@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Table,Row,Col} from 'react-bootstrap';
+import {Table,Row,Col,Button} from 'react-bootstrap';
 import AdminNavbar from "../../components/admin/AdminNavbar";
 import Card from "../../components/admin/Card";
 import axios from 'axios';
@@ -11,6 +11,7 @@ class AdminUsers extends Component{
             formalUsers:[],
             quickUsers:[]
         }
+        this.deleteUser=this.deleteUser.bind(this);
     }
 
     componentDidMount(){
@@ -27,10 +28,17 @@ class AdminUsers extends Component{
             })
     }
 
-    render(){
-        function accountType(props){
+    deleteUser(uid){
+        alert("Are you sure you want to remove this user?");
+        axios.delete("http://localhost:8080/api/admin/deleteUser",{
+            params:{
+                "id":uid
+            },
+        })
+        window.location.reload(false);
+    }
 
-        }
+    render(){
         return(
             <div className="container"> 
                 <AdminNavbar/>
@@ -47,7 +55,6 @@ class AdminUsers extends Component{
                                 <thead>
                                 <tr>
                                     <th>User ID</th>
-                                    <th>Title</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>City</th>
@@ -60,10 +67,10 @@ class AdminUsers extends Component{
                                             formalUser=>(
                                                 <tr key={formalUser.uid}>
                                                     <td>{formalUser.uid}</td>
-                                                    <td>{formalUser.title}</td>
                                                     <td>{formalUser.first_name}</td>
                                                     <td>{formalUser.last_name}</td>
                                                     <td>{formalUser.city}</td>
+                                                    <td><Button variant="danger"onClick={()=>this.deleteUser(formalUser.uid)}>REMOVE</Button></td>
                                                 </tr>
                                             )
                                         )
