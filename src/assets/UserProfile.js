@@ -4,6 +4,7 @@ var UserProfile = (function() {
     var user_email="dan@gmail.com";
     var user_type="formal";
     var activated="yes";
+    var pic="me.jpeg";
   
    
     var getActivated = function() {
@@ -21,9 +22,15 @@ var UserProfile = (function() {
     var getUserType = function() {
       return user_type;  
     };
+    var getPic = function() {
+      return pic;  
+    };
   
     var setActivated = function(value) {
         activated = value;     
+    };
+    var setPic = function(value) {
+        pic = value;     
     };
     var setId = function(id) {
         user_id = id;     
@@ -55,7 +62,10 @@ var UserProfile = (function() {
       setUserType:setUserType,
 
       getActivated:getActivated,
-      setActivated:setActivated
+      setActivated:setActivated,
+
+      getPic:getPic,
+      setPic:setPic
     }
   
   })();
