@@ -8,7 +8,8 @@ class AdminCounselors extends Component{
     constructor(props){
         super(props)
         this.state={
-            counselors:[]
+            counselors:[],
+            pcounselors:[]
         }
     }
 
@@ -16,8 +17,23 @@ class AdminCounselors extends Component{
         axios.get("http://localhost:8080/api/admin/getCounselors")
             .then(res=>{
                 const counselor = res.data;
-                this.setState({counselors:counselor})
+                console.log(res.data);
+                const ureqs=counselor.filter(c=>{
+                    return c.enabled=="no";
+                })
+                const ereqs=counselor.filter(c=>{
+                    return c.enabled=="yes";
+                })
+
+                this.setState({counselors:ereqs,pcounselors:ureqs})
                 console.log(res)
+            })
+    }
+    handleClick=e=>{
+        axios.post("http://localhost:8080/api/admin/activatecounselor"+"/"+e)
+            .then(res=>{
+                console.log(res);
+                window.location.reload(false)
             })
     }
 
@@ -89,7 +105,7 @@ class AdminCounselors extends Component{
                                 </thead>
                                 <tbody>
                                     {
-                                        this.state.counselors.map(
+                                        this.state.pcounselors.map(
                                             counselor=>(
                                                 <tr key={counselor.id}>
                                                     <td>{counselor.id}</td>
@@ -97,7 +113,7 @@ class AdminCounselors extends Component{
                                                     <td>{counselor.hospital}</td>
                                                     <td>{counselor.city}</td>
                                                     <td>{counselor.specialty}</td>
-                                                    <td><Button variant="primary">Accept</Button></td>
+                                                    <td><Button variant="primary" onClick={()=>this.handleClick(counselor.id)}>Accept</Button></td>
                                                 </tr>
                                             )
                                         )
