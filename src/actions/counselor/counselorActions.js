@@ -90,7 +90,7 @@ export const getPatientRecords = (user) => dispatch => {
 
 
 export const getAppointments = (status) => dispatch => {
-    return axios.get('http://localhost:8090/api/counselor/appointments/' + status,
+    return axios.get('http://localhost:8080/api/counselor/appointments/' + status,
         {
             headers: {
                 'Content-Type': 'application/json',

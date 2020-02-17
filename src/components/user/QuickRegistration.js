@@ -1,12 +1,17 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import {Button} from '@material-ui/core';
+import { FormControl,FormGroup,Button,Box } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
 
-import {Form} from 'react-bootstrap';
-import validateQuickSignUp from '../../validate/PatientSignUp'; //TODO: Temporary fix. Check and fix
+import {Form,Tab,Nav,Row,Col} from 'react-bootstrap';
+
+import PropTypes from 'prop-types';//for default exports
+
+import {validateQuickSignUp} from '../../validate/PatientSignUpValidation';
+import { Redirect } from 'react-router-dom';
 import {useStyles} from '../../assets/Styles';
+
 
 
 class QuickRegistration extends Component {
@@ -26,7 +31,7 @@ class QuickRegistration extends Component {
         this.setState({[e.target.name]:e.target.value})
     }
     isValid=()=>{
-        const{errors,isValid}=validateQuickSignUp(this.state); // TODO: Temporary fix. Check and fix
+        const{errors,isValid}=validateQuickSignUp(this.state);
         console.log(isValid);
         if(!isValid){
             this.setState({errors});

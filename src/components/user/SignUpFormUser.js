@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 
 import {Container,Tab,Nav,Row,Col} from 'react-bootstrap';
 
+import validateInput from '../../validate/PatientSignUpValidation';
+
 import QuickRegistration from './QuickRegistration';
 import FormalRegistration from './FormalRegistration';
 

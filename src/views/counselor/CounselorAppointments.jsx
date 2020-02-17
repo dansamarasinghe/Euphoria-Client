@@ -15,7 +15,7 @@ class AppointmentRequestCard extends Component {
             isLoaded: false,
             items: []
         };
-        this.props.getAppointments(null);
+        this.props.getAppointments("PENDING");
         console.log(this.props.appointments);
     }
 
@@ -102,7 +102,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getAppointments: (status) => dispatch(actions.getAppointments("PENDING")),
+        getAppointments: (status) => dispatch(actions.getAppointments(status)),
         approveAppointment: (id) => dispatch(actions.approveAppointment(id)),
     };
 };
