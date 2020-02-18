@@ -20,7 +20,7 @@ class AppointmentRequestCard extends Component {
     }
 
     onApprove = () => {
-        let appointment=this.state.appointment;
+        let appointment = this.state.appointment;
         appointment.status = "ACCEPTED";
         console.log(appointment);
         axios.post('http://localhost:8080/api/counselor/appointments',
@@ -33,7 +33,7 @@ class AppointmentRequestCard extends Component {
         ).then((response) => {
             this.setState({
                 status: "ACCEPTED",
-                disableActions:true,
+                disableActions: true,
             })
         }).catch((err) => {
             console.log(err);
@@ -41,7 +41,7 @@ class AppointmentRequestCard extends Component {
     };
 
     onReject = () => {
-        let appointment=this.state.appointment;
+        let appointment = this.state.appointment;
         appointment.status = "REJECTED";
         console.log(appointment);
         axios.post('http://localhost:8080/api/counselor/appointments',
@@ -54,7 +54,29 @@ class AppointmentRequestCard extends Component {
         ).then((response) => {
             this.setState({
                 status: "REJECTED",
-                disableActions:true,
+                disableActions: true,
+            })
+        }).catch((err) => {
+            console.log(err);
+        })
+    };
+
+    onStart = () => {
+        let appointment = this.state.appointment;
+        appointment.status = "COMPLETED";
+        // console.log(appointment);
+        localStorage.setItem('user',appointment.id.user);
+        axios.post('http://localhost:8080/api/counselor/appointments',
+            appointment,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        ).then((response) => {
+            this.setState({
+                status: "COMPLETED",
+                disableActions: true,
             })
         }).catch((err) => {
             console.log(err);
@@ -62,6 +84,23 @@ class AppointmentRequestCard extends Component {
     };
 
     render() {
+
+        let actions;
+        if (this.state.status === 'PENDING' || this.state.status === 'REJECTED' ) {
+            actions =
+                <>
+                    <Button onClick={this.onApprove} disabled={this.state.disableActions}>Approve</Button>
+                    <Button onClick={this.onReject} disabled={this.state.disableActions}>Reject</Button>
+                </>
+        } else if (this.state.status === 'ACCEPTED'){
+            actions =
+                <>
+                    <Button onClick={this.onStart} >Start session</Button>
+                </>
+        } else {
+            actions=<></>
+        }
+
         return (
             <Grid item xs={6}>
 
@@ -103,8 +142,7 @@ class AppointmentRequestCard extends Component {
 
                     <CardActions style={{float: "right"}}>
                         {/*<Button onClick={this.handleClick}>Approve</Button>*/}
-                        <Button onClick={this.onApprove} disabled={this.state.disableActions}>Approve</Button>
-                        <Button onClick={this.onReject} disabled={this.state.disableActions}>Reject</Button>
+                        {actions}
                     </CardActions>
                 </Card>
                 {/*Card-End*/}
