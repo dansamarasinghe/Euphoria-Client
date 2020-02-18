@@ -82,16 +82,20 @@ class SignIn extends Component{
     axios.post('http://localhost:8080/api/user/signin',JSON.stringify(this.state),{headers: {
         'Content-Type': 'application/json',
     }})
-    .then((response)=>{
-      if(response.data){
+    .then((res)=>{
+        const dat=res.data;
+        console.log(dat)
         UserProfile.setEmail(this.state.email);
-        UserProfile.setName(this.state.name);
+        UserProfile.setName(dat.firstname);
+        UserProfile.setPic(dat.pic_name);
+        UserProfile.setUserType(dat.account_type);
+        UserProfile.setActivated(dat.activated);
         window.location.replace('/user/homepage')
-      }else{
-        alert("Invalid combination of username and password");
-        this.setState({"email":'',"password":''});
-      }
-    }) 
+    }).catch(err=>{
+      alert("Invalid combination of username and password");
+      this.setState({"email":'',"password":''});
+
+    })
     
 
   }
