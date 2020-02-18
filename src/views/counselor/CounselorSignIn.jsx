@@ -180,7 +180,6 @@ class CounselorSignIn extends Component {
                                     <Grid item xs={12} className={'brandText'}>
                                         <Typography>Euphoria</Typography>
                                     </Grid>
-
                                 </Grid>
                                 <hr/>
                                 <Grid container id={'fieldGrid'} spacing={2}>

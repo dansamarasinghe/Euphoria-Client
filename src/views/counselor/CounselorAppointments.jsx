@@ -1,11 +1,8 @@
 import React, {Component} from 'react'
-import {Button, Card, CardActions, CardContent, CardHeader, Grid} from '@material-ui/core'
-import Typography from '@material-ui/core/Typography';
+import {Grid} from '@material-ui/core'
 import CounselorNavBar from "../../components/counselor/CounselorNavBar";
-import * as actions from "../../actions";
-import {getAppointments} from "../../actions";
-import {connect} from "react-redux";
 import AppointmentRequestCard from "../../components/counselor/AppointmentRequestCard";
+
 const axios = require('axios').default;
 
 class CounselorAppointments extends Component {
@@ -18,18 +15,7 @@ class CounselorAppointments extends Component {
             items: [],
             appointments: null,
         };
-        // this.props.getAppointments("PENDING");
-        // console.log(this.props.appointments);
     }
-
-    // handleClick = () => {
-    //     this.setState({'status': 'APPROVED'})
-    // };
-    //
-    // approve = (id) => {
-    //     console.log(id);
-    //     this.props.approveAppointment(id);
-    // };
 
 /*
     componentDidMount() {
@@ -50,7 +36,7 @@ class CounselorAppointments extends Component {
 */
 
     componentDidMount(){
-        axios.get('http://localhost:8080/api/counselor/appointments/PENDING',
+        axios.get('http://localhost:8080/api/counselor/appointments/ALL',
             {
                 headers: {
                     'Content-Type': 'application/json',
@@ -88,18 +74,5 @@ class CounselorAppointments extends Component {
         );
     };
 }
-
-// const mapStateToProps = state => {
-//     return {
-//         appointments: state.counselorReducer.appointments,
-//     };
-// };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         getAppointments: (status) => dispatch(actions.getAppointments(status)),
-//         approveAppointment: (id) => dispatch(actions.updateAppointmentStatus(id)),
-//     };
-// };
 
 export default CounselorAppointments;
