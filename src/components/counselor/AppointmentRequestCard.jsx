@@ -78,6 +78,7 @@ class AppointmentRequestCard extends Component {
                 status: "COMPLETED",
                 disableActions: true,
             })
+            this.history.pushState(appointment.id.user, 'login');
         }).catch((err) => {
             console.log(err);
         })
@@ -101,6 +102,8 @@ class AppointmentRequestCard extends Component {
             actions=<></>
         }
 
+        let createdAt=this.state.appointment.id.createdAt;
+
         return (
             <Grid item xs={6}>
 
@@ -116,7 +119,10 @@ class AppointmentRequestCard extends Component {
                             <Grid item xs={4}>
                                 <Grid item xs={12}>
                                     <Typography color={"textSecondary"} style={{fontSize: "1em"}}>
-                                        Requested at {Date()}
+                                        Requested on {createdAt[0]}-{createdAt[1]}-{createdAt[2]}
+                                    </Typography>
+                                    <Typography color={"textSecondary"} style={{fontSize: "1em"}}>
+                                        At {createdAt[3]}:{createdAt[4]}
                                     </Typography>
                                 </Grid>
                                 {/*<Grid item xs={12}>*/}
